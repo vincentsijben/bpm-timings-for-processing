@@ -4,8 +4,8 @@
 BPM timings for Processing is a small library for Processing that provides easy to use timing functions based on beats per minute. For example, you could easily grow or shrink shapes in any amount of beats, or delay shrinking a shape to start after 6 beats.
 
 It provides the following functions:
-* `run()` needs to be called in your draw() as the last statement
-* `enableKeyPresses()` to enable the library to listen for keys i, 0, - and = to show info window, reset timers, lower and raise bpm amount
+* `run()` needs to be called in your `draw()` as the last statement
+* `enableKeyPresses()` to enable the library to listen for keys `i`, `0`, `-` and `=` to show info window, reset timers and lower/raise bpm amount
 * `setSurfaceTitle()` to return information for BPM, beatCount and frameRate to be shown in your surface title
 * `linear` main function that gives a normalized linear progress value from 0 to 1 for any given amount of beats, or with a given delay
   * linear() gives progress in 1 beat
