@@ -45,8 +45,26 @@ void draw(){
 ## Examples
 You can find all these examples in `Processing -> File - Examples - Contributed Libraries - BPM timings for Processing`.
 
-### Beatcount
+### animatedSVG
+![beatcount](data/example-animatedsvg.png)
+
+### beatcount
 ![beatcount](data/example-beatcount.png)
+
+### colorPalettes
+![beatcount](data/example-colorpalettes.png)
+
+### delay
+![beatcount](data/example-delay.png)
+
+### randomColor
+![beatcount](data/example-randomcolor.png)
+
+### randomGridSpots
+![beatcount](data/example-randomgridspots.png)
+
+### wiggle
+![beatcount](data/example-wiggle.png)
 
 
 Library template based on the [Processing Library Template](https://github.com/processing/processing-library-template). If you want to create your own library check out the [Coding Train tutorial](https://www.youtube.com/watch?v=pI2gvl9sdtE).
