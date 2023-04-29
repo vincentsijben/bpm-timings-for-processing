@@ -42,4 +42,11 @@ void draw(){
 }
 ```
 
+## Examples
+You can find all these examples in `Processing -> File - Examples - Contributed Libraries - BPM timings for Processing`.
+
+### Beatcount
+![beatcount](data/example-beatcount.png)
+
+
 Library template based on the [Processing Library Template](https://github.com/processing/processing-library-template). If you want to create your own library check out the [Coding Train tutorial](https://www.youtube.com/watch?v=pI2gvl9sdtE).
