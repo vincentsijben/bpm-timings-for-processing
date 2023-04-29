@@ -10,7 +10,7 @@ Install the lirbrary by downloading the latest release of through the Processing
 
 ```
 // Import the library to your sketch
-import nl.genart.timings.bpm.*
+import bpm.library.*;
 
 // Create the bpm object
 BeatsPerMinute bpm;
@@ -18,18 +18,28 @@ BeatsPerMinute bpm;
 void setup(){
   // Initialize the bpm
   bpm = new BeatsPerMinute(this, 60);
+
+  // Enable the info window when pressing i
+  // or raise/lower bpm with = and -
+  // or reset timing with 0
+  bpm.enableKeyPresses();
+
+  // always show the info window
+  bpm.showInfo = true;
 }
 
 void draw(){
   background(100);
   
   // Use a timing function
-  float radius = 50 + bpm.beatDurationNormalizedLinear(1) * 100;
-  // or: float radius = map(bpm.beatDurationNormalized(1), 0, 1, 50, 150);
-  // or: float radius = lerp(50, 150, bpm.beatDurationNormalized(1));
+  float radius = 20 + bpm.linear() * 50;
+  // or: float radius = map(bpm.linear(), 0, 1, 20, 70);
+  // or: float radius = lerp(20, 70, bpm.linear());
   ellipse(width/2,height/2,radius,radius);
 
   // Run the timing every frame
   bpm.run();
 }
 ```
+
+Library template based on the [Processing Library Template](https://github.com/processing/processing-library-template). If you want to create your own library check out the [Coding Train tutorial](https://www.youtube.com/watch?v=pI2gvl9sdtE).
