@@ -81,7 +81,7 @@ You can find all these examples in `Processing -> File - Examples - Contributed 
 ![animatedSVG](assets/example-animatedsvg.gif)
 ---
 
-### [beatcount](examples/beatcount/)
+### [beatcount](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/beatcount/beatcount.pde)
 ```
 /**
  * beatcount
@@ -94,20 +94,24 @@ You can find all these examples in `Processing -> File - Examples - Contributed 
 ![beatcount](assets/example-beatcount.gif)
 ---
 
-### colorPalettes
-![beatcount](assets/example-colorpalettes.gif)
+### [colorPalettes]()
+```
 
-### delay
-![beatcount](assets/example-delay.gif)
+```
+![colorPalettes](assets/example-colorpalettes.gif)
+---
+
+### [delay]
+![delay](assets/example-delay.gif)
 
 ### randomColor
-![beatcount](assets/example-randomcolor.gif)
+![randomColor](assets/example-randomcolor.gif)
 
 ### randomGridSpots
-![beatcount](assets/example-randomgridspots.gif)
+![randomGridSpots](assets/example-randomgridspots.gif)
 
-### wiggle
-![beatcount](assets/example-wiggle.gif)
+### metronome
+![metronome](assets/example-metronome.gif)
 
 ## Note to self
 I've copied `library.properties` to the root and called it `library.properties.example` so I could see the original comments for the file. In `resources\library.properties` I've removed all comments, so the generated `distribution\...\.txt` file is clean and simple.
