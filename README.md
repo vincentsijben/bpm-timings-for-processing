@@ -64,25 +64,25 @@ void draw(){
 You can find all these examples in `Processing -> File - Examples - Contributed Libraries - BPM timings for Processing`.
 
 ### animatedSVG
-![beatcount](data/example-animatedsvg.gif)
+![beatcount](assets/example-animatedsvg.gif)
 
 ### beatcount
-![beatcount](data/example-beatcount.gif)
+![beatcount](assets/example-beatcount.gif)
 
 ### colorPalettes
-![beatcount](data/example-colorpalettes.gif)
+![beatcount](assets/example-colorpalettes.gif)
 
 ### delay
-![beatcount](data/example-delay.gif)
+![beatcount](assets/example-delay.gif)
 
 ### randomColor
-![beatcount](data/example-randomcolor.gif)
+![beatcount](assets/example-randomcolor.gif)
 
 ### randomGridSpots
-![beatcount](data/example-randomgridspots.gif)
+![beatcount](assets/example-randomgridspots.gif)
 
 ### wiggle
-![beatcount](data/example-wiggle.gif)
+![beatcount](assets/example-wiggle.gif)
 
 ## Note to self
 I've copied `library.properties` to the root and called it `library.properties.example` so I could see the original comments for the file. In `resources\library.properties` I've removed all comments, so the generated `distribution\...\.txt` file is clean and simple.
