@@ -63,10 +63,24 @@ void draw(){
 ## Examples
 You can find all these examples in `Processing -> File - Examples - Contributed Libraries - BPM timings for Processing`.
 
-### animatedSVG
-![beatcount](assets/example-animatedsvg.gif)
+* [animatedSVG](examples/animatedSVG/)
+![animatedSVG](assets/example-animatedsvg.gif)
 
 ### beatcount
+```
+/**
+ * animatedSVG
+ * by Vincent Sijben
+ *
+ * Animate an SVG shape on specific beats. 
+ * I've hidden both glasses and left foot shapes in the original SVG.
+ * Created a new glasses.svg and foot.svg in vector software (Adobe Illustrator).
+ * Every beat, the size of the glasses grow and shrink.
+ * Every 4 beats, the dude's left foot 'taps'.
+ *
+ * Used a free SVG from https://www.svgrepo.com/svg/191/cool.
+ */
+```
 ![beatcount](assets/example-beatcount.gif)
 
 ### colorPalettes
