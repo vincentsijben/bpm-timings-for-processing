@@ -84,5 +84,11 @@ You can find all these examples in `Processing -> File - Examples - Contributed 
 ### wiggle
 ![beatcount](data/example-wiggle.gif)
 
+## Note to self
+I've copied `library.properties` to the root and called it `library.properties.example` so I could see the original comments for the file. In `resources\library.properties` I've removed all comments, so the generated `distribution\...\.txt` file is clean and simple.
+
+If you create a new version, make sure to create a new release on GitHub and use the tag **latest** for it, and remove the tag **latest** for the older release, so the current and up to date files are always available at `https://github.com/vincentsijben/bpm-timings-for-processing/releases/download/latest/BPM.zip`.
+
+
 
 Library template based on the [Processing Library Template](https://github.com/processing/processing-library-template). If you want to create your own library check out the [Coding Train tutorial](https://www.youtube.com/watch?v=pI2gvl9sdtE).
