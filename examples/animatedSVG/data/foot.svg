@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="79.5" height="52.4" viewBox="0 0 79.5 52.4">
+  <g id="uuid-d5bd5ae1-31f7-471f-b581-3301a8724864" data-name="Layer 1"/>
+  <g id="uuid-0c4b151c-bfad-4ca3-b24e-0e5dbca7ceb0" data-name="Layer 2">
+    <g id="uuid-f8012807-bad5-4913-8565-3d5cced6c5ab" data-name="foot">
+      <path d="M79.5,35.5c0,14.9-17.8,16.9-39.7,16.9S0,50.5,0,35.5,17.8,0,39.7,0s39.7,20.6,39.7,35.5Z" style="fill: #c90d59;"/>
+      <path d="M79.5,35.5c0,14.9-17.8,16.9-39.7,16.9S0,50.5,0,35.5" style="fill: #aa0b53;"/>
+    </g>
+  </g>
+</svg>
