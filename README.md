@@ -67,22 +67,22 @@ You can find all these examples in `Processing -> File - Examples - Contributed 
 ![beatcount](data/example-animatedsvg.gif)
 
 ### beatcount
-![beatcount](data/example-beatcount.png)
+![beatcount](data/example-beatcount.gif)
 
 ### colorPalettes
-![beatcount](data/example-colorpalettes.png)
+![beatcount](data/example-colorpalettes.gif)
 
 ### delay
-![beatcount](data/example-delay.png)
+![beatcount](data/example-delay.gif)
 
 ### randomColor
-![beatcount](data/example-randomcolor.png)
+![beatcount](data/example-randomcolor.gif)
 
 ### randomGridSpots
-![beatcount](data/example-randomgridspots.png)
+![beatcount](data/example-randomgridspots.gif)
 
 ### wiggle
-![beatcount](data/example-wiggle.png)
+![beatcount](data/example-wiggle.gif)
 
 
 Library template based on the [Processing Library Template](https://github.com/processing/processing-library-template). If you want to create your own library check out the [Coding Train tutorial](https://www.youtube.com/watch?v=pI2gvl9sdtE).
