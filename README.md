@@ -87,6 +87,18 @@ You can find all these examples in `Processing -> File - Examples - Contributed 
 ## Note to self
 I've copied `library.properties` to the root and called it `library.properties.example` so I could see the original comments for the file. In `resources\library.properties` I've removed all comments, so the generated `distribution\...\.txt` file is clean and simple.
 
+### Update, test and release
+* Open Eclipse
+* Update `src\bpm.library\BeatsPerMinute.java`
+* Open Ant window `Window -> Show View - Ant`
+* drag `resources\build.xml` to the Ant window on the right
+* Run the Ant build
+* Test every embedded example locally through the `Processing -> File -> Examples`
+* Commit changes to GitHub and create a new release
+* Name the release `BPM Library Release [version] ([pretty version])` and tag it wit tag **latest**
+* Upload the `distribution\BPM-[version]\download\BPM.txt` and `distribution\BPM-[version]\download\BPM.zip` into the release.
+* Remove the **latest** tag from older versions
+
 ## Create your own Processing Library
 Thanks [Elie Zananiri](https://github.com/prisonerjohn) for pointing out these things...
 
