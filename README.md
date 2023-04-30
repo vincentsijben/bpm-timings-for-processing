@@ -60,7 +60,7 @@ void draw(){
 You can find all these examples in `Processing -> File - Examples - Contributed Libraries - BPM timings for Processing`.
 
 ### animatedSVG
-![beatcount](data/example-animatedsvg.png)
+![beatcount](data/example-animatedsvg.gif)
 
 ### beatcount
 ![beatcount](data/example-beatcount.png)
