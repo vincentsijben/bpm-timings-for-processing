@@ -63,7 +63,7 @@ void draw(){
 ## Examples
 You can find all these examples in `Processing -> File - Examples - Contributed Libraries - BPM timings for Processing`.
 
-### [animatedSVG](examples/animatedSVG/)
+### [animatedSVG](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/animatedSVG/animatedSVG.pde)
 ```
 /**
  * animatedSVG
