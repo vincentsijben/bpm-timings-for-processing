@@ -5,7 +5,11 @@ BPM timings for Processing is a small library for Processing that provides easy 
 
 It provides the following functions:
 * `run()` needs to be called in your `draw()` as the last statement
-* `enableKeyPresses()` to enable the library to listen for keys `i`, `0`, `-` and `=` to show info window, reset timers and lower/raise bpm amount
+* `enableKeyPresses()` to enable the library to listen for keys
+  * `i` show info window
+  * `0` press once to reset timer, press multiple times to set bpm to your 'press'-timing
+  * `-` lower bpm
+  * `=` raise bpm
 * `setSurfaceTitle()` to return information for BPM, beatCount and frameRate to be shown in your surface title
 * `linear` main function that gives a normalized linear progress value from 0 to 1 for any given amount of beats, or with a given delay
   * linear() gives progress in 1 beat

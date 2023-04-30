@@ -2,7 +2,7 @@ import bpm.library.*;
 BeatsPerMinute bpm;
 
 void setup() {
-  size(400, 400);
+  size(500, 500);
   bpm = new BeatsPerMinute(this, 60);
   bpm.showInfo = true;
 }

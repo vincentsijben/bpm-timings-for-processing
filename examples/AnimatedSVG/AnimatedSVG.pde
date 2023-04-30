@@ -8,7 +8,7 @@ PShape foot, footTmp;
 
 void setup () {
 
-  size(700, 700);
+  size(500, 500);
   bpm = new BeatsPerMinute(this, 120);
   bpm.showInfo = true;
 

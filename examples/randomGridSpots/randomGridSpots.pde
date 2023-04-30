@@ -8,7 +8,7 @@ float rotate = 0;
 
 void setup () {
 
-  size(600, 600);
+  size(500, 500);
   rectMode(CENTER);
   noStroke();
   bpm = new BeatsPerMinute(this, 120);
@@ -23,11 +23,11 @@ void draw() {
 
       pushMatrix();
       float itemIndex = i*1000 + j*100;
-      float x = i * 60 + 60;
-      float y = j * 60 + 60;
+      float x = i * 50 + 50;
+      float y = j * 50 + 50;
       translate(x, y);
       rotate(radians(rotate));
-      float sizeRect = 40;
+      float sizeRect = 35;
       int colorChoice = int(lerp(0,3,noise(itemIndex)));
 
       fill(colors[colorChoice]);

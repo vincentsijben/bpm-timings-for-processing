@@ -42,9 +42,6 @@ public class BeatsPerMinute {
 
 	  public final static String VERSION = "##library.prettyVersion##";
 
-
-
-
 	  /**
 	   * a Constructor, usually called in the setup() method in your sketch to
 	   * initialize and start the Library.
@@ -52,8 +49,9 @@ public class BeatsPerMinute {
 	   * @param theParent the parent PApplet
 	   */
 	  public BeatsPerMinute(PApplet theParent) {
-	    myParent = theParent;
-	    welcome();
+	    this(theParent, 60);
+	    //myParent = theParent;
+	    //welcome();
 	  }
 
 	  /**
@@ -71,7 +69,7 @@ public class BeatsPerMinute {
 	  }
 
 	  private void welcome() {
-	    System.out.println("##library.name## ##library.prettyVersion## by ##author##");
+	    System.out.println("##library.name## ##library.prettyVersion## by ##author.url##");
 	  }
 
 	  /**
@@ -188,9 +186,10 @@ public class BeatsPerMinute {
 	      //processing doesn't like transparancy in 3D
 	      //see https://www.reddit.com/r/processing/comments/59r0le/problems_with_transparency_in_3d/
 	      myParent.pushStyle();
+	      myParent.rectMode(PConstants.CORNER);
 	      myParent.textAlign(PConstants.LEFT, PConstants.CENTER);
 	      myParent.fill(255, 100);
-	      myParent.rect(0, 0, 180, 440);
+	      myParent.rect(0, 0, 190, 440);
 	      myParent.fill(0);
 	      myParent.textSize(20);
 	      myParent.text("BPM: " + bpm, 10, 20);

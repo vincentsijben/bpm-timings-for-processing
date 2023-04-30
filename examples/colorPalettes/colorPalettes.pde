@@ -17,7 +17,7 @@ int currentRandomNumber = 0;
 
 void setup () {
 
-  size(400, 400);
+  size(500, 500);
   bpm = new BeatsPerMinute(this, 120);
 
   for (String url : urls) {
