@@ -78,7 +78,7 @@ You can find all these examples in `Processing -> File - Examples - Contributed 
  * Used a free SVG from https://www.svgrepo.com/svg/191/cool.
  */
 ```
-![animatedSVG](assets/example-animatedsvg.gif)
+![screenshot for example animatedSVG](assets/example-animatedsvg.gif)
 ---
 
 ### [beatcount](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/beatcount/beatcount.pde)
@@ -91,27 +91,84 @@ You can find all these examples in `Processing -> File - Examples - Contributed 
  * You can see how you could use the setSurfaceTitle() function as well.
  */
 ```
-![beatcount](assets/example-beatcount.gif)
+![screenshot for example beatcount](assets/example-beatcount.gif)
 ---
 
-### [colorPalettes]()
+### [colorPalettes](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/colorPalettes/colorPalettes.pde)
 ```
-
+/**
+ * colorPalettes
+ * by Vincent Sijben
+ *
+ * Given a number of https://coolors.co color palette URLs, generate a unique random color for
+ * the current color palette each beat.
+ * Pick the next palette every 8 beats.
+ */
 ```
-![colorPalettes](assets/example-colorpalettes.gif)
+![screenshot for example colorPalettes](assets/example-colorpalettes.gif)
 ---
 
-### [delay]
-![delay](assets/example-delay.gif)
+### [delay](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/delay/delay.pde)
+```
+/**
+ * delay
+ * by Vincent Sijben
+ *
+ * Show 4 rows of 3 circles which animate every 3 beats, some with a delay. Each row uses one of the core timing functions.
+ * 1st row: linear(), a linear progression value from 0 to 1 in 3 beats
+ * 2nd row: linearBounce(), a linear progression value from 0 to 1 and back to 0 in 3 beats
+ * 3rd row: ease(), an 'eased' progression value from 0 to 1 in 3 beats
+ * 4th row: easeBounce(), an 'eased' progression value from 0 to 1 and back to 0 in 3 beats
+ * Each row shows 3 circles. The first has no delay, the second has a delay of 1 beat, the last one a delay of 2 beats
+ */
+```
+![screenshot for example delay](assets/example-delay.gif)
+---
 
-### randomColor
-![randomColor](assets/example-randomcolor.gif)
+### [metronome](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/metronome/metronome.pde)
+```
+/**
+ * metronome
+ * by Vincent Sijben
+ *
+ * Shows a metronome (simple rectangle) that rotates back and forth every beat.
+ * Also sets showInfo to true, to see the BPM info window.
+ */
+```
+![screenshot for example metronome](assets/example-metronome.gif)
+---
 
-### randomGridSpots
-![randomGridSpots](assets/example-randomgridspots.gif)
+### [randomColor](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/randomColor/randomColor.pde)
+```
+/**
+ * randomColor
+ * by Vincent Sijben
+ *
+ * Show a random background color by setting a new (random) seed every 4 beats.
+ * Uses the boolean every_once[4] to turn true every 4 beats for the duration of 1 frame.
+ * Also toggles the fill color of the circle every 2 beats.
+ * Uses the boolean every[2] to show a text every 2 beats for the duration of 1 beat.
+ */
+```
+![screenshot for example randomColor](assets/example-randomcolor.gif)
+---
 
-### metronome
-![metronome](assets/example-metronome.gif)
+### [randomGridSpots](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/randomGridSpots/randomGridSpots.pde)
+```
+/**
+ * randomGridSpots
+ * by Vincent Sijben
+ *
+ * Shows a 9 by 9 grid of squares that rotates every 8 beats.
+ * Every beat, 1 random square pulsates on the beat, starting each first beat with a red color.
+ * Uses the boolean every_once[8] to turn true every 8 beats for the duration of 1 frame.
+ * Also toggles the fill color of the circle every 2 beats.
+ * Uses the boolean every[4] to use a red fill color every 4 beats for the duration of 1 beat.
+ */
+```
+![screenshot for example randomGridSpots](assets/example-randomgridspots.gif)
+---
+
 
 ## Note to self
 I've copied `library.properties` to the root and called it `library.properties.example` so I could see the original comments for the file. In `resources\library.properties` I've removed all comments, so the generated `distribution\...\.txt` file is clean and simple.
