@@ -63,10 +63,7 @@ void draw(){
 ## Examples
 You can find all these examples in `Processing -> File - Examples - Contributed Libraries - BPM timings for Processing`.
 
-* [animatedSVG](examples/animatedSVG/)
-![animatedSVG](assets/example-animatedsvg.gif)
-
-### beatcount
+### [animatedSVG](examples/animatedSVG/)
 ```
 /**
  * animatedSVG
@@ -81,7 +78,21 @@ You can find all these examples in `Processing -> File - Examples - Contributed 
  * Used a free SVG from https://www.svgrepo.com/svg/191/cool.
  */
 ```
+![animatedSVG](assets/example-animatedsvg.gif)
+---
+
+### [beatcount](examples/beatcount/)
+```
+/**
+ * beatcount
+ * by Vincent Sijben
+ *
+ * Show the (rounded) beatcount as text.
+ * You can see how you could use the setSurfaceTitle() function as well.
+ */
+```
 ![beatcount](assets/example-beatcount.gif)
+---
 
 ### colorPalettes
 ![beatcount](assets/example-colorpalettes.gif)
