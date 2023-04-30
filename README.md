@@ -167,7 +167,7 @@ You can find all these examples in `Processing -> File - Examples - Contributed 
  */
 ```
 ![screenshot for example randomGridSpots](assets/example-randomgridspots.gif)
----
+
 
 
 ## Note to self
