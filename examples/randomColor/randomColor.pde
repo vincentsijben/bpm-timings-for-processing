@@ -1,3 +1,13 @@
+/**
+ * randomColor
+ * by Vincent Sijben
+ *
+ * Show a random background color by setting a new (random) seed every 4 beats.
+ * Uses the boolean every_once[4] to turn true every 4 beats for the duration of 1 frame.
+ * Also toggles the fill color of the circle every 2 beats.
+ * Uses the boolean every[2] to show a text every 2 beats for the duration of 1 beat.
+ */
+ 
 import bpm.library.*;
 
 BeatsPerMinute bpm;

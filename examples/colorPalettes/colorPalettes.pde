@@ -1,5 +1,12 @@
-//given a number of coolors.co urls, pick a random color for the current palette each beat
-//pick a next palette every 8 beats
+/**
+ * colorPalettes
+ * by Vincent Sijben
+ *
+ * Given a number of https://coolors.co color palette URLs, generate a unique random color for
+ * the current color palette each beat.
+ * Pick the next palette every 8 beats.
+ */
+
 import bpm.library.*;
 
 BeatsPerMinute bpm;
@@ -9,14 +16,12 @@ String[] urls = {
   "https://coolors.co/palette/ff7b00-ff8800-ff9500-ffa200-ffaa00-ffb700-ffc300-ffd000-ffdd00-ffea00",
   "https://coolors.co/palette/001219-005f73-0a9396-94d2bd-e9d8a6-ee9b00-ca6702-bb3e03-ae2012-9b2226"
 };
-
 ArrayList<ArrayList<Integer>> palettes = new ArrayList<ArrayList<Integer>>();
 int paletteIndex = 0;
 int colorIndex = 0;
 int currentRandomNumber = 0;
 
 void setup () {
-
   size(500, 500);
   bpm = new BeatsPerMinute(this, 120);
 

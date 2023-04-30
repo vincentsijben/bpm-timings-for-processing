@@ -1,3 +1,15 @@
+/**
+ * delay
+ * by Vincent Sijben
+ *
+ * Show 4 rows of 3 circles which animate every 3 beats, some with a delay. Each row uses one of the core timing functions.
+ * 1st row: linear(), a linear progression value from 0 to 1 in 3 beats
+ * 2nd row: linearBounce(), a linear progression value from 0 to 1 and back to 0 in 3 beats
+ * 3rd row: ease(), an 'eased' progression value from 0 to 1 in 3 beats
+ * 4th row: easeBounce(), an 'eased' progression value from 0 to 1 and back to 0 in 3 beats
+ * Each row shows 3 circles. The first has no delay, the second has a delay of 1 beat, the last one a delay of 2 beats
+ */
+ 
 import bpm.library.*;
 
 BeatsPerMinute bpm;

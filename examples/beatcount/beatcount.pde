@@ -1,3 +1,11 @@
+/**
+ * beatcount
+ * by Vincent Sijben
+ *
+ * Show the (rounded) beatcount as text.
+ * You can see how you could use the setSurfaceTitle() function as well.
+ */
+ 
 import bpm.library.*;
 BeatsPerMinute bpm;
 

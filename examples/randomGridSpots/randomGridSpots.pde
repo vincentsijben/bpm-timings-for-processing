@@ -1,3 +1,14 @@
+/**
+ * randomGridSpots
+ * by Vincent Sijben
+ *
+ * Shows a 9 by 9 grid of squares that rotates every 8 beats.
+ * Every beat, 1 random square pulsates on the beat, starting each first beat with a red color.
+ * Uses the boolean every_once[8] to turn true every 8 beats for the duration of 1 frame.
+ * Also toggles the fill color of the circle every 2 beats.
+ * Uses the boolean every[4] to use a red fill color every 4 beats for the duration of 1 beat.
+ */
+ 
 import bpm.library.*;
 
 BeatsPerMinute bpm;
