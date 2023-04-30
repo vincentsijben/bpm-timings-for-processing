@@ -87,8 +87,21 @@ You can find all these examples in `Processing -> File - Examples - Contributed 
 ## Note to self
 I've copied `library.properties` to the root and called it `library.properties.example` so I could see the original comments for the file. In `resources\library.properties` I've removed all comments, so the generated `distribution\...\.txt` file is clean and simple.
 
-If you create a new version, make sure to create a new release on GitHub and use the tag **latest** for it, and remove the tag **latest** for the older release, so the current and up to date files are always available at `https://github.com/vincentsijben/bpm-timings-for-processing/releases/download/latest/BPM.zip`.
+## Create your own Processing Library
+Thanks [Elie Zananiri](https://github.com/prisonerjohn) for pointing out these things...
+
+There are a few steps:
+* Package your library according to the guidelines here: https://github.com/processing/processing/wiki/Library-Guidelines
+* Add a properties file according to the guidelines here: https://github.com/processing/processing/wiki/Library-Basics#describing-your-library--libraryproperties
+* Check the revision numbers for Processing 4 [here](https://github.com/processing/processing4/blob/main/build/shared/revisions.md).
+* Publish your library and properties to a static URL according to the guidelines here: https://github.com/processing/processing/wiki/Library-Basics#advertising-your-library
+
+* If you're hosting your library on GitHub, use the GitHub Releases feature. Create a release tagged "latest" and move that tag up to the new commit whenever you make an update. Note that you can also tag each release with its version number, in case you want to make older releases still available on GitHub. Check out [processing-video]() for a good example of that.
+
+So my URLs are always available through:
+* https://github.com/vincentsijben/bpm-timings-for-processing/releases/download/latest/BPM.txt
+* https://github.com/vincentsijben/bpm-timings-for-processing/releases/download/latest/BPM.zip
 
 
 
-Library template based on the [Processing Library Template](https://github.com/processing/processing-library-template). If you want to create your own library check out the [Coding Train tutorial](https://www.youtube.com/watch?v=pI2gvl9sdtE).
+I've based my Library on the [Processing Library Template](https://github.com/processing/processing-library-template). You could also check out the [Coding Train tutorial](https://www.youtube.com/watch?v=pI2gvl9sdtE).
