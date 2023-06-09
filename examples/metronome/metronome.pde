@@ -1,6 +1,6 @@
 /**
  * metronome
- * by Vincent Sijben
+ * https://github.com/vincentsijben/bpm-timings-for-processing
  *
  * Shows a metronome (simple rectangle) that rotates back and forth every beat.
  * Also sets showInfo to true, to see the BPM info window.
@@ -12,6 +12,7 @@ BeatsPerMinute bpm;
 void setup() {
   size(500, 500);
   bpm = new BeatsPerMinute(this, 60);
+  bpm.enableKeyPresses();
   bpm.showInfo = true;
 }
 

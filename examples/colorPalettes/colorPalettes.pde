@@ -1,6 +1,6 @@
 /**
  * colorPalettes
- * by Vincent Sijben
+ * https://github.com/vincentsijben/bpm-timings-for-processing
  *
  * Given a number of https://coolors.co color palette URLs, generate a unique random color for
  * the current color palette each beat.
@@ -24,6 +24,7 @@ int currentRandomNumber = 0;
 void setup () {
   size(500, 500);
   bpm = new BeatsPerMinute(this, 120);
+  bpm.enableKeyPresses();
 
   for (String url : urls) {
     palettes.add(createPalette(url));

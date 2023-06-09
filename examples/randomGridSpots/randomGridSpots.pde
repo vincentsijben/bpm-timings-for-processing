@@ -1,6 +1,6 @@
 /**
  * randomGridSpots
- * by Vincent Sijben
+ * https://github.com/vincentsijben/bpm-timings-for-processing
  *
  * Shows a 9 by 9 grid of squares that rotates every 8 beats.
  * Every beat, 1 random square pulsates on the beat, starting each first beat with a red color.
@@ -23,6 +23,7 @@ void setup () {
   rectMode(CENTER);
   noStroke();
   bpm = new BeatsPerMinute(this, 120);
+  bpm.enableKeyPresses();
   bpm.showInfo = true;
 
 }

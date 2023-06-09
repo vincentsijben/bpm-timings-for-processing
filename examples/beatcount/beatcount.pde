@@ -1,6 +1,6 @@
 /**
  * beatcount
- * by Vincent Sijben
+ * https://github.com/vincentsijben/bpm-timings-for-processing
  *
  * Show the (rounded) beatcount as text.
  * You can see how you could use the setSurfaceTitle() function as well.
@@ -12,6 +12,7 @@ BeatsPerMinute bpm;
 void setup() {
   size(500, 500);
   bpm = new BeatsPerMinute(this, 60);
+  bpm.enableKeyPresses();
 }
 
 void draw() {

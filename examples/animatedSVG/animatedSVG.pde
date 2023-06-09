@@ -1,6 +1,6 @@
 /**
  * animatedSVG
- * by Vincent Sijben
+ * https://github.com/vincentsijben/bpm-timings-for-processing
  *
  * Animate an SVG shape on specific beats. 
  * I've hidden both glasses and left foot shapes in the original SVG.
@@ -21,6 +21,7 @@ PShape foot, footTmp;
 void setup () {
   size(500, 500);
   bpm = new BeatsPerMinute(this, 120);
+  bpm.enableKeyPresses();
   bpm.showInfo = true;
 
   shapeMode(CENTER);

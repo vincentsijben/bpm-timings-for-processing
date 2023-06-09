@@ -42,7 +42,7 @@ void setup(){
   // or reset timing with 0
   bpm.enableKeyPresses();
 
-  // always show the info window
+  // show the info window at the start
   bpm.showInfo = true;
 }
 
