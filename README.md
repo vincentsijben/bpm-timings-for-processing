@@ -207,3 +207,13 @@ I've based my Library on the [Processing Library Template](https://github.com/pr
 Note: 
 * use `classpath.local.location=/Applications/Processing.app/Contents/Java/core/library` instead of Daniel's example. When releasing a Library you can't have the `core.jar` in your lib folder.
 * Find and comment this line in your build.xml `<taglet name="ExampleTaglet" path="resources/code" />`if you get [errors with generating Javadoc](https://github.com/processing/processing-library-template/issues/19). Find and remove this line in your build.xml as well `stylesheetfile="resources/stylesheet.css"`
+* I added a symlink to each and every example folder, so I can directly open up an example and add new features because Processing thinks the BeatsPerMinute.java file is in the same folder. 
+```
+ln -s /Users/vincent.sijben/Documents/GitHub/bpm-timings-for-processing/src/bpm/library/BeatsPerMinute.java /Users/vincent.sijben/Documents/GitHub/bpm-timings-for-processing/examples/animatedSVG/BeatsPerMinute.java
+ln -s /Users/vincent.sijben/Documents/GitHub/bpm-timings-for-processing/src/bpm/library/BeatsPerMinute.java /Users/vincent.sijben/Documents/GitHub/bpm-timings-for-processing/examples/beatcount/BeatsPerMinute.java
+ln -s /Users/vincent.sijben/Documents/GitHub/bpm-timings-for-processing/src/bpm/library/BeatsPerMinute.java /Users/vincent.sijben/Documents/GitHub/bpm-timings-for-processing/examples/colorPalettes/BeatsPerMinute.java
+ln -s /Users/vincent.sijben/Documents/GitHub/bpm-timings-for-processing/src/bpm/library/BeatsPerMinute.java /Users/vincent.sijben/Documents/GitHub/bpm-timings-for-processing/examples/delay/BeatsPerMinute.java
+ln -s /Users/vincent.sijben/Documents/GitHub/bpm-timings-for-processing/src/bpm/library/BeatsPerMinute.java /Users/vincent.sijben/Documents/GitHub/bpm-timings-for-processing/examples/metronome/BeatsPerMinute.java
+ln -s /Users/vincent.sijben/Documents/GitHub/bpm-timings-for-processing/src/bpm/library/BeatsPerMinute.java /Users/vincent.sijben/Documents/GitHub/bpm-timings-for-processing/examples/randomColor/BeatsPerMinute.java
+ln -s /Users/vincent.sijben/Documents/GitHub/bpm-timings-for-processing/src/bpm/library/BeatsPerMinute.java /Users/vincent.sijben/Documents/GitHub/bpm-timings-for-processing/examples/randomGridSpots/BeatsPerMinute.java
+```

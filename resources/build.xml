@@ -175,6 +175,7 @@ ${line}
   		<copy todir="${project.tmp}/${project.name}/examples">
   			<fileset dir="${project.examples}">
 	  			<exclude name="**/*README*"/>
+  				<exclude name="**/*.java"/>
   			</fileset>
 	  	</copy>
   		<copy todir="${project.tmp}/${project.name}/src">
