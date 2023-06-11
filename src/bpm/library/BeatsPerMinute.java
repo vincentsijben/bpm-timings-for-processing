@@ -4,7 +4,7 @@ package bpm.library;
 import processing.core.*;
 
 /**
- * BPM timings for Processing
+ * BPM timings for Processing..
  * 
  */
 public class BeatsPerMinute {
