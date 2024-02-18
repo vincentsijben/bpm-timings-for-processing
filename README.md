@@ -185,6 +185,9 @@ I've copied `library.properties` to the root and called it `library.properties.e
 * Upload the `distribution\BPM-[version]\download\BPM.txt` and `distribution\BPM-[version]\download\BPM.zip` into the release.
 * Remove the **latest** tag from older versions
 
+### Debugging issues
+* Always check the build.properties files. I've been down a rabithole for 4 hours finding out I had changed my Documents folder location and the build.properties still had `sketchbook.location=${user.home}/Documents/Processing` instead of the new `sketchbook.location=${user.home}/Docs/Processing`
+
 ## Create your own Processing Library
 Thanks [Elie Zananiri](https://github.com/prisonerjohn) for pointing out these things...
 
@@ -235,4 +238,48 @@ mklink .\examples\delay\BeatsPerMinute.java "..\..\src\bpm\library\BeatsPerMinut
 mklink .\examples\metronome\BeatsPerMinute.java "..\..\src\bpm\library\BeatsPerMinute.java"
 mklink .\examples\randomColor\BeatsPerMinute.java "..\..\src\bpm\library\BeatsPerMinute.java"
 mklink .\examples\randomGridSpots\BeatsPerMinute.java "..\..\src\bpm\library\BeatsPerMinute.java"
+```
+ArduinoControls examples:
+```
+ln -s ../../../src/bpm/library/ArduinoControls.java ./examples/ArduinoControls/basics/ArduinoControls.java
+ln -s ../../../src/bpm/library/LED.java ./examples/ArduinoControls/basics/LED.java
+ln -s ../../../src/bpm/library/LEDMode.java ./examples/ArduinoControls/basics/LEDMode.java
+ln -s ../../../src/bpm/library/Potentiometer.java ./examples/ArduinoControls/basics/Potentiometer.java
+ln -s ../../../src/bpm/library/PushButton.java ./examples/ArduinoControls/basics/PushButton.java
+ln -s ../../../src/bpm/library/InfoPanel.java ./examples/ArduinoControls/basics/InfoPanel.java
+```
+FrequencyAnalyzer examples:
+```
+ln -s ../../../src/bpm/library/FrequencyAnalyzer.java ./examples/FrequencyAnalyzer/basics/FrequencyAnalyzer.java
+ln -s ../../../src/bpm/library/InputMode.java ./examples/FrequencyAnalyzer/basics/InputMode.java
+ln -s ../../../src/bpm/library/InfoPanel.java ./examples/FrequencyAnalyzer/basics/InfoPanel.java
+```
+BPM_Timing examples:
+```
+ln -s ../../../src/bpm/library/BeatsPerMinute.java ./examples/BPM_Timings/animatedSVG/BeatsPerMinute.java
+ln -s ../../../src/bpm/library/InfoPanel.java ./examples/BPM_Timings/animatedSVG/InfoPanel.java
+ln -s ../../../src/bpm/library/BeatsPerMinute.java ./examples/BPM_Timings/beatcount/BeatsPerMinute.java
+ln -s ../../../src/bpm/library/InfoPanel.java ./examples/BPM_Timings/beatcount/InfoPanel.java
+ln -s ../../../src/bpm/library/BeatsPerMinute.java ./examples/BPM_Timings/colorPalettes/BeatsPerMinute.java
+ln -s ../../../src/bpm/library/InfoPanel.java ./examples/BPM_Timings/colorPalettes/InfoPanel.java
+ln -s ../../../src/bpm/library/BeatsPerMinute.java ./examples/BPM_Timings/delay/BeatsPerMinute.java
+ln -s ../../../src/bpm/library/InfoPanel.java ./examples/BPM_Timings/delay/InfoPanel.java
+ln -s ../../../src/bpm/library/BeatsPerMinute.java ./examples/BPM_Timings/metronome/BeatsPerMinute.java
+ln -s ../../../src/bpm/library/InfoPanel.java ./examples/BPM_Timings/metronome/InfoPanel.java
+ln -s ../../../src/bpm/library/BeatsPerMinute.java ./examples/BPM_Timings/randomColor/BeatsPerMinute.java
+ln -s ../../../src/bpm/library/InfoPanel.java ./examples/BPM_Timings/randomColor/InfoPanel.java
+ln -s ../../../src/bpm/library/BeatsPerMinute.java ./examples/BPM_Timings/randomGridSpots/BeatsPerMinute.java
+ln -s ../../../src/bpm/library/InfoPanel.java ./examples/BPM_Timings/randomGridSpots/InfoPanel.java
+```
+All_combined:
+```
+ln -s ../../../src/bpm/library/ArduinoControls.java ./examples/All_combined/basics/ArduinoControls.java
+ln -s ../../../src/bpm/library/LED.java ./examples/All_combined/basics/LED.java
+ln -s ../../../src/bpm/library/LEDMode.java ./examples/All_combined/basics/LEDMode.java
+ln -s ../../../src/bpm/library/Potentiometer.java ./examples/All_combined/basics/Potentiometer.java
+ln -s ../../../src/bpm/library/PushButton.java ./examples/All_combined/basics/PushButton.java
+ln -s ../../../src/bpm/library/InfoPanel.java ./examples/All_combined/basics/InfoPanel.java
+ln -s ../../../src/bpm/library/FrequencyAnalyzer.java ./examples/All_combined/basics/FrequencyAnalyzer.java
+ln -s ../../../src/bpm/library/InputMode.java ./examples/All_combined/basics/InputMode.java
+ln -s ../../../src/bpm/library/BeatsPerMinute.java ./examples/All_combined/basics/BeatsPerMinute.java
 ```
