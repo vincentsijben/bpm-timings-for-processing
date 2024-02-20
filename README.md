@@ -273,13 +273,13 @@ ln -s ../../../src/bpm/library/InfoPanel.java ./examples/BPM_Timings/randomGridS
 ```
 All_combined:
 ```
-ln -s ../../../src/bpm/library/ArduinoControls.java ./examples/All_combined/basics/ArduinoControls.java
-ln -s ../../../src/bpm/library/LED.java ./examples/All_combined/basics/LED.java
-ln -s ../../../src/bpm/library/LEDMode.java ./examples/All_combined/basics/LEDMode.java
-ln -s ../../../src/bpm/library/Potentiometer.java ./examples/All_combined/basics/Potentiometer.java
-ln -s ../../../src/bpm/library/PushButton.java ./examples/All_combined/basics/PushButton.java
-ln -s ../../../src/bpm/library/InfoPanel.java ./examples/All_combined/basics/InfoPanel.java
-ln -s ../../../src/bpm/library/FrequencyAnalyzer.java ./examples/All_combined/basics/FrequencyAnalyzer.java
-ln -s ../../../src/bpm/library/InputMode.java ./examples/All_combined/basics/InputMode.java
-ln -s ../../../src/bpm/library/BeatsPerMinute.java ./examples/All_combined/basics/BeatsPerMinute.java
+ln -s ../../../src/bpm/library/ArduinoControls.java ./examples/All_combined/startercode/ArduinoControls.java
+ln -s ../../../src/bpm/library/LED.java ./examples/All_combined/startercode/LED.java
+ln -s ../../../src/bpm/library/LEDMode.java ./examples/All_combined/startercode/LEDMode.java
+ln -s ../../../src/bpm/library/Potentiometer.java ./examples/All_combined/startercode/Potentiometer.java
+ln -s ../../../src/bpm/library/PushButton.java ./examples/All_combined/startercode/PushButton.java
+ln -s ../../../src/bpm/library/InfoPanel.java ./examples/All_combined/startercode/InfoPanel.java
+ln -s ../../../src/bpm/library/FrequencyAnalyzer.java ./examples/All_combined/startercode/FrequencyAnalyzer.java
+ln -s ../../../src/bpm/library/InputMode.java ./examples/All_combined/startercode/InputMode.java
+ln -s ../../../src/bpm/library/BeatsPerMinute.java ./examples/All_combined/startercode/BeatsPerMinute.java
 ```
