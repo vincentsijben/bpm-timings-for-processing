@@ -1,21 +1,27 @@
 class Circle {
-  float x = random(-pg.width / 4, pg.width / 4);
-  float y = random(-pg.height / 4, pg.height / 4);
-  float r = 0;
-  float rSpeed = random(0.1, 0.6);
-  int counter = circles.size()+1;   
-  color col = color(255, 199, 100);
+  float x;
+  float y;
+  float r;
+  float rSpeed;
+  int counter;   
+  color col;
   int index;
 
   Circle(int i) {
-    if (counter % 2 == 1) col = color(91, 244, 233);
-    index = i;
+    this.x = random(-pg.width / 4, pg.width / 4);
+    this.y = random(-pg.height / 4, pg.height / 4);
+    this.r = 0;
+    this.rSpeed = random(0.1, 0.6);
+    this.counter = circles.size()+1;
+    this.col = color(255, 199, 100);
+    if (this.counter % 2 == 1) this.col = color(91, 244, 233);
+    this.index = i;
   }
 }
 
 void drawCircles() {
   pg.beginDraw();
-  pg.fill(col, 30);
+  pg.fill(50, 30);
   pg.rect(0, 0, width, height);
   pg.translate(pg.width / 2, pg.height / 2);
   pg.strokeWeight(2);

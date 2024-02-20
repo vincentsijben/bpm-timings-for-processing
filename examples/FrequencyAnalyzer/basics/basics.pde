@@ -1,4 +1,10 @@
-
+/**
+ * basics
+ * https://github.com/vincentsijben/bpm-timings-for-processing
+ *
+ *
+ */
+ 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import bpm.library.*;
@@ -6,20 +12,13 @@ import bpm.library.*;
 FrequencyAnalyzer fa;
 PGraphics pg;
 ArrayList<Circle> circles = new ArrayList<Circle>();
-color col = 50;
 
 void setup() {
   size(500, 500);
 
   fa = new FrequencyAnalyzer(this)
-    //.setBandsPerOctave(6)
-    .setFile("https://github.com/vincentsijben/processing-fft-students/raw/main/cmd_fft_library/assets/hot-coffee.mp3")
     .setMode(InputMode.MONO)
     .showInfoPanel()
-    //.setInfoPanelY(300)
-    .setInfoPanelKey('p')
-    //.resetMaxValueDuration(1000)
-    .debug()
     ;
 
   pg = createGraphics(width, height);
@@ -34,6 +33,7 @@ void draw() {
   stroke(200);
   strokeWeight(5);
   noFill();
+  
   // get the raw value for band 11:
   if (fa.getAvgRaw(10)>40) {
     circle(width/4, height-100, 100);
