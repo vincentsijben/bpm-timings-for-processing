@@ -6,7 +6,7 @@
  * Also sets showInfo to true, to see the BPM info window.
  */
 
-import bpm.library.*;
+import bpm.library.beatsperminute.*;
 BeatsPerMinute bpm;
 
 void setup() {

@@ -7,7 +7,7 @@
  
 import ddf.minim.*;
 import ddf.minim.analysis.*;
-import bpm.library.*;
+import bpm.library.frequencyanalyzer.*;
 
 FrequencyAnalyzer fa;
 PGraphics pg;

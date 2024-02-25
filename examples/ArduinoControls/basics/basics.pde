@@ -8,7 +8,7 @@
  * a LED at digital port 9
  */
 
-import bpm.library.*;
+import bpm.library.arduinocontrols.*;
 import processing.serial.*;
 import cc.arduino.*;
 

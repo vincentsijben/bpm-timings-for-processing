@@ -1,1 +1,1 @@
-../../../src/bpm/library/FrequencyAnalyzer.java
+../../../src/bpm/library/frequencyanalyzer/FrequencyAnalyzer.java

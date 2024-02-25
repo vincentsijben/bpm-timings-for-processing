@@ -16,8 +16,9 @@
  - Only write LED once, not continuously, preventing flickering
  */
 
-package bpm.library;
+package bpm.library.arduinocontrols;
 
+import bpm.library.InfoPanel;
 import java.util.ArrayList;
 import processing.core.*;
 import processing.event.KeyEvent;

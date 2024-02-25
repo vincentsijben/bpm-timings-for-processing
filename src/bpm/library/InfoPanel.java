@@ -5,17 +5,17 @@ import processing.event.KeyEvent;
 
 public class InfoPanel {
   PApplet parent;
-  int x;
-  int y;
-  int w;
-  int h;
-  char keyboardKey;
-  boolean show;
-  PGraphics overlay;
+  public int x;
+  public int y;
+  public int w;
+  public int h;
+  public char keyboardKey;
+  public boolean show;
+  public PGraphics overlay;
   boolean keyPressedActionTaken;
-  boolean enableKeyPress;
+  public boolean enableKeyPress;
 
-  InfoPanel(PApplet parent) {
+  public InfoPanel(PApplet parent) {
     this.parent = parent;
     this.x = 0;
     this.y = 0;

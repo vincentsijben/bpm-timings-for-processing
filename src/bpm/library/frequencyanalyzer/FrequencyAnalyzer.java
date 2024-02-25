@@ -17,9 +17,10 @@
  2. Should there be only 1 maxVal for all frequencies together or per frequency band?
  */
 
-package bpm.library;
+package bpm.library.frequencyanalyzer;
 
 //https://github.com/benfry/processing4/wiki/Library-Basics
+import bpm.library.InfoPanel;
 import processing.core.*;
 import processing.event.KeyEvent;
 import ddf.minim.*;

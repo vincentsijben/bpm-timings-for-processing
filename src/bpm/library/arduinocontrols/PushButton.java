@@ -1,4 +1,4 @@
-package bpm.library;
+package bpm.library.arduinocontrols;
 
 public class PushButton {
   int signalPressed;

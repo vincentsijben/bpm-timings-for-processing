@@ -9,9 +9,9 @@
  * Uses the boolean every[4] to use a red fill color every 4 beats for the duration of 1 beat.
  */
  
-import bpm.library.*;
-
+import bpm.library.beatsperminute.*;
 BeatsPerMinute bpm;
+
 color[] colors = {#2c69f3, #fefdfa, #231e10};
 int[] randomRect = {0, 0}; //store an x and y location for a random grid spot
 int lastBeatCount = 0;

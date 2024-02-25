@@ -1,1 +1,1 @@
-../../../src/bpm/library/BeatsPerMinute.java
+../../../src/bpm/library/beatsperminute/BeatsPerMinute.java

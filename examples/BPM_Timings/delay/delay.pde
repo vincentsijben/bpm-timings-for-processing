@@ -10,7 +10,7 @@
  * Each row shows 3 circles. The first has no delay, the second has a delay of 1 beat, the last one a delay of 2 beats
  */
 
-import bpm.library.*;
+import bpm.library.beatsperminute.*;
 
 BeatsPerMinute bpm;
 

@@ -1,1 +1,1 @@
-../../../src/bpm/library/Potentiometer.java
+../../../src/bpm/library/arduinocontrols/Potentiometer.java

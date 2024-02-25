@@ -1,1 +1,1 @@
-../../../src/bpm/library/InputMode.java
+../../../src/bpm/library/frequencyanalyzer/InputMode.java

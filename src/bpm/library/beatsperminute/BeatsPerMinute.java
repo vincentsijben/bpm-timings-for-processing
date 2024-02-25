@@ -5,8 +5,9 @@
  //see https://www.reddit.com/r/processing/comments/59r0le/problems_with_transparency_in_3d/
  */
 
-package bpm.library;
+package bpm.library.beatsperminute;
 
+import bpm.library.InfoPanel;
 import processing.core.*;
 import processing.event.KeyEvent;
 

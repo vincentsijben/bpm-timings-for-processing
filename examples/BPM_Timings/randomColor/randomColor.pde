@@ -8,7 +8,7 @@
  * Uses the boolean every[2] to show a text every 2 beats for the duration of 1 beat.
  */
  
-import bpm.library.*;
+import bpm.library.beatsperminute.*;
 
 BeatsPerMinute bpm;
 

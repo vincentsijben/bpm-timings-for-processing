@@ -7,7 +7,7 @@
  * Pick the next palette every 8 beats.
  */
 
-import bpm.library.*;
+import bpm.library.beatsperminute.*;
 
 BeatsPerMinute bpm;
 String[] urls = {

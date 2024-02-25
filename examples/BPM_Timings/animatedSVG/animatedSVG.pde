@@ -11,7 +11,7 @@
  * Used a free SVG from https://www.svgrepo.com/svg/191/cool.
  */
  
-import bpm.library.*;
+import bpm.library.beatsperminute.*;
 
 BeatsPerMinute bpm;
 PShape dude;
