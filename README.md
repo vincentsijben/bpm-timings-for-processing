@@ -99,9 +99,10 @@ I've copied `library.properties` to the root and called it `library.properties.e
 * Run the Ant build
 * Test every embedded example locally through the `Processing -> File -> Examples`
 * Commit changes to GitHub and create a new release
-* Name the release `BPM Library Release [version] ([pretty version])` and tag it wit tag **latest**
+* Name the release `BPM Library Release [version] ([prettyVersion])` and tag it wit tag [prettyVersion].
 * Upload the `distribution\BPM-[version]\download\BPM.txt` and `distribution\BPM-[version]\download\BPM.zip` into the release.
-* Remove the **latest** tag from older versions
+* Check "Set as the latest release" (it should be checked by default)
+* The **latest** tag should be automatically be removed from the previous version
 
 ### Debugging issues
 * Always check the build.properties files. I've been down a rabithole for 4 hours finding out I had changed my Documents folder location and the build.properties still had `sketchbook.location=${user.home}/Documents/Processing` instead of the new `sketchbook.location=${user.home}/Docs/Processing`
