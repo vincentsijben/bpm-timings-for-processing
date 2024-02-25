@@ -65,14 +65,14 @@ void draw(){
 ## Examples
 You can find all these examples in `Processing -> File - Examples - Contributed Libraries - BPM timings`.
 
-| [animatedSVG](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/animatedSVG/animatedSVG.pde) | [beatcount](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/beatcount/beatcount.pde) | [colorPalettes](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/colorPalettes/colorPalettes.pde) |
+| [animatedSVG](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/BPM_Timings/animatedSVG/animatedSVG.pde) | [beatcount](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/BPM_Timings/beatcount/beatcount.pde) | [colorPalettes](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/BPM_Timings/colorPalettes/colorPalettes.pde) |
 |-----------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
 | <img src="assets/example-animatedsvg.gif" width="250" alt="screenshot for example animatedSVG" />                           | <img src="assets/example-beatcount.gif" width="250" alt="screenshot for example beatCount" />                         | <img src="assets/example-colorpalettes.gif" width="250" alt="screenshot for example colorPalettes" />                         |
 |  |  |
-| [delay](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/delay/delay.pde) | [metronome](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/metronome/metronome.pde) | [randomColor](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/randomColor/randomColor.pde) |
+| [delay](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/BPM_Timings/delay/delay.pde) | [metronome](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/BPM_Timings/metronome/metronome.pde) | [randomColor](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/BPM_Timings/randomColor/randomColor.pde) |
 | <img src="assets/example-delay.gif" width="250" alt="screenshot for example delay" />                           | <img src="assets/example-metronome.gif" width="250" alt="screenshot for example metronome" />                         | <img src="assets/example-randomcolor.gif" width="250" alt="screenshot for example randomColor" />                         |
 |||
-| [randomGridSpots](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/randomGridSpots/randomGridSpots.pde) |  |  |
+| [randomGridSpots](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/BPM_Timings/randomGridSpots/randomGridSpots.pde) |  |  |
 | <img src="assets/example-randomgridspots.gif" width="250" alt="screenshot for example randomGridSpots" />|||
 |||
 
