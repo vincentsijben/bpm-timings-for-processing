@@ -16,7 +16,7 @@ It provides the following main functions:
 * `getBPM()` to return the BPM as an integer.
 * `setSurfaceTitle()` show information on BPM, beatCount and frameRate in your surface title.
 
-You can tweak the behaviour of this library with the following functions:
+You can tweak the behaviour of this library with the following functions (you can chain them):
 * `setBPM(120)` to change the amount of beats per minute for all calculations.
 * `showInfoPanel()` to show the infopanel.
 * `setInfoPanelY(n)` to change the starting y-position of the infopanel. Useful for when you have multiple infopanels to get them all lined up.
@@ -26,9 +26,7 @@ You can tweak the behaviour of this library with the following functions:
   * `-` lower bpm
   * `+` raise bpm
 
-
-
-## How to
+## How to install
 Install the library by downloading the latest release through the Processing contribution manager: go to `Processing > Sketch > Import Library... > Manage Libraries...` and search for "BPM timings" and click install.
 
 ## Usage
@@ -41,29 +39,36 @@ import bpm.library.*;
 BeatsPerMinute bpm;
 
 void setup(){
-  // Initialize the bpm
+  size(500,500);
+
+  // Initialize the bpm object
   bpm = new BeatsPerMinute(this)
-    .setBPM(120)           // set the starting bpm to 120
-    .showInfoPanel()       // show the infopanel at the start
-    .setInfoPanelY(200)    // set the y location of the infopanel to 200
-    .setInfoPanelKey('o')  // set the hotkey for toggling the infopanel to 'o'
-    //.disableKeyPress()   // disable listening to keypresses
+    //.setBPM(120)           // set the starting bpm to 120
+    .showInfoPanel()         // show the infopanel at the start
+    //.setInfoPanelY(200)    // set the y location of the infopanel to 200
+    //.setInfoPanelKey('o')  // set the hotkey for toggling the infopanel to 'o'
+    //.disableKeyPress()     // disable listening to keypresses
     ;
 }
 
 void draw(){
   background(100);
   
-  // Use a timing function
+  // Use a timing function from the bpm object
   float radius = 20 + bpm.linear() * 50;
   // or: float radius = map(bpm.linear(), 0, 1, 20, 70);
   // or: float radius = lerp(20, 70, bpm.linear());
-  circle(width/2,height/2,radius);
+  circle(width/2, height/2, radius);
 }
 ```
 
 ## Examples
 You can find all these examples in `Processing -> File - Examples - Contributed Libraries - BPM timings`.
+
+| [animatedSVG](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/animatedSVG/animatedSVG.pde) | [beatcount](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/beatcount/beatcount.pde) |
+|-----------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
+| <img src="assets/example-animatedsvg.gif" width="200" alt="screenshot for example animatedSVG" />                           | <img src="assets/example-beatcount.gif" width="200" alt="screenshot for example beatCount" />                         |
+
 
 ### [animatedSVG](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/animatedSVG/animatedSVG.pde)
 ```
