@@ -68,112 +68,14 @@ You can find all these examples in `Processing -> File - Examples - Contributed 
 | [animatedSVG](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/animatedSVG/animatedSVG.pde) | [beatcount](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/beatcount/beatcount.pde) | [colorPalettes](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/colorPalettes/colorPalettes.pde) |
 |-----------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
 | <img src="assets/example-animatedsvg.gif" width="250" alt="screenshot for example animatedSVG" />                           | <img src="assets/example-beatcount.gif" width="250" alt="screenshot for example beatCount" />                         | <img src="assets/example-colorpalettes.gif" width="250" alt="screenshot for example colorPalettes" />                         |
+|  |  |
+| [delay](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/delay/delay.pde) | [metronome](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/metronome/metronome.pde) | [randomColor](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/randomColor/randomColor.pde) |
+| <img src="assets/example-delay.gif" width="250" alt="screenshot for example delay" />                           | <img src="assets/example-metronome.gif" width="250" alt="screenshot for example metronome" />                         | <img src="assets/example-randomcolor.gif" width="250" alt="screenshot for example randomColor" />                         |
+|||
+| [randomGridSpots](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/randomGridSpots/randomGridSpots.pde) |  |  |
+| <img src="assets/example-randomgridspots.gif" width="250" alt="screenshot for example randomGridSpots" />|||
+|||
 
-
-### [animatedSVG](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/animatedSVG/animatedSVG.pde)
-```
-/**
- * animatedSVG
- * by Vincent Sijben
- *
- * Animate an SVG shape on specific beats. 
- * I've hidden both glasses and left foot shapes in the original SVG.
- * Created a new glasses.svg and foot.svg in vector software (Adobe Illustrator).
- * Every beat, the size of the glasses grow and shrink.
- * Every 4 beats, the dude's left foot 'taps'.
- *
- * Used a free SVG from https://www.svgrepo.com/svg/191/cool.
- */
-```
-![screenshot for example animatedSVG](assets/example-animatedsvg.gif)
----
-
-### [beatcount](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/beatcount/beatcount.pde)
-```
-/**
- * beatcount
- * by Vincent Sijben
- *
- * Show the (rounded) beatcount as text.
- * You can see how you could use the setSurfaceTitle() function as well.
- */
-```
-![screenshot for example beatcount](assets/example-beatcount.gif)
----
-
-### [colorPalettes](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/colorPalettes/colorPalettes.pde)
-```
-/**
- * colorPalettes
- * by Vincent Sijben
- *
- * Given a number of https://coolors.co color palette URLs, generate a unique random color for
- * the current color palette each beat.
- * Pick the next palette every 8 beats.
- */
-```
-![screenshot for example colorPalettes](assets/example-colorpalettes.gif)
----
-
-### [delay](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/delay/delay.pde)
-```
-/**
- * delay
- * by Vincent Sijben
- *
- * Show 4 rows of 3 circles which animate every 3 beats, some with a delay. Each row uses one of the core timing functions.
- * 1st row: linear(), a linear progression value from 0 to 1 in 3 beats
- * 2nd row: linearBounce(), a linear progression value from 0 to 1 and back to 0 in 3 beats
- * 3rd row: ease(), an 'eased' progression value from 0 to 1 in 3 beats
- * 4th row: easeBounce(), an 'eased' progression value from 0 to 1 and back to 0 in 3 beats
- * Each row shows 3 circles. The first has no delay, the second has a delay of 1 beat, the last one a delay of 2 beats
- */
-```
-![screenshot for example delay](assets/example-delay.gif)
----
-
-### [metronome](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/metronome/metronome.pde)
-```
-/**
- * metronome
- * by Vincent Sijben
- *
- * Shows a metronome (simple rectangle) that rotates back and forth every beat.
- * Also sets showInfo to true, to see the BPM info window.
- */
-```
-![screenshot for example metronome](assets/example-metronome.gif)
----
-
-### [randomColor](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/randomColor/randomColor.pde)
-```
-/**
- * randomColor
- * by Vincent Sijben
- *
- * Show a random background color by setting a new (random) seed every 4 beats.
- * Uses the boolean every_once[4] to turn true every 4 beats for the duration of 1 frame.
- * Also toggles the fill color of the circle every 2 beats.
- * Uses the boolean every[2] to show a text every 2 beats for the duration of 1 beat.
- */
-```
-![screenshot for example randomColor](assets/example-randomcolor.gif)
----
-
-### [randomGridSpots](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/randomGridSpots/randomGridSpots.pde)
-```
-/**
- * randomGridSpots
- * by Vincent Sijben
- *
- * Shows a 9 by 9 grid of squares that rotates every 8 beats.
- * Every beat, 1 random square pulsates on the beat, starting each first beat with a red color.
- * Uses the boolean every_once[8] to turn true every 8 beats for the duration of 1 frame.
- * Also toggles the fill color of the circle every 2 beats.
- * Uses the boolean every[4] to use a red fill color every 4 beats for the duration of 1 beat.
- */
-```
-![screenshot for example randomGridSpots](assets/example-randomgridspots.gif)
 
 
 
