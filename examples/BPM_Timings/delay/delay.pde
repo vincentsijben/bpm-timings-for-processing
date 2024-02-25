@@ -19,12 +19,13 @@ float radius;
 void setup () {
   size(500, 500);
   bpm = new BeatsPerMinute(this)
-    //.setBPM(120)
+    .setBPM(120)
     //.showInfoPanel()
     //.setInfoPanelY(200)
     //.setInfoPanelKey('o')
     //.disableKeyPress()
     ;
+  bpm.showInfoPanel();
 }
 
 void draw() {

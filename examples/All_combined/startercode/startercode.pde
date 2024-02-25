@@ -2,7 +2,11 @@
  * startercode
  * https://github.com/vincentsijben/bpm-timings-for-processing
  *
- *
+ * make sure you have the following libraries installed:
+ * - Arduino
+ * - Minim
+ * You can get them from the Processing IDE: Sketch > Import Library > Add Library
+ * and search for "Arduino" and "Minim"
  */
  
 import bpm.library.*;

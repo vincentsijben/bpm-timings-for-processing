@@ -67,7 +67,7 @@ public class BeatsPerMinute {
   public BeatsPerMinute(PApplet parent) {
     this.welcome();
     this.parent = parent;
-    this.bpm = 60;
+    this.setBPM(60);
     this.millis_start = parent.millis();
     this.infoPanel = new InfoPanel(parent);
     this.infoPanel.h = parent.height;
@@ -85,7 +85,9 @@ public class BeatsPerMinute {
   }
 
   public BeatsPerMinute setBPM(int bpm) {
+    if (bpm < 1) bpm = 1;
     this.bpm = bpm;
+    this.beatDuration = 60000 / bpm;
     return this;
   }
 
@@ -268,17 +270,13 @@ public class BeatsPerMinute {
   }
 
   private void onKeyPress(KeyEvent event) {
-    if (event.getKeyCode() == '=') {
-      this.bpm++;
-    }
-    if (event.getKeyCode() == '-') {
-      this.bpm--;
-    }
+    if (event.getKeyCode() == '=') this.setBPM(++this.bpm);
+    if (event.getKeyCode() == '-') this.setBPM(--this.bpm);
     if (event.getKey() == '0'  && !this.keyPressedActionTaken) {
       this.keyPressedActionTaken = true;
       this.millis_start = this.parent.millis();
       // change bpm only if next keystroke is registered under 2 seconds
-      if (this.millis_runtime > 0 && this.millis_runtime < 2000) this.bpm = (int)((60/this.millis_runtime)*1000);
+      if (this.millis_runtime > 0 && this.millis_runtime < 2000) this.setBPM((int) (60000/this.millis_runtime));
     }
   }
 
@@ -357,9 +355,8 @@ public class BeatsPerMinute {
   public void post() {
     // https://github.com/benfry/processing4/wiki/Library-Basics
     // you cant draw in post()
-    if (this.bpm < 1) this.bpm = 1;
     this.millis_runtime = this.parent.millis()-this.millis_start;
-    this.beatDuration = 60 / (float) this.bpm * 1000;
+    // Assuming beatDuration is updated elsewhere when bpm changes
     this.beatCount = this.millis_runtime/this.beatDuration;
 
     checkBeatPeriods();
