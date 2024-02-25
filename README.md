@@ -65,9 +65,9 @@ void draw(){
 ## Examples
 You can find all these examples in `Processing -> File - Examples - Contributed Libraries - BPM timings`.
 
-| [animatedSVG](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/animatedSVG/animatedSVG.pde) | [beatcount](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/beatcount/beatcount.pde) |
-|-----------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| <img src="assets/example-animatedsvg.gif" width="200" alt="screenshot for example animatedSVG" />                           | <img src="assets/example-beatcount.gif" width="200" alt="screenshot for example beatCount" />                         |
+| [animatedSVG](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/animatedSVG/animatedSVG.pde) | [beatcount](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/beatcount/beatcount.pde) | [colorPalettes](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/colorPalettes/colorPalettes.pde) |
+|-----------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
+| <img src="assets/example-animatedsvg.gif" width="250" alt="screenshot for example animatedSVG" />                           | <img src="assets/example-beatcount.gif" width="250" alt="screenshot for example beatCount" />                         | <img src="assets/example-colorpalettes.gif" width="250" alt="screenshot for example colorPalettes" />                         |
 
 
 ### [animatedSVG](https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/animatedSVG/animatedSVG.pde)
