@@ -40,7 +40,7 @@ void draw(){
 ```
 
 
-It provides the following main functions:
+The BeatsPerMinute class provides the following main functions:
 * `linear()` function that returns a normalized linear progress value from 0 to 1 for any given amount of beats, or with a given delay:
   * `linear()` returns progress in 1 beat
   * `linear(4)` returns progress in 4 beats
@@ -53,7 +53,7 @@ It provides the following main functions:
 * `getBPM()` to return the BPM as an integer.
 * `setSurfaceTitle()` show information on BPM, beatCount and frameRate in your surface title.
 
-You can tweak the behaviour of this library with the following functions (you can chain them):
+You can tweak the behaviour of this library with the following functions (you can also chain them when initializing for clarity):
 * `setBPM(120)` to change the amount of beats per minute for all calculations.
 * `showInfoPanel()` to show the infopanel.
 * `setInfoPanelY(n)` to change the starting y-position of the infopanel. Useful for when you have multiple infopanels to get them all lined up.
