@@ -3,29 +3,6 @@
 ## Introduction
 BPM timings for Processing is a small library for Processing that provides easy to use timing functions based on beats per minute. For example, you could easily grow or shrink shapes in any amount of beats, or delay shrinking a shape to start after 6 beats.
 
-It provides the following main functions:
-* `linear()` function that returns a normalized linear progress value from 0 to 1 for any given amount of beats, or with a given delay:
-  * `linear()` returns progress in 1 beat
-  * `linear(4)` returns progress in 4 beats
-  * `linear(4,3)` returns progress in 4 beats, with a delay of 3 beats
-* `ease()` same as `linear()` but does not use a linear progression but an 'eased' one, using the first quarter part of a sine function. Again, can be called without arguments, with 1 argument (duration in beats) or with two (duration and delay in beats).
-* `linearBounce()` same as `linear()` but goes from 0 to 1 to 0 in the same amount of time. Useful for shrinking or growing of visuals.
-* `easeBounce()` same as `ease()` but goes from 0 to 1 to 0 in the same amount of time. Useful for shrinking or growing of visuals.
-* `every[n]` boolean that returns true every n beats. Returns true for the duration of 1 beat. Limited to a max of 16 beats.
-* `every_once[n]` same as `every[n]` but now the boolean returns true for only 1 frame. Useful for changing a variable once every n beats.
-* `getBPM()` to return the BPM as an integer.
-* `setSurfaceTitle()` show information on BPM, beatCount and frameRate in your surface title.
-
-You can tweak the behaviour of this library with the following functions (you can chain them):
-* `setBPM(120)` to change the amount of beats per minute for all calculations.
-* `showInfoPanel()` to show the infopanel.
-* `setInfoPanelY(n)` to change the starting y-position of the infopanel. Useful for when you have multiple infopanels to get them all lined up.
-* `setInfoPanelKey('u')` to change the hotkey to toggle the infopanel. Useful for when you have multiple infopanels. Defaults to 'i'.
-* `disableKeyPress()` to disable listening for keypresses. If you don't disable keypresses, then these keypresses will work:
-  * `0` press once to reset timer, press multiple times to set the BPM to your 'press'-timing
-  * `-` lower bpm
-  * `+` raise bpm
-
 ## How to install
 Install the library by downloading the latest release through the Processing contribution manager: go to `Processing > Sketch > Import Library... > Manage Libraries...` and search for "BPM timings" and click install.
 
@@ -61,6 +38,31 @@ void draw(){
   circle(width/2, height/2, radius);
 }
 ```
+
+
+It provides the following main functions:
+* `linear()` function that returns a normalized linear progress value from 0 to 1 for any given amount of beats, or with a given delay:
+  * `linear()` returns progress in 1 beat
+  * `linear(4)` returns progress in 4 beats
+  * `linear(4,3)` returns progress in 4 beats, with a delay of 3 beats
+* `ease()` same as `linear()` but does not use a linear progression but an 'eased' one, using the first quarter part of a sine function. Again, can be called without arguments, with 1 argument (duration in beats) or with two (duration and delay in beats).
+* `linearBounce()` same as `linear()` but goes from 0 to 1 to 0 in the same amount of time. Useful for shrinking or growing of visuals.
+* `easeBounce()` same as `ease()` but goes from 0 to 1 to 0 in the same amount of time. Useful for shrinking or growing of visuals.
+* `every[n]` boolean that returns true every n beats. Returns true for the duration of 1 beat. Limited to a max of 16 beats.
+* `every_once[n]` same as `every[n]` but now the boolean returns true for only 1 frame. Useful for changing a variable once every n beats.
+* `getBPM()` to return the BPM as an integer.
+* `setSurfaceTitle()` show information on BPM, beatCount and frameRate in your surface title.
+
+You can tweak the behaviour of this library with the following functions (you can chain them):
+* `setBPM(120)` to change the amount of beats per minute for all calculations.
+* `showInfoPanel()` to show the infopanel.
+* `setInfoPanelY(n)` to change the starting y-position of the infopanel. Useful for when you have multiple infopanels to get them all lined up.
+* `setInfoPanelKey('u')` to change the hotkey to toggle the infopanel. Useful for when you have multiple infopanels. Defaults to 'i'.
+* `disableKeyPress()` to disable listening for keypresses. If you don't disable keypresses, then these keypresses will work:
+  * `0` press once to reset timer, press multiple times to set the BPM to your 'press'-timing
+  * `-` lower bpm
+  * `+` raise bpm
+
 
 ## Examples
 You can find all these examples in `Processing -> File - Examples - Contributed Libraries - BPM timings`.
