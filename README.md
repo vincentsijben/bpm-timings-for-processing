@@ -102,10 +102,11 @@ I've copied `library.properties` to the root and called it `library.properties.e
 * Run the Ant build
 * Test every embedded example locally through the `Processing -> File -> Examples`
 * Commit changes to GitHub and create a new release
-* Name the release `BPM Library Release [version] ([prettyVersion])` and tag it wit tag [prettyVersion].
-* Upload the `distribution\BPM-[version]\download\BPM.txt` and `distribution\BPM-[version]\download\BPM.zip` into the release.
+* Name the release `BPM Library Release [version] ([prettyVersion])` and tag it with tag [prettyVersion].
+* Upload the `distribution\BPM-[version]\download\BPM_timings.txt` and `distribution\BPM-[version]\download\BPM_timings.zip` into the release.
 * Check "Set as the latest release" (it should be checked by default)
-* The **latest** tag should be automatically be removed from the previous version
+* Edit the previous release. Remove the latest tag and set the appropriate [prettyVersion] tag.
+* Edit the new created release, remove the [prettyVersion] tag and add the **latest** tag.
 
 ### Debugging issues
 * Always check the build.properties files. I've been down a rabithole for 4 hours finding out I had changed my Documents folder location and the build.properties still had `sketchbook.location=${user.home}/Documents/Processing` instead of the new `sketchbook.location=${user.home}/Docs/Processing`
@@ -122,8 +123,8 @@ There are a few steps:
 * If you're hosting your library on GitHub, use the GitHub Releases feature. Create a release tagged "latest" and move that tag up to the new commit whenever you make an update. Note that you can also tag each release with its version number, in case you want to make older releases still available on GitHub. Check out [processing-video]() for a good example of that.
 
 So my URLs are always available through:
-* https://github.com/vincentsijben/bpm-timings-for-processing/releases/download/latest/BPM.txt
-* https://github.com/vincentsijben/bpm-timings-for-processing/releases/download/latest/BPM.zip
+* https://github.com/vincentsijben/bpm-timings-for-processing/releases/download/latest/BPM_timings.txt
+* https://github.com/vincentsijben/bpm-timings-for-processing/releases/download/latest/BPM_timings.zip
 
 
 
