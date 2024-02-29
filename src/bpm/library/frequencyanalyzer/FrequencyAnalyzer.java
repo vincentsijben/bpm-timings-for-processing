@@ -1,21 +1,3 @@
-/*
-  todo: if left and right channel can be left (drums) and right (vocal), consider https://stackoverflow.com/questions/40050731/how-to-make-two-fft-objects-for-the-left-and-right-channel-with-the-minim-librar
- todo: check https://stackoverflow.com/questions/20408388/how-to-filter-fft-data-for-audio-visualisation
- todo: check https://www.ee.columbia.edu/~dpwe/e4896/index.html
- 
- todo: check whatsup with problems with minim and audio input: https://code.compartmental.net/minim/audioinput_class_audioinput.html
- todo: infopanel adjustable
- todo: adjustable keys for each infopanel
- todo: test in processing 3, windows and mac
- todo: test without minim installed
- todo: in examples refer to audio settings in macos/windows for linein
- todo: show hotkeys in InfoPanel
- 
- debate:
- 1. reset maxVal every x seconds? we end up with huge spikes or maybe build a condition around it (dont map when maxVal = 0.00001f)
- or let the user decide when to call a resetMaxValue function
- 2. Should there be only 1 maxVal for all frequencies together or per frequency band?
- */
 
 package bpm.library.frequencyanalyzer;
 

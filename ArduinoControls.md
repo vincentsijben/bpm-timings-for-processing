@@ -16,6 +16,7 @@ Students build their own Arduino remote controller with 3 potentiometers, 3 push
 ```
 // Import the library to your sketch
 import bpm.library.arduinocontrols.*;
+
 // Import the arduino and serial libraries
 import processing.serial.*;
 import cc.arduino.*;
