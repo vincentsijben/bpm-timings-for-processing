@@ -24,44 +24,23 @@ Arduino arduino;
 ArduinoControls ac;
 
 void setup() {
-  size(900, 500);
+  size(500, 500);
 
-  //  println(Arduino.list());
   arduino = new Arduino(this, Arduino.list()[2], 57600);
-  // for "built-in" potentiometer like https://www.benselectronics.nl/potentiometer-10k-inbouw.html, a press returns Arduino.LOW
-  // it also needs Arduino.INPUT_PULLUP instead of Arduino.INPUT
-  arduino.pinMode(7, Arduino.INPUT_PULLUP);
   arduino.pinMode(9, Arduino.OUTPUT);
 
   ac = new ArduinoControls(this)
     .addArduino(arduino)
     .addLED(9)
-    .addPushButton(7, '1', Arduino.LOW)
-    .addPotentiometer(0, 'q')
-    .showInfoPanel()
     ;
-
-  // delay the start of the draw loop so the Arduino is in the ready state
-  // (the first few frames, digitalRead returned incorrect values)
-  delay(2000);
 }
 
 void draw() {
   background(100);
 
-  // if potentiometer is turned halfways, turn LED on, else turn it off
-  if (ac.getPotentiometer(0)>0.5) ac.setLED(0, 1);
+  // if mouse position is to the left, turn LED on, else turn it off
+  if (mouseX < width/2) ac.setLED(0, 1);
   else ac.setLED(0, 0);
-
-  //show circle at relative potentiometer value
-  circle(lerp(0, width, ac.getPotentiometer(0)), height/4, 200);
-
-  // when pushbutton is pressed turn the circle red
-  if (ac.getPushButton(0)) fill(255, 0, 0);
-  else noFill();
-  
-  //show ellipse at relative smoothed potentiometer value (prevents jumping around)
-  circle(lerp(0, width, ac.getPotentiometer(0, 0.1)), height/4*3, 100);
 }
 ```
 
@@ -91,21 +70,14 @@ You can tweak the behaviour of this library with the following functions (you ca
 You can find all these examples in `Processing -> File - Examples - Contributed Libraries - BPM timings - ArduinoControls`.
 
 <table width="100%">
-
   <tr>
-    <td valign="top" align="center" width="33%"><a href="https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/BPM_Timings/animatedSVG/animatedSVG.pde">animatedSVG</a><br><img src="assets/example-animatedsvg.gif" width="100%" alt="screenshot for example animatedSVG" /></td>
-    <td valign="top" align="center" width="33%"><a href="https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/BPM_Timings/beatcount/beatcount.pde">beatCount</a><br><img src="assets/example-beatcount.gif" width="100%" alt="screenshot for example beatCount" /></td>
-    <td valign="top" align="center" width="33%"><a href="https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/BPM_Timings/colorPalettes/colorPalettes.pde">animatedSVG</a><br><img src="assets/example-colorpalettes.gif" width="100%" alt="screenshot for example colorPalettes" /></td>
+    <td valign="top" align="center" width="33%">example title<br>image example</td>
+    <td valign="top" align="center" width="33%">example title<br>image example</td>
+    <td valign="top" align="center" width="33%">example title<br>image example</td>
   </tr>
    <tr>
-    <td valign="top" align="center" width="33%"><a href="https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/BPM_Timings/delay/delay.pde">delay</a><br><img src="assets/example-delay.gif" width="100%" alt="screenshot for example delay" /></td>
-    <td valign="top" align="center" width="33%"><a href="https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/BPM_Timings/metronome/metronome.pde">metronome</a><br><img src="assets/example-metronome.gif" width="100%" alt="screenshot for example metronome" /></td>
-    <td valign="top" align="center" width="33%"><a href="https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/BPM_Timings/randomColor/randomColor.pde">randomcolor</a><br><img src="assets/example-randomcolor.gif" width="100%" alt="screenshot for example randomcolor" /></td>
+   <td valign="top" align="center" width="33%">example title<br>image example</td>
+   <td valign="top" align="center" width="33%">example title<br>image example</td>
+   <td valign="top" align="center" width="33%">example title<br>image example</td>
   </tr>
-  <tr>
-    <td valign="top" align="center" width="33%"><a href="https://github.com/vincentsijben/bpm-timings-for-processing/blob/master/examples/BPM_Timings/randomGridSpots/randomGridSpots.pde">randomGridSpots</a><br><img src="assets/example-randomgridspots.gif" width="100%" alt="screenshot for example randomGridSpots" /></td>
-    <td valign="top" align="center" width="33%"></td>
-    <td valign="top" align="center" width="33%"></td>
-  </tr>
- 
  </table>
