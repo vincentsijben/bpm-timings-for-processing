@@ -75,7 +75,7 @@ public class FrequencyAnalyzer {
 
   public FrequencyAnalyzer setFile(String file) {
     this.audioPlayer = minim.loadFile(file);
-    this.audioPlayer.play();
+    this.audioPlayer.loop();
     this.audioPlayer.mute();
     return this;
   }

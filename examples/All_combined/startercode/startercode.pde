@@ -37,12 +37,12 @@ void setup() {
     .setInfoPanelY(100)
     ;
   bpm = new BeatsPerMinute(this)
-    .setBPM(85)
+    .setBPM(110)
     //.showInfoPanel()
     .setInfoPanelKey('o')
     ;
   fa = new FrequencyAnalyzer(this)
-    .setFile("https://github.com/vincentsijben/processing-fft-students/raw/main/cmd_fft_library/assets/hot-coffee.mp3")
+    .setFile("https://github.com/vincentsijben/bpm-timings-for-processing/raw/main/assets/infraction_music_-_ritmo.mp3")
     .setMode(InputMode.FILE)
     //.showInfoPanel()
     .setInfoPanelKey('p')
