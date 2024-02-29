@@ -28,12 +28,6 @@ public class FrequencyAnalyzer {
 
   public FrequencyAnalyzer(PApplet parent) {
     this.parent = parent;
-    this.minim = new Minim(parent);
-    this.audioInput = minim.getLineIn(Minim.MONO);
-    this.audioBuffer = audioInput.mix;
-    this.bandsPerOctave = 3;
-    this.fft = new FFT(this.audioInput.bufferSize(), this.audioInput.sampleRate());
-    this.fft.logAverages(22, this.bandsPerOctave); // 3 results in 30 bands. 1 results in 10 etc.
     this.infoPanel = new InfoPanel(parent);
     this.mode = InputMode.MONO;
 
@@ -49,6 +43,16 @@ public class FrequencyAnalyzer {
     parent.registerMethod("dispose", this);
   }
 
+  public FrequencyAnalyzer addMinim(Minim minim) {
+    this.minim = minim;
+    this.audioInput = this.minim.getLineIn(Minim.MONO);
+    this.audioBuffer = audioInput.mix;
+    this.bandsPerOctave = 3;
+    this.fft = new FFT(this.audioInput.bufferSize(), this.audioInput.sampleRate());
+    this.fft.logAverages(22, this.bandsPerOctave); // 3 results in 30 bands. 1 results in 10 etc.
+    return this;
+  }
+
   public FrequencyAnalyzer setBandsPerOctave(int bandsPerOctave) {
     this.bandsPerOctave = bandsPerOctave;
     this.fft.logAverages(22, bandsPerOctave ); // 3 results in 30 bands. 1 results in 10 etc.
@@ -56,9 +60,11 @@ public class FrequencyAnalyzer {
   }
 
   public FrequencyAnalyzer setFile(String file) {
-    this.audioPlayer = minim.loadFile(file);
-    this.audioPlayer.play();
-    this.audioPlayer.mute();
+    if (this.minim != null) {
+      this.audioPlayer = minim.loadFile(file);
+      this.audioPlayer.play();
+      this.audioPlayer.mute();
+    }
     return this;
   }
 
@@ -75,34 +81,36 @@ public class FrequencyAnalyzer {
   public FrequencyAnalyzer setMode(InputMode mode) {
     this.mode = mode;
 
-    // Always close the input when changing inputs. After testing in Windows, I couldn't get multiple input variables running at the same time.
-    // Monitoring of inputLineIn is disabled by default when calling setInput again
-    this.audioInput.close();
-    //always mute the playing file, unmute it only when user chooses FILE input
-    if (this.audioPlayer != null) this.audioPlayer.mute();
+    if (this.minim != null) {
+      // Always close the input when changing inputs. After testing in Windows, I couldn't get multiple input variables running at the same time.
+      // Monitoring of inputLineIn is disabled by default when calling setInput again
+      this.audioInput.close();
+      //always mute the playing file, unmute it only when user chooses FILE input
+      if (this.audioPlayer != null) this.audioPlayer.mute();
 
-    switch(mode) {
-    case MONO:
-      this.audioInput = minim.getLineIn(Minim.MONO);
-      this.audioBuffer = this.audioInput.mix;
-      break;
-    case STEREO:
-      this.audioInput = minim.getLineIn(Minim.STEREO);
-      this.audioBuffer = this.audioInput.mix;
-      break;
-    case FILE:
-      if (this.audioPlayer != null) {
-        this.audioBuffer = this.audioPlayer.mix;
-        this.audioPlayer.unmute();
-      } else {
-        System.out.println("warning: no file input, switching to MONO");
-        return this.setMode(InputMode.MONO);
+      switch(mode) {
+      case MONO:
+        this.audioInput = minim.getLineIn(Minim.MONO);
+        this.audioBuffer = this.audioInput.mix;
+        break;
+      case STEREO:
+        this.audioInput = minim.getLineIn(Minim.STEREO);
+        this.audioBuffer = this.audioInput.mix;
+        break;
+      case FILE:
+        if (this.audioPlayer != null) {
+          this.audioBuffer = this.audioPlayer.mix;
+          this.audioPlayer.unmute();
+        } else {
+          System.out.println("warning: no file input, switching to MONO");
+          return this.setMode(InputMode.MONO);
+        }
+        break;
       }
-      break;
-    }
 
-    //reset the maxVal after each input switch
-    this.resetMaxValue();
+      //reset the maxVal after each input switch
+      this.resetMaxValue();
+    }
     return this;
   }
 
@@ -132,7 +140,8 @@ public class FrequencyAnalyzer {
 
   //set a new max value for the given index and constrain the result between 0 and 1
   public float getAvg(int index, float max) {
-    if (max == 0.000001f) return 0.0f;
+    //if (max == 0.000001f) return 0.0f;
+    if (max < 0.1f) return 0.0f;
     return PApplet.constrain(PApplet.map(fft.getAvg(index), 0, max, 0, 1), 0, 1);
   }
 
@@ -181,7 +190,7 @@ public class FrequencyAnalyzer {
     if (event.isControlDown()) {
 
       //handle long press events, only works in default renderer, not in P2D or P3D
-      if (event.getKey() == '0' ) System.out.println("CTRL+0 is longpressed");
+      //if (event.getKey() == '0' ) System.out.println("CTRL+0 is longpressed");
 
       // handle single press events
       if (event.getKey() == '1' && !this.keyPressedActionTaken) {
@@ -288,21 +297,25 @@ public class FrequencyAnalyzer {
   public void post() {
     // https://github.com/benfry/processing4/wiki/Library-Basics
     // you cant draw in post() but its perfect for the fft analysis:
-    fft.forward(this.audioBuffer);
-    //determine max value to normalize all average values
-    for (int i = 0; i < fft.avgSize(); i++) if (fft.getAvg(i) > this.maxVal) this.maxVal = fft.getAvg(i);
-    if (this.durationResetMaxValue > 0.0f) {
-      if (parent.millis() - this.startTime > this.durationResetMaxValue) {
-        this.resetMaxValue();
-        startTime = parent.millis();
+    if (this.minim != null) {
+      fft.forward(this.audioBuffer);
+      //determine max value to normalize all average values
+      for (int i = 0; i < fft.avgSize(); i++) if (fft.getAvg(i) > this.maxVal) this.maxVal = fft.getAvg(i);
+      if (this.durationResetMaxValue > 0.0f) {
+        if (parent.millis() - this.startTime > this.durationResetMaxValue) {
+          this.resetMaxValue();
+          startTime = parent.millis();
+        }
       }
     }
   }
 
   public void dispose() {
     //might not be necessary, but just in case
-    if (this.audioPlayer != null) this.audioPlayer.close();
-    this.minim.stop();
+    if (this.minim != null) {
+      if (this.audioPlayer != null) this.audioPlayer.close();
+      this.minim.stop();
+    }
   }
 
   private void debugInfo() {

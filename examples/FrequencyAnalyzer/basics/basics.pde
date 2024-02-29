@@ -12,13 +12,19 @@ import bpm.library.frequencyanalyzer.*;
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 
+Minim minim;
 FrequencyAnalyzer fa;
 
 void setup() {
   size(500, 500);
 
+  minim = new Minim(this);
+
   fa = new FrequencyAnalyzer(this)
-    .setMode(InputMode.MONO)
+    .addMinim(minim)
+    .setFile("https://github.com/vincentsijben/bpm-timings-for-processing/raw/main/assets/infraction_music_-_ritmo.mp3")
+    .setMode(InputMode.FILE)
+    //.setMode(InputMode.MONO)
     ;
 }
 

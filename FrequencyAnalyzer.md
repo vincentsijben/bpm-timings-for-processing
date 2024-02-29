@@ -2,15 +2,12 @@
 This FrequencyAnalyzer class is used at the Maastricht Institute of Arts exposition during the "Generative Art" semester.
 Students create sketches that react in realtime to audio input (line-in or microphone).
 
- This library simplifies the use for these controls. It adds functionality like:
- - executing single commands when longpressing pushbuttons;
- - multiple pushbuttons being pressed
- - smooth analog potmeter values, reducing 'jumping' values
- - fallback to keyboard and mouse when not using arduino
- - adjustable infopanel
- - Only write LED once instead of continuously, preventing flickering
+ This library adds functionality like:
+ - easily swtich between input modes (line-in, audiofile, microphone)
+ - return normalized values of specific frequency bands
+ - toggle on/off for audioplayer mute or microphone monitoring
+ - reset the max value that is used for mapping normalized values of frequency amplitudes. Can be set to an interval.
  
-
 ## Usage
 
 ```
@@ -40,7 +37,6 @@ void draw() {
 }
 ```
 
-
 The FrequencyAnalyzer class provides the following main functions:
 * `getBands()` function that returns total amount of bands used. Useful for creating spectograms. 
 * `getAvgRaw(1)` function that returns raw value of the frequency band with index 1.
@@ -49,16 +45,20 @@ The FrequencyAnalyzer class provides the following main functions:
 * `resetMaxValue()` function that resets the overall max value (to 0.000001f).
 
 You can tweak the behaviour of this library with the following functions (you can also chain them when initializing for clarity):
-* `.addArduino(arduino)` mandatory to add the arduino object to the class.
-* `.addLED(9)` to add an LED to the class at digital port 9.
-* `.addLED(10, LEDMode.PWM)` to add an LED to the class at digital port 10 as a PWM connected LED. The LEDMode argument is optional (default is `LEDMode.DIGITAL`).
-* `.addPushButton(7, '1', Arduino.LOW)` to add a pushbutton to the class at digital port 7, that is controllable with the keyboard key '1' when not connected and has a value of Arduino.LOW when pressed. All three arguments are mandatory.
-* `.addPotentiometer(0, 'q')` to add a potentiometer to the class at analog port 0, that is controllable with the mouseX position while pressing the keyboard key 'q'. 
+* `.addMinim(minim)` mandatory to add the global minim object to the class.
+* `.setBandsPerOctave(6)` to get a total of 6 * 10 bands.
+* `.setFile("example.mp3")` to set the file for the audioplayer.
+* `.setMode(InputMode.FILE)` to set the input mode to InputMode.FILE. You can also set it to InputMode.STEREO. Defaults to InputMode.MONO. 
+* `.resetMaxValueDuration(2000)` to reset the max value every 2000 milliseconds.
 * `showInfoPanel()` to show the infopanel.
 * `setInfoPanelY(n)` to offset the starting y-position of the infopanel by n pixels. Useful for when you have multiple infopanels to get them all lined up.
 * `setInfoPanelKey('u')` to change the hotkey to toggle the infopanel. Useful for when you have multiple infopanels. Defaults to 'i'.
-* `disableKeyPress()` to disable listening for keypresses. If you don't disable keypresses, then the keys you provided as arguments for pushbuttons and potentiometers will work
-
+* `disableKeyPress()` to disable listening for keypresses. If you don't disable keypresses, then these keypresses will work:
+  * `CTRL + 1` switch to FILE mode
+  * `CTRL + 2` switch to MONO mode
+  * `CTRL + 3` switch to STEREO mode
+  * `CTRL + M` toggle mute or microphone monitoring (depends on InputMode)
+  * `CTRL + R` reset the max value
 
 ## Examples
 You can find all these examples in `Processing -> File - Examples - Contributed Libraries - BPM timings - FrequencyAnalyzer`.
