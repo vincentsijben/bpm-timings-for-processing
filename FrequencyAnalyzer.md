@@ -1,9 +1,9 @@
 # FrequencyAnalyzer class
 This FrequencyAnalyzer class is used at the Maastricht Institute of Arts exposition during the "Generative Art" semester.
-Students create sketches that react in realtime to audio input (line-in or microphone).
+Students create sketches that react in realtime to audio input (line-in, audio file or microphone).
 
  This library adds functionality like:
- - easily swtich between input modes (line-in, audiofile, microphone)
+ - easily swtich between input modes (line-in, audio file, microphone)
  - return normalized values of specific frequency bands
  - toggle on/off for audioplayer mute or microphone monitoring
  - reset the max value that is used for mapping normalized values of frequency amplitudes. Can be set to an interval.
