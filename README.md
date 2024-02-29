@@ -57,11 +57,11 @@ The BeatsPerMinute class provides the following main functions:
 * `setSurfaceTitle()` show information on BPM, beatCount and frameRate in your surface title.
 
 You can tweak the behaviour of this library with the following functions (you can also chain them when initializing for clarity):
-* `setBPM(120)` to change the amount of beats per minute for all calculations.
-* `showInfoPanel()` to show the infopanel.
-* `setInfoPanelY(n)` to offset the starting y-position of the infopanel by n pixels. Useful for when you have multiple infopanels to get them all lined up.
-* `setInfoPanelKey('u')` to change the hotkey to toggle the infopanel. Useful for when you have multiple infopanels. Defaults to 'i'.
-* `disableKeyPress()` to disable listening for keypresses. If you don't disable keypresses, then these keypresses will work:
+* `.setBPM(120)` to change the amount of beats per minute for all calculations.
+* `.showInfoPanel()` to show the infopanel.
+* `.setInfoPanelY(n)` to offset the starting y-position of the infopanel by n pixels. Useful for when you have multiple infopanels to get them all lined up.
+* `.setInfoPanelKey('u')` to change the hotkey to toggle the infopanel. Useful for when you have multiple infopanels. Defaults to 'i'.
+* `.disableKeyPress()` to disable listening for keypresses. If you don't disable keypresses, then these keypresses will work:
   * `0` press once to reset timer, press multiple times to set the BPM to your 'press'-timing
   * `-` lower bpm
   * `+` raise bpm

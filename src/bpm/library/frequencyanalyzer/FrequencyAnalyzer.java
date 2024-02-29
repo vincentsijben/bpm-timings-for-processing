@@ -35,7 +35,7 @@ public class FrequencyAnalyzer {
     this.keyPressedActionTaken = false;
     this.durationResetMaxValue = 0.0f;
     this.startTime = 0;
-    this.maxVal = 0.000001f; //avoid NaN when using maxVal in map() in the first frame.
+    this.maxVal = 0.1f; //avoid NaN when using maxVal in map() in the first frame.
 
     parent.registerMethod("draw", this);
     parent.registerMethod("post", this);
@@ -140,13 +140,12 @@ public class FrequencyAnalyzer {
 
   //set a new max value for the given index and constrain the result between 0 and 1
   public float getAvg(int index, float max) {
-    //if (max == 0.000001f) return 0.0f;
-    if (max < 0.1f) return 0.0f;
+    if (max <= 0.1f) return 0.0f;
     return PApplet.constrain(PApplet.map(fft.getAvg(index), 0, max, 0, 1), 0, 1);
   }
 
   public void resetMaxValue() {
-    this.maxVal = 0.000001f;
+    this.maxVal = 0.1f;
   }
 
 
