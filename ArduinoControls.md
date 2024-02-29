@@ -3,12 +3,12 @@ This ArduinoControls class is used at the Maastricht Institute of Arts expositio
 Students build their own Arduino remote controller with 3 potentiometers, 3 pushbuttons and 3 LEDs.
 
  This library simplifies the use for these controls. It adds functionality like:
- - executing single commands when longpressing getPushButtonOnce(0);
- - multiple pushbuttons being pressed if (getPushButton(0) && getPushButton(1))
- - smooth analog potmeter values getPotmeter(0,0.02); reducing jumping values
- - fallback to keyboard and mouse when not using arduino. e.g. 1 to 9 for pushbuttons. q,w,e,r,t,y together with mouseX for potmeters
- - adjustable infopanel (set hotkey, y position)
- - Only write LED once, not continuously, preventing flickering
+ - executing single commands when longpressing pushbuttons;
+ - multiple pushbuttons being pressed
+ - smooth analog potmeter values, reducing 'jumping' values
+ - fallback to keyboard and mouse when not using arduino
+ - adjustable infopanel
+ - Only write LED once instead of continuously, preventing flickering
  
 
 ## Usage
