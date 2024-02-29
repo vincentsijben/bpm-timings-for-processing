@@ -19,7 +19,6 @@ void setup() {
   size(500, 500);
 
   minim = new Minim(this);
-
   fa = new FrequencyAnalyzer(this)
     .addMinim(minim)
     .setFile("https://github.com/vincentsijben/bpm-timings-for-processing/raw/main/assets/infraction_music_-_ritmo.mp3")
