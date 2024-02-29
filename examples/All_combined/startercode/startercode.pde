@@ -42,7 +42,7 @@ void setup() {
     .setInfoPanelKey('o')
     ;
   fa = new FrequencyAnalyzer(this)
-    .setFile("https://github.com/vincentsijben/bpm-timings-for-processing/raw/main/assets/infraction_music_-_ritmo.mp3")
+    .setFile("https://github.com/vincentsijben/bpm-timings-for-processing/raw/main/assets/infraction-music-ritmo.mp3")
     .setMode(InputMode.FILE)
     //.showInfoPanel()
     .setInfoPanelKey('p')
