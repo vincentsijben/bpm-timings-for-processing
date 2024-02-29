@@ -1,10 +1,4 @@
 /*
-  todo: build example where a pushbutton acts as a switch. one press turns LED on, second press turns it off
- todo: create function that returns potentiometer value, but only when stopped turning, so with a threshold
- 
- */
-
-/*
   This ArduinoControls class is used at the Institute of Arts Maastricht exposition, semester Generative Art
  Students build their own Arduino remote controller with 3 potentiometers and 3 pushbuttons.
  This library simplifies the use for these controls. It adds functionality like:

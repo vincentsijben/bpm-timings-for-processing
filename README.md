@@ -3,6 +3,9 @@
 ## Introduction
 BPM timings for Processing is a small library for Processing that provides easy to use timing functions based on beats per minute. For example, you could easily grow or shrink shapes in any amount of beats, or delay shrinking a shape to start after 6 beats.
 
+### Context
+This library was created in 2023 for the Maastricht Institute of Arts - GenArt exposition. Students were showcasing their generative art work that could be controlled with a custom built Arduino controller. The work was BPM based; a live band performed on stage while students acted as VJ's, controlling their own digital work through the Arduino controller. For the exposition and performance of 2024, this library was expanded with 2 additional classes: [ArduinoControls](ArduinoControls.md) and [FrequencyAnalyzer](FrequencyAnalyzer.md).
+
 ## How to install
 Install the library by downloading the latest release through the Processing contribution manager: go to `Processing > Sketch > Import Library... > Manage Libraries...` and search for "BPM timings" and click install.
 
@@ -56,7 +59,7 @@ The BeatsPerMinute class provides the following main functions:
 You can tweak the behaviour of this library with the following functions (you can also chain them when initializing for clarity):
 * `setBPM(120)` to change the amount of beats per minute for all calculations.
 * `showInfoPanel()` to show the infopanel.
-* `setInfoPanelY(n)` to change the starting y-position of the infopanel. Useful for when you have multiple infopanels to get them all lined up.
+* `setInfoPanelY(n)` to offset the starting y-position of the infopanel by n pixels. Useful for when you have multiple infopanels to get them all lined up.
 * `setInfoPanelKey('u')` to change the hotkey to toggle the infopanel. Useful for when you have multiple infopanels. Defaults to 'i'.
 * `disableKeyPress()` to disable listening for keypresses. If you don't disable keypresses, then these keypresses will work:
   * `0` press once to reset timer, press multiple times to set the BPM to your 'press'-timing
@@ -65,7 +68,7 @@ You can tweak the behaviour of this library with the following functions (you ca
 
 
 ## Examples
-You can find all these examples in `Processing -> File - Examples - Contributed Libraries - BPM timings`.
+You can find all these examples in `Processing -> File - Examples - Contributed Libraries - BPM timings - BPM_Timings`.
 
 <table width="100%">
 
