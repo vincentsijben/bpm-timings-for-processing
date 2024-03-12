@@ -52,8 +52,8 @@ The FrequencyAnalyzer class provides the following main functions:
   * `getAvgRawRight(1)` same as getAvgRaw(1) but specific for the right channel.
 * `avgSize()` returns the total amount of bands used in the logAverages function. Typically 30
 * `getAudioBuffer()` returns the mixed (mono) audio buffer.
-* `getLeftChannelBuffer()` returns the left audio buffer.
-* `getRightChannelBuffer()` returns the right audio buffer.
+  * `getLeftChannelBuffer()` returns the left audio buffer.
+  * `getRightChannelBuffer()` returns the right audio buffer.
 
 You can tweak the behaviour of this library with the following functions (you can also chain them when initializing your frequencyanalyzer object for clarity):
 * `.addMinim(minim)` mandatory to add the global minim object to the class.
@@ -61,7 +61,6 @@ You can tweak the behaviour of this library with the following functions (you ca
 * `.setFile("example.mp3")` to set the file for the audioplayer.
 * `.setAudioInputMode(AudioInputMode.AUDIO_FILE)` to set the input mode to AudioInputMode.AUDIO_FILE. You can also set it to AudioInputMode.LINE_IN or AudioInputMode.MICROPHONE. Defaults to AudioInputMode.MICROPHONE. 
 * `.setAudioOutputMode(AudioOutputMode.STEREO)` to set the output mode to AudioOutputMode.STEREO. Defaults to AudioOutputMode.MONO. Use it to get access to both left and right channel analysis.
-
 * `.showInfoPanel()` to show the infopanel.
 * `.setInfoPanelY(n)` to offset the starting y-position of the infopanel by n pixels. Useful for when you have multiple infopanels to get them all lined up.
 * `.setInfoPanelKey('u')` to change the hotkey to toggle the infopanel. Useful for when you have multiple infopanels. Defaults to 'i'.
