@@ -12,7 +12,7 @@ public class InfoPanel {
   public char keyboardKey;
   public boolean show;
   public PGraphics overlay;
-  boolean keyPressedActionTaken;
+  private boolean keyPressedActionTaken;
   public boolean enableKeyPress;
 
   public InfoPanel(PApplet parent) {

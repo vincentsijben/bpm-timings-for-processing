@@ -56,7 +56,7 @@ The BeatsPerMinute class provides the following main functions:
 * `getBPM()` to return the BPM as an integer.
 * `setSurfaceTitle()` show information on BPM, beatCount and frameRate in your surface title.
 
-You can tweak the behaviour of this library with the following functions (you can also chain them when initializing for clarity):
+You can tweak the behaviour of this library with the following functions (you can also chain them when initializing your bpm object for clarity):
 * `.setBPM(120)` to change the amount of beats per minute for all calculations.
 * `.showInfoPanel()` to show the infopanel.
 * `.setInfoPanelY(n)` to offset the starting y-position of the infopanel by n pixels. Useful for when you have multiple infopanels to get them all lined up.
@@ -174,7 +174,12 @@ ln -s ../../../src/bpm/library/InfoPanel.java ./examples/ArduinoControls/basics/
 FrequencyAnalyzer examples:
 ```
 ln -s ../../../src/bpm/library/frequencyanalyzer/FrequencyAnalyzer.java ./examples/FrequencyAnalyzer/basics/FrequencyAnalyzer.java
-ln -s ../../../src/bpm/library/frequencyanalyzer/InputMode.java ./examples/FrequencyAnalyzer/basics/InputMode.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/AudioFileInputSource.java ./examples/FrequencyAnalyzer/basics/AudioFileInputSource.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/AudioInputMode.java ./examples/FrequencyAnalyzer/basics/AudioInputMode.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/AudioOutputMode.java ./examples/FrequencyAnalyzer/basics/AudioOutputMode.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/AudioInputSource.java ./examples/FrequencyAnalyzer/basics/AudioInputSource.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/MicrophoneInputSource.java ./examples/FrequencyAnalyzer/basics/MicrophoneInputSource.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/LineInInputSource.java ./examples/FrequencyAnalyzer/basics/LineInInputSource.java
 ln -s ../../../src/bpm/library/InfoPanel.java ./examples/FrequencyAnalyzer/basics/InfoPanel.java
 ```
 BPM_Timing examples:
@@ -203,6 +208,11 @@ ln -s ../../../src/bpm/library/arduinocontrols/Potentiometer.java ./examples/All
 ln -s ../../../src/bpm/library/arduinocontrols/PushButton.java ./examples/All_combined/startercode/PushButton.java
 ln -s ../../../src/bpm/library/InfoPanel.java ./examples/All_combined/startercode/InfoPanel.java
 ln -s ../../../src/bpm/library/frequencyanalyzer/FrequencyAnalyzer.java ./examples/All_combined/startercode/FrequencyAnalyzer.java
-ln -s ../../../src/bpm/library/frequencyanalyzer/InputMode.java ./examples/All_combined/startercode/InputMode.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/AudioFileInputSource.java ./examples/All_combined/startercode/AudioFileInputSource.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/AudioInputMode.java ./examples/All_combined/startercode/AudioInputMode.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/AudioOutputMode.java ./examples/All_combined/startercode/AudioOutputMode.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/AudioInputSource.java ./examples/All_combined/startercode/AudioInputSource.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/MicrophoneInputSource.java ./examples/All_combined/startercode/MicrophoneInputSource.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/LineInInputSource.java ./examples/All_combined/startercode/LineInInputSource.java
 ln -s ../../../src/bpm/library/beatsperminute/BeatsPerMinute.java ./examples/All_combined/startercode/BeatsPerMinute.java
 ```

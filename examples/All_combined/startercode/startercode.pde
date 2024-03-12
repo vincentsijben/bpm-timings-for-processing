@@ -20,6 +20,7 @@ import cc.arduino.*;
 Arduino arduino;
 ArduinoControls ac;
 BeatsPerMinute bpm;
+Minim minim;
 FrequencyAnalyzer fa;
 
 void setup() {
@@ -28,6 +29,7 @@ void setup() {
 
   // change [2] to your usb port
   arduino = new Arduino(this, Arduino.list()[2], 57600);
+  minim = new Minim(this);
 
   ac = new ArduinoControls(this)
     .addArduino(arduino)
@@ -42,8 +44,10 @@ void setup() {
     .setInfoPanelKey('o')
     ;
   fa = new FrequencyAnalyzer(this)
+    .addMinim(minim)
     .setFile("https://github.com/vincentsijben/bpm-timings-for-processing/raw/main/assets/infraction_music_-_ritmo.mp3")
-    .setMode(InputMode.FILE)
+    .setAudioInputMode(AudioInputMode.AUDIO_FILE)
+    .setAudioOutputMode(AudioOutputMode.MONO)
     //.showInfoPanel()
     .setInfoPanelKey('p')
     ;
@@ -63,9 +67,9 @@ void draw() {
   stroke(91, 244, 233);
   strokeWeight(3);
   noFill();
-  circle(width/4*1, height/2, lerp(0, height, fa.getAvg(0)));
-  circle(width/4*2, height/2, lerp(0, height, fa.getAvg(10)));
-  circle(width/4*3, height/2, lerp(0, height, fa.getAvg(20)));
+  circle(width/4*1, height/2, lerp(0, height, fa.getAvgRaw(0)));
+  circle(width/4*2, height/2, lerp(0, height, fa.getAvgRaw(10)));
+  circle(width/4*3, height/2, lerp(0, height, fa.getAvgRaw(20)));
 
   // bpm: grow circle in 1 beat
   noStroke();

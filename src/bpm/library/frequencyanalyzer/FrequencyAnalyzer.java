@@ -12,13 +12,18 @@ public class FrequencyAnalyzer {
 
   private PApplet parent;
   private Minim minim;
+  AudioInputSource currentInputSource;
   private AudioPlayer audioPlayer;
-  private AudioInput audioInput;
-  private AudioBuffer audioBuffer;
+  private String file;
+  //private AudioInput audioInput;
+  //private AudioBuffer audioBufferMix;
+  //private AudioBuffer audioBufferLeftt;
+  //private AudioBuffer audioBufferRight;
   private int bandsPerOctave;
-  private FFT fft;
+
   private InfoPanel infoPanel;
-  private InputMode mode;
+  private AudioInputMode currentInputMode;
+  private AudioOutputMode currentOutputMode;
 
   private boolean enableKeyPress;
   private boolean keyPressedActionTaken;
@@ -29,7 +34,7 @@ public class FrequencyAnalyzer {
   public FrequencyAnalyzer(PApplet parent) {
     this.parent = parent;
     this.infoPanel = new InfoPanel(parent);
-    this.mode = InputMode.MONO;
+    
 
     this.enableKeyPress = true;
     this.keyPressedActionTaken = false;
@@ -45,26 +50,20 @@ public class FrequencyAnalyzer {
 
   public FrequencyAnalyzer addMinim(Minim minim) {
     this.minim = minim;
-    this.audioInput = this.minim.getLineIn(Minim.MONO);
-    this.audioBuffer = audioInput.mix;
-    this.bandsPerOctave = 3;
-    this.fft = new FFT(this.audioInput.bufferSize(), this.audioInput.sampleRate());
-    this.fft.logAverages(22, this.bandsPerOctave); // 3 results in 30 bands. 1 results in 10 etc.
+    this.setAudioInputMode(AudioInputMode.MICROPHONE);
+    
+    
     return this;
   }
 
   public FrequencyAnalyzer setBandsPerOctave(int bandsPerOctave) {
     this.bandsPerOctave = bandsPerOctave;
-    this.fft.logAverages(22, bandsPerOctave ); // 3 results in 30 bands. 1 results in 10 etc.
+    //this.fft.logAverages(22, bandsPerOctave ); // 3 results in 30 bands. 1 results in 10 etc.
     return this;
   }
 
   public FrequencyAnalyzer setFile(String file) {
-    if (this.minim != null) {
-      this.audioPlayer = minim.loadFile(file);
-      this.audioPlayer.play();
-      this.audioPlayer.mute();
-    }
+    this.file = file;
     return this;
   }
 
@@ -78,39 +77,43 @@ public class FrequencyAnalyzer {
     return this;
   }
 
-  public FrequencyAnalyzer setMode(InputMode mode) {
-    this.mode = mode;
+  public FrequencyAnalyzer setAudioOutputMode(AudioOutputMode mode) {
+    currentInputSource.setAudioOutputMode(mode);
+    this.currentOutputMode = mode;
+    return this;
+  }
 
-    if (this.minim != null) {
-      // Always close the input when changing inputs. After testing in Windows, I couldn't get multiple input variables running at the same time.
-      // Monitoring of inputLineIn is disabled by default when calling setInput again
-      this.audioInput.close();
-      //always mute the playing file, unmute it only when user chooses FILE input
-      if (this.audioPlayer != null) this.audioPlayer.mute();
-
-      switch(mode) {
-      case MONO:
-        this.audioInput = minim.getLineIn(Minim.MONO);
-        this.audioBuffer = this.audioInput.mix;
-        break;
-      case STEREO:
-        this.audioInput = minim.getLineIn(Minim.STEREO);
-        this.audioBuffer = this.audioInput.mix;
-        break;
-      case FILE:
-        if (this.audioPlayer != null) {
-          this.audioBuffer = this.audioPlayer.mix;
-          this.audioPlayer.unmute();
-        } else {
-          System.out.println("warning: no file input, switching to MONO");
-          return this.setMode(InputMode.MONO);
-        }
-        break;
-      }
-
-      //reset the maxVal after each input switch
-      this.resetMaxValue();
+  public FrequencyAnalyzer setAudioInputMode(AudioInputMode newMode) {
+    if (newMode == this.currentInputMode) return this;
+    if (currentInputSource != null) {
+      currentInputSource.stop();
+      currentInputSource = null;
     }
+
+    // Initialize the new input source based on the selected mode
+    switch (newMode) {
+    case MICROPHONE:
+      currentInputSource = new MicrophoneInputSource(minim); // Assuming a MicrophoneSource class exists
+      break;
+    case LINE_IN:
+      currentInputSource = new LineInInputSource(minim);
+      break;
+    case AUDIO_FILE:
+      //currentInputSource = new AudioFileInputSource(minim, "https://github.com/vincentsijben/bpm-timings-for-processing/raw/main/assets/infraction_music_-_ritmo.mp3"); // Assuming an AudioFileSource class exists
+      currentInputSource = new AudioFileInputSource(minim, this.file); // Assuming an AudioFileSource class exists
+      //"stereotest.mp3"
+
+      break;
+    }
+
+    // Start the new input source
+    if (currentInputSource != null) {
+      currentInputSource.init(); // Initialize the new source
+      currentInputSource.start();
+    }
+
+    // Update the current mode
+    currentInputMode = newMode;
     return this;
   }
 
@@ -126,23 +129,66 @@ public class FrequencyAnalyzer {
   //////////////////////////////////////////////////////////////
   //                    FFT ANALYSIS
   //////////////////////////////////////////////////////////////
-  public int getBands() {
-    return this.fft.avgSize();
+
+  public float[] getAudioBuffer() {
+    return this.currentInputSource.getAudioBuffer();
+  }
+  public float[] getLeftChannelBuffer() {
+    return this.currentInputSource.getLeftChannelBuffer();
+  }
+  public float[] getRightChannelBuffer() {
+    return this.currentInputSource.getRightChannelBuffer();
+  }
+
+
+  public  void performFFT() {
+    this.currentInputSource.performFFT();
+  }
+  public   FFT  getFFT() {
+    return this.currentInputSource.getFFT();
+  }
+  public   FFT  getFFTLeft() {
+    return this.currentInputSource.getFFTLeft();
+  }
+  public   FFT  getFFTRight() {
+    return this.currentInputSource.getFFTRight();
+  }
+
+  public   float getBand(int i) {
+    return this.currentInputSource.getBand(i);
+  }
+  public   float getBandLeft(int i) {
+    return this.currentInputSource.getBandLeft(i);
+  }
+  public   float getBandRight(int i) {
+    return this.currentInputSource.getBandRight(i);
+  }
+  public   int specSize() {
+    return this.currentInputSource.specSize();
+  }
+  public   int avgSize() {
+    return this.currentInputSource.avgSize();
   }
   public float getAvgRaw(int index) {
-    return this.fft.getAvg(index);
+    return this.currentInputSource.getAvg(index);
   }
+  public float getAvgRawLeft(int index) {
+    return this.currentInputSource.getAvgLeft(index);
+  }
+  public float getAvgRawRight(int index) {
+    return this.currentInputSource.getAvgRight(index);
+  }
+  ////normalize the average for the given index
+  //public float getAvg(int index) {
+  //  return this.getAvg(index, this.maxVal);
+  //}
 
-  //normalize the average for the given index
-  public float getAvg(int index) {
-    return this.getAvg(index, this.maxVal);
-  }
-
-  //set a new max value for the given index and constrain the result between 0 and 1
-  public float getAvg(int index, float max) {
-    if (max <= 0.1f) return 0.0f;
-    return PApplet.constrain(PApplet.map(fft.getAvg(index), 0, max, 0, 1), 0, 1);
-  }
+  ////set a new max value for the given index and constrain the result between 0 and 1
+  //public float getAvg(int index, float max) {
+  //  if (max <= 0.1f) return 0.0f;
+  //  if (this.minim == null) return 0;
+  //  return PApplet.constrain(PApplet.map(fft.getAvg(index), 0, max, 0, 1), 0, 1);
+  //}
 
   public void resetMaxValue() {
     this.maxVal = 0.1f;
@@ -166,15 +212,11 @@ public class FrequencyAnalyzer {
   }
 
   private void toggleMuteOrMonitoring() {
-    if (this.mode==InputMode.FILE) {
-      if (this.audioPlayer != null) {
-        if (this.audioPlayer.isMuted()) this.audioPlayer.unmute();
-        else this.audioPlayer.mute();
-      }
-    } else {
-      if (this.audioInput.isMonitoring()) this.audioInput.disableMonitoring();
-      else this.audioInput.enableMonitoring();
-    }
+    if (currentInputSource.isMonitoring()) currentInputSource.disableMonitoring();
+    else currentInputSource.enableMonitoring();
+    
+    //todo: add muted toggle?
+    
   }
 
   public void keyEvent(KeyEvent event) {
@@ -193,15 +235,15 @@ public class FrequencyAnalyzer {
 
       // handle single press events
       if (event.getKey() == '1' && !this.keyPressedActionTaken) {
-        this.setMode(InputMode.FILE);
+        this.setAudioInputMode(AudioInputMode.AUDIO_FILE);
         this.keyPressedActionTaken = true; // Set the flag to true to avoid repeating the action
       }
       if (event.getKey() == '2'  && !this.keyPressedActionTaken) {
-        this.setMode(InputMode.MONO);
+        this.setAudioInputMode(AudioInputMode.MICROPHONE);
         this.keyPressedActionTaken = true; // Set the flag to true to avoid repeating the action
       }
       if (event.getKey() == '3'  && !this.keyPressedActionTaken) {
-        this.setMode(InputMode.STEREO);
+        this.setAudioInputMode(AudioInputMode.LINE_IN);
         this.keyPressedActionTaken = true; // Set the flag to true to avoid repeating the action
       }
       if (event.getKeyCode() == 'M' && !this.keyPressedActionTaken) {
@@ -254,18 +296,32 @@ public class FrequencyAnalyzer {
       overlay.fill(200, 127);
       overlay.noStroke();
       overlay.rect(0, 0, overlay.width, overlay.height);
-      for (int i = 0; i < this.fft.avgSize(); i++) {
-        float xR = (i * overlay.width) / this.fft.avgSize();
+      for (int i = 0; i < this.avgSize(); i++) {
+        float xR = (i * overlay.width) / this.avgSize();
         float yR = 100;
 
+
+
         overlay.fill(255);
-        overlay.rect(xR, yR, overlay.width / this.fft.avgSize(), PApplet.lerp(0, -100, this.getAvg(i)));
+        if (this.currentOutputMode == AudioOutputMode.STEREO) {
+          overlay.rect(xR, yR, overlay.width / this.avgSize()/2, PApplet.lerp(0, -100, this.getAvgRawLeft(i)));
+          overlay.rect(xR + overlay.width / this.avgSize()/2, yR, overlay.width / this.avgSize()/2, PApplet.lerp(0, -100, this.getAvgRawRight(i)));
+        } else {
+          overlay.rect(xR, yR, overlay.width / this.avgSize(), PApplet.lerp(0, -100, this.getAvgRaw(i)));
+        }
+
         overlay.fill(255, 0, 0);
         overlay.textAlign(PApplet.CENTER, PApplet.CENTER);
-        overlay.textSize(14);
-        overlay.text(PApplet.round(PApplet.lerp(0, maxVal, this.getAvg(i))), xR + (overlay.width / this.fft.avgSize() / 2), yR - 20);
+        if (this.currentOutputMode == AudioOutputMode.STEREO) {
+          overlay.textSize(10);
+          overlay.text(PApplet.round(PApplet.lerp(0, maxVal, this.getAvgRawLeft(i))), xR + (overlay.width / this.avgSize() / 4), yR - 20);
+          overlay.text(PApplet.round(PApplet.lerp(0, maxVal, this.getAvgRawRight(i))), xR + (overlay.width / this.avgSize() / 4*3), yR - 20);
+        } else {
+          overlay.textSize(14);
+          overlay.text(PApplet.round(PApplet.lerp(0, maxVal, this.getAvgRaw(i))), xR + (overlay.width / this.avgSize() / 2), yR - 20);
+        }
         overlay.textSize(8);
-        overlay.text(i, xR + (overlay.width / this.fft.avgSize() / 2), yR-6);
+        overlay.text(i, xR + (overlay.width / this.avgSize() / 2), yR-6);
       }
       overlay.fill(255);
       overlay.textSize(25);
@@ -274,11 +330,12 @@ public class FrequencyAnalyzer {
       overlay.textAlign(PApplet.CENTER);
       overlay.text("maxVal: " + PApplet.round(maxVal), this.parent.width/2, 30);
       overlay.textAlign(PApplet.LEFT);
-      String s = "selected mode: " + mode;
+      String s = "selected mode: " + this.currentInputMode;
       float posX = overlay.width-overlay.textWidth(s)-10;
       overlay.text(s, posX, 30);
-      if (mode == InputMode.FILE && audioPlayer != null) overlay.text("muted: " + audioPlayer.isMuted(), posX, 60);
-      else overlay.text("monitoring: " + (audioInput.isMonitoring() ? "on": "off"), posX, 60);
+      if (this.currentInputMode == AudioInputMode.AUDIO_FILE && audioPlayer != null) overlay.text("muted: " + audioPlayer.isMuted(), posX, 60);
+      //else overlay.text("monitoring: " + (audioInput.isMonitoring() ? "on": "off"), posX, 60);
+      else overlay.text("monitoring: " + (currentInputSource.isMonitoring() ? "on": "off"), posX, 60);
       overlay.endDraw();
       this.parent.image(overlay, this.infoPanel.x, this.infoPanel.y, this.infoPanel.w, this.infoPanel.h); // Draw the overlay onto the main canvas
     }
@@ -297,24 +354,23 @@ public class FrequencyAnalyzer {
     // https://github.com/benfry/processing4/wiki/Library-Basics
     // you cant draw in post() but its perfect for the fft analysis:
     if (this.minim != null) {
-      fft.forward(this.audioBuffer);
+      this.performFFT();
+
       //determine max value to normalize all average values
-      for (int i = 0; i < fft.avgSize(); i++) if (fft.getAvg(i) > this.maxVal) this.maxVal = fft.getAvg(i);
-      if (this.durationResetMaxValue > 0.0f) {
-        if (parent.millis() - this.startTime > this.durationResetMaxValue) {
-          this.resetMaxValue();
-          startTime = parent.millis();
-        }
-      }
+      //for (int i = 0; i < fft.avgSize(); i++) if (fft.getAvg(i) > this.maxVal) this.maxVal = fft.getAvg(i);
+      //if (this.durationResetMaxValue > 0.0f) {
+      //  if (parent.millis() - this.startTime > this.durationResetMaxValue) {
+      //    this.resetMaxValue();
+      //    startTime = parent.millis();
+      //  }
+      //}
     }
   }
 
   public void dispose() {
     //might not be necessary, but just in case
-    if (this.minim != null) {
-      if (this.audioPlayer != null) this.audioPlayer.close();
-      this.minim.stop();
-    }
+    if (currentInputSource != null) currentInputSource.close();
+    if (this.minim != null) this.minim.stop();
   }
 
   private void debugInfo() {
@@ -328,8 +384,8 @@ public class FrequencyAnalyzer {
     if (minim != null) {
       System.out.println("MONO -> " + minim.getLineIn(Minim.MONO));
       System.out.println("STEREO -> " + minim.getLineIn(Minim.STEREO));
-      System.out.println("buffer size: " + this.audioInput.bufferSize());
-      System.out.println( "sample rate: " + this.audioInput.sampleRate());
+      //System.out.println("buffer size: " + this.audioInput.bufferSize());
+      //System.out.println( "sample rate: " + this.audioInput.sampleRate());
     }
   }
 }

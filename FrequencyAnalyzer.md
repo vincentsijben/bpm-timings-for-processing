@@ -28,32 +28,40 @@ void setup() {
   fa = new FrequencyAnalyzer(this)
     .addMinim(minim)
     .setFile("https://github.com/vincentsijben/bpm-timings-for-processing/raw/main/assets/infraction_music_-_ritmo.mp3")
-    .setMode(InputMode.FILE)
+    .setAudioInputMode(AudioInputMode.AUDIO_FILE)
+    .setAudioOutputMode(AudioOutputMode.MONO) //default
     ;
 }
 
 void draw() {
   background(50);
 
-  circle(width/4*1, height/2, lerp(0, height, fa.getAvg(0)));
-  circle(width/4*2, height/2, lerp(0, height, fa.getAvg(10)));
-  circle(width/4*3, height/2, lerp(0, height, fa.getAvg(20)));
+  circle(width/4*1, height/2, lerp(0, height, fa.getAvgRaw(0)));
+  circle(width/4*2, height/2, lerp(0, height, fa.getAvgRaw(10)));
+  circle(width/4*3, height/2, lerp(0, height, fa.getAvgRaw(20)));
 }
 ```
 
 The FrequencyAnalyzer class provides the following main functions:
-* `getBands()` function that returns total amount of bands used. Useful for looping through all frequency bands. There are 30 bands by default.
-* `getAvgRaw(1)` function that returns raw value of the frequency band with index 1.
-* `getAvg(2)` function that returns normalized value of the frequency band with index 2. The normalization mapping is done by continuously checking the highest overall amplitude.
-* `getAvg(2, 150)` function that returns normalized value of the frequency band with index 2, mapped with a max value of 150.
-* `resetMaxValue()` function that resets the overall max value (to 0.1f).
+* `getBand(1)` returns the amplitude for frequency band 1. Used for a very specific and narrow frequency range. The index ranges from 0 to specSize().
+  * `getBandLeft(1)` same as getBand(1) but specific for the left channel.
+  * `getBandRight(1)` same as getBand(1) but specific for the right channel.
+* `specSize()` returns the total amount of bands used. Typically 1025 
+* `getAvgRaw(1)` returns non-normalized "raw" averaged amplitude for frequency band 1. The index ranges from 0 to logAverages(22, 3) which is 30 by default.
+  * `getAvgRawLeft(1)` same as getAvgRaw(1) but specific for the left channel.
+  * `getAvgRawRight(1)` same as getAvgRaw(1) but specific for the right channel.
+* `avgSize()` returns the total amount of bands used in the logAverages function. Typically 30
+* `getAudioBuffer()` returns the mixed (mono) audio buffer.
+* `getLeftChannelBuffer()` returns the left audio buffer.
+* `getRightChannelBuffer()` returns the right audio buffer.
 
-You can tweak the behaviour of this library with the following functions (you can also chain them when initializing for clarity):
+You can tweak the behaviour of this library with the following functions (you can also chain them when initializing your frequencyanalyzer object for clarity):
 * `.addMinim(minim)` mandatory to add the global minim object to the class.
 * `.setBandsPerOctave(6)` to get a total of 6 * 10 bands.
 * `.setFile("example.mp3")` to set the file for the audioplayer.
-* `.setMode(InputMode.FILE)` to set the input mode to InputMode.FILE. You can also set it to InputMode.STEREO. Defaults to InputMode.MONO. 
-* `.resetMaxValueDuration(2000)` to reset the max value every 2000 milliseconds.
+* `.setAudioInputMode(AudioInputMode.AUDIO_FILE)` to set the input mode to AudioInputMode.AUDIO_FILE. You can also set it to AudioInputMode.LINE_IN or AudioInputMode.MICROPHONE. Defaults to AudioInputMode.MICROPHONE. 
+* `.setAudioOutputMode(AudioOutputMode.STEREO)` to set the output mode to AudioOutputMode.STEREO. Defaults to AudioOutputMode.MONO. Use it to get access to both left and right channel analysis.
+
 * `.showInfoPanel()` to show the infopanel.
 * `.setInfoPanelY(n)` to offset the starting y-position of the infopanel by n pixels. Useful for when you have multiple infopanels to get them all lined up.
 * `.setInfoPanelKey('u')` to change the hotkey to toggle the infopanel. Useful for when you have multiple infopanels. Defaults to 'i'.
@@ -61,8 +69,8 @@ You can tweak the behaviour of this library with the following functions (you ca
   * `CTRL + 1` switch to FILE mode
   * `CTRL + 2` switch to MONO mode
   * `CTRL + 3` switch to STEREO mode
-  * `CTRL + M` toggle mute or monitoring (depends on InputMode)
-  * `CTRL + R` reset the max value
+  * `CTRL + M` toggle monitoring on LINE_IN or MICROPHONE input
+  
 
 ## Examples
 You can find all these examples in `Processing -> File - Examples - Contributed Libraries - BPM timings - FrequencyAnalyzer`.

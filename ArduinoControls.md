@@ -55,7 +55,7 @@ The ArduinoControls class provides the following main functions:
 * `getPotentiometer(0)` functon that returns the raw normalized value from potentiometer with index 0, without any smoothing
 * `getPotentiometer(0, 0.5)` functon that returns the smoothed normalized value from potentiometer with index 0. Smoothness is a value between 0 and 1 which adds a little delay.
 
-You can tweak the behaviour of this library with the following functions (you can also chain them when initializing for clarity):
+You can tweak the behaviour of this library with the following functions (you can also chain them when initializing your arduinocontrols object for clarity):
 * `.addArduino(arduino)` mandatory to add the global arduino object to the class.
 * `.addLED(9)` to add an LED to the class at digital port 9.
 * `.addLED(10, LEDMode.PWM)` to add an LED to the class at digital port 10 as a PWM connected LED. The LEDMode argument is optional (default is `LEDMode.DIGITAL`).
