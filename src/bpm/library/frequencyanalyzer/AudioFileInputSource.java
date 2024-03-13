@@ -2,7 +2,7 @@ package bpm.library.frequencyanalyzer;
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
-
+//test
 class AudioFileInputSource implements AudioInputSource {
   Minim minim;
   FFT fftLeft, fftRight, fftMixed;

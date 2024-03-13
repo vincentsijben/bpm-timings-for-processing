@@ -15,11 +15,7 @@ public class FrequencyAnalyzer {
   AudioInputSource currentInputSource;
   private AudioPlayer audioPlayer;
   private String file;
-  //private AudioInput audioInput;
-  //private AudioBuffer audioBufferMix;
-  //private AudioBuffer audioBufferLeftt;
-  //private AudioBuffer audioBufferRight;
-  private int bandsPerOctave;
+  // private int bandsPerOctave;
 
   private InfoPanel infoPanel;
   private AudioInputMode currentInputMode;
@@ -56,11 +52,11 @@ public class FrequencyAnalyzer {
     return this;
   }
 
-  public FrequencyAnalyzer setBandsPerOctave(int bandsPerOctave) {
-    this.bandsPerOctave = bandsPerOctave;
-    //this.fft.logAverages(22, bandsPerOctave ); // 3 results in 30 bands. 1 results in 10 etc.
-    return this;
-  }
+  //public FrequencyAnalyzer setBandsPerOctave(int bandsPerOctave) {
+  //  this.bandsPerOctave = bandsPerOctave;
+  //  //this.fft.logAverages(22, bandsPerOctave ); // 3 results in 30 bands. 1 results in 10 etc.
+  //  return this;
+  //}
 
   public FrequencyAnalyzer setFile(String file) {
     this.file = file;
@@ -99,10 +95,12 @@ public class FrequencyAnalyzer {
       currentInputSource = new LineInInputSource(minim);
       break;
     case AUDIO_FILE:
+    if (this.file == null) System.out.println("no audio file was set");
+    
       //currentInputSource = new AudioFileInputSource(minim, "https://github.com/vincentsijben/bpm-timings-for-processing/raw/main/assets/infraction_music_-_ritmo.mp3"); // Assuming an AudioFileSource class exists
       currentInputSource = new AudioFileInputSource(minim, this.file); // Assuming an AudioFileSource class exists
       //"stereotest.mp3"
-
+    
       break;
     }
 

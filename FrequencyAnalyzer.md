@@ -57,7 +57,6 @@ The FrequencyAnalyzer class provides the following main functions:
 
 You can tweak the behaviour of this library with the following functions (you can also chain them when initializing your frequencyanalyzer object for clarity):
 * `.addMinim(minim)` mandatory to add the global minim object to the class.
-* `.setBandsPerOctave(6)` to get a total of 6 * 10 bands.
 * `.setFile("example.mp3")` to set the file for the audioplayer.
 * `.setAudioInputMode(AudioInputMode.AUDIO_FILE)` to set the input mode to AudioInputMode.AUDIO_FILE. You can also set it to AudioInputMode.LINE_IN or AudioInputMode.MICROPHONE. Defaults to AudioInputMode.MICROPHONE. 
 * `.setAudioOutputMode(AudioOutputMode.STEREO)` to set the output mode to AudioOutputMode.STEREO. Defaults to AudioOutputMode.MONO. Use it to get access to both left and right channel analysis.
@@ -69,7 +68,15 @@ You can tweak the behaviour of this library with the following functions (you ca
   * `CTRL + 2` switch to MONO mode
   * `CTRL + 3` switch to STEREO mode
   * `CTRL + M` toggle monitoring on LINE_IN or MICROPHONE input
-  
+
+<!-- 
+  * `CTRL + R` reset the max value
+* `getAvg(2)` function that returns normalized value of the frequency band with index 2. The normalization mapping is done by continuously checking the highest overall amplitude.
+* `getAvg(2, 150)` function that returns normalized value of the frequency band with index 2, mapped with a max value of 150.
+* `resetMaxValue()` function that resets the overall max value (to 0.1f).
+* `.resetMaxValueDuration(2000)` to reset the max value every 2000 milliseconds.
+* `.setBandsPerOctave(6)` to get a total of 6 * 10 bands. 
+-->  
 
 ## Examples
 You can find all these examples in `Processing -> File - Examples - Contributed Libraries - BPM timings - FrequencyAnalyzer`.
