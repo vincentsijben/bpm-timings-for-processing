@@ -6,6 +6,17 @@ BPM timings for Processing is a small library for Processing that provides easy 
 ### Context
 This library was created in 2023 for the Maastricht Institute of Arts - GenArt exposition. Students were showcasing their generative art work that could be controlled with a custom built Arduino controller. The work was BPM based; a live band performed on stage while students acted as VJ's, controlling their own digital work through the Arduino controller. For the exposition and performance of 2024, this library was expanded with 2 additional classes: [ArduinoControls](ArduinoControls.md) and [FrequencyAnalyzer](FrequencyAnalyzer.md).
 
+Students collaborated with several artists. Click the thumbnail for more information:
+
+<table width="100%">
+  <tr>
+    <td valign="top" align="center" width="33%"><a href="context/triana-y-luca.md">Triana y Luca<br><img src="assets/artist-triana-y-luca.jpeg" width="100%" alt="Artist Triana y Luca" /></a></td>
+    <td valign="top" align="center" width="33%"><a href="context/ananya-samyt.md">Ananya Samyt<br><img src="assets/artist-ananya-samyt.jpg" width="100%" alt="Artist Ananya Samyt" /></a></td>
+    <td valign="top" align="center" width="33%"><a href="context/gogo.md">Gogo<br><img src="assets/artist-gogo.jpg" width="100%" alt="Artist Gogo" /></a></td>
+  </tr>
+ </table>
+
+
 ## How to install
 Install the library by downloading the latest release through the Processing contribution manager: go to `Processing > Sketch > Import Library... > Manage Libraries...` and search for "BPM timings" and click install.
 

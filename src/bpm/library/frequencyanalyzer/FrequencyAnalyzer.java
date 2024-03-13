@@ -86,7 +86,7 @@ public class FrequencyAnalyzer {
   public FrequencyAnalyzer setAudioInputMode(AudioInputMode newMode) {
     if (newMode == this.currentInputMode) return this;
     if (currentInputSource != null) {
-      currentInputSource.stop();
+      currentInputSource.close();
       currentInputSource = null;
     }
 

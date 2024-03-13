@@ -21,7 +21,7 @@ class LineInInputSource implements AudioInputSource {
   @Override
     public void init() {
     // Assuming a stereo input for line-in
-    this.lineIn = this.minim.getLineIn(Minim.STEREO);
+    this.lineIn = this.minim.getLineIn(Minim.MONO);
     
     this.fftLeft = new FFT(this.lineIn.bufferSize(), this.lineIn.sampleRate());
     this.fftRight = new FFT(this.lineIn.bufferSize(), this.lineIn.sampleRate());
@@ -39,10 +39,6 @@ class LineInInputSource implements AudioInputSource {
 
   @Override
     public void stop() {
-    if (lineIn != null) {
-      lineIn.close(); // Stops the audio input and releases resources
-      lineIn = null;
-    }
   }
 
   @Override
