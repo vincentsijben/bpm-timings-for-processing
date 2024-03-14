@@ -23,33 +23,18 @@ Install the library by downloading the latest release through the Processing con
 ## Usage
 
 ```
-// Import the library to your sketch
 import bpm.library.beatsperminute.*;
-
-// Create the bpm object
 BeatsPerMinute bpm;
 
-void setup(){
-  size(500,500);
-
-  // Initialize the bpm object
-  bpm = new BeatsPerMinute(this)
-    //.setBPM(120)           // set the starting bpm to 120
-    .showInfoPanel()         // show the infopanel at the start
-    //.setInfoPanelY(200)    // set the y location of the infopanel to 200
-    //.setInfoPanelKey('o')  // set the hotkey for toggling the infopanel to 'o'
-    //.disableKeyPress()     // disable listening to keypresses
-    ;
+void setup() {
+  size(500, 500);
+  bpm = new BeatsPerMinute(this);
+  bpm.setBPM(30);
 }
 
-void draw(){
-  background(100);
-  
-  // Use a timing function from the bpm object
-  float radius = 20 + bpm.linear() * 50;
-  // or: float radius = map(bpm.linear(), 0, 1, 20, 70);
-  // or: float radius = lerp(20, 70, bpm.linear());
-  circle(width/2, height/2, radius);
+void draw() {
+  background(50);
+  circle(width/2, height/2, bpm.easeBounce()*500);
 }
 ```
 
