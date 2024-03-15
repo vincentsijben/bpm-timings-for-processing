@@ -103,6 +103,7 @@ I've copied `library.properties` to the root and called it `library.properties.e
 * Check "Set as the latest release" (it should be checked by default)
 * Edit the previous release. Remove the latest tag and set the appropriate [prettyVersion] tag.
 * Edit the new created release, remove the [prettyVersion] tag and add the **latest** tag.
+* You can check [https://download.processing.org/contribs](https://download.processing.org/contribs) to check if the newest version is picked up by the automated contribution system.
 
 ### Debugging issues
 * Always check the build.properties files. I've been down a rabithole for 4 hours finding out I had changed my Documents folder location and the build.properties still had `sketchbook.location=${user.home}/Documents/Processing` instead of the new `sketchbook.location=${user.home}/Docs/Processing`
