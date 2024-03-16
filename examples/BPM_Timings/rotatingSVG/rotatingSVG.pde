@@ -7,6 +7,7 @@
  * In 4 beats, an SVG shape is drawn 15 times and is rotated and scaled
  * In 2 beats, 15 rectangles are rotated and scaled
  * The sketch alternates every 4 beats between the SVG and rectangle shapes.
+ * Credits to https://github.com/Mick-Willemsen for creating this example.
  */
 import bpm.library.beatsperminute.*;
 
