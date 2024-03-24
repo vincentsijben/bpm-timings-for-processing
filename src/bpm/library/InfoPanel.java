@@ -38,6 +38,7 @@ public class InfoPanel {
   }
 
   private void onKeyPress(KeyEvent event) {
+    
     if (event.getKey()==this.keyboardKey && !this.keyPressedActionTaken) {
       this.show = !this.show;
       this.keyPressedActionTaken = true;

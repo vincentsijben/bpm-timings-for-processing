@@ -1,7 +1,5 @@
 /*
- - BPM: bug: make bpm.bpm public
- - BPM: bug: showinfo bpm class should have nostroke in pushstyle
- todo: //processing doesn't like transparancy in 3D
+ todo: //processing doesn't like transparancy in 3D for the overlay
  //see https://www.reddit.com/r/processing/comments/59r0le/problems_with_transparency_in_3d/
  */
 
@@ -22,23 +20,19 @@ public class BeatsPerMinute {
   private InfoPanel infoPanel;
 
   private int bpm;
-  private float beatDuration = 0.001f; // to prevent dividing by 0
-  /**
-   	   * Read the current beatcount
-   	   *
-   	   */
-  public float beatCount = 0f;
+  private float beatDuration;
+  private int beatCount = 0;
   private boolean enableKeyPress;
   private boolean keyPressedActionTaken;
 
   //helper variables to only run functions once until they reset
-  private boolean doOnce = true;
-  private float lastBeatCount = 0f;
-  private int lastFrameCount = -1;
+  private boolean doOnce;
+  private int lastBeatCount;
+  private int lastFrameCount;
 
   //we use these variables to be able to 'reset' the time whenever we want.
-  private float millis_runtime;
-  private float millis_start;
+  private long millis_runtime;
+  private long millis_start;
 
   /**
    	   * helper booleans that turn true every n beats. Added one extra upfront that isn't used, so the user could do every[3] which means 3rd beat.
@@ -68,6 +62,11 @@ public class BeatsPerMinute {
   public BeatsPerMinute(PApplet parent) {
     this.welcome();
     this.parent = parent;
+    this.beatDuration = 0.001f; // to prevent dividing by 0
+    this.doOnce = true;
+    this.beatCount = 0;
+    this.lastBeatCount = 0;
+    this.lastFrameCount = -1;
     this.setBPM(60);
     this.millis_start = parent.millis();
     this.infoPanel = new InfoPanel(parent);
@@ -77,6 +76,7 @@ public class BeatsPerMinute {
     this.keyPressedActionTaken = false;
 
     parent.registerMethod("draw", this);
+    parent.registerMethod("pre", this);
     parent.registerMethod("post", this);
     parent.registerMethod("keyEvent", this);
   }
@@ -92,154 +92,103 @@ public class BeatsPerMinute {
     return this;
   }
 
-
-
-
-  /**
-   	   * returns a string with information about bpm amount, beatcount and framerate, to be used in your surface title.
-   	   * @return String
-   	   *
-   	   */
-  public String setSurfaceTitle() {
-    return "BPM: " + this.bpm + " // beatCount: " + PApplet.nf((int) this.beatCount, 3) + " // frameRate: " + PApplet.nf((int) this.parent.frameRate, 2);
+  public int getBPM() {
+    return this.bpm;
   }
-  /**
-   	   * Overload function for linear(float durationInBeats, float delayInBeats). Sets the durationInBeats to 1 and delayInBeats to 0.
-   	   *
-   	   * @return float
-   	   *
-   	   */
+
+  public int getBeatCount() {
+    return this.beatCount;
+  }
+
+  public String getSurfaceTitle() {
+    return "BPM: " + this.bpm + " // beatCount: " + PApplet.nf(this.beatCount, 3) + " // frameRate: " + PApplet.nf((int) this.parent.frameRate, 2);
+  }
+  
+  public float adsr(float attackDuration) {
+    return this.adsr(attackDuration, 0, 1, 0, 1, 0);
+  }
+
+  public float adsr(float attackDuration, float decayDuration, float sustainLevel, float releaseDuration) {
+    return this.adsr(attackDuration, decayDuration, sustainLevel, releaseDuration, 1, 0);
+  }
+
+  public float adsr(float attackDuration, float decayDuration, float sustainLevel, float releaseDuration, float durationInBeats) {
+    return this.adsr(attackDuration, decayDuration, sustainLevel, releaseDuration, durationInBeats, 0);
+  }
+
+  public float adsr(float attackDuration, float decayDuration, float sustainLevel, float releaseDuration, float durationInBeats, float delayInBeats) {
+    float duration = this.beatDuration * durationInBeats;
+    float delay = this.beatDuration * delayInBeats;
+    if (this.millis_runtime < delay) return 0;
+    float currentTime = (this.millis_runtime-delay) % duration;
+    float attackEndTime = duration * attackDuration;
+    float decayEndTime = attackEndTime + this.beatDuration * decayDuration;
+    float sustainEndTime = duration - duration * releaseDuration;
+
+    // Compute ADSR value based on the current phase
+    if (currentTime <= attackEndTime) return currentTime / attackEndTime; // Attack phase
+    if (currentTime <= decayEndTime) return 1 + (sustainLevel - 1) * ((currentTime - attackEndTime) / (this.beatDuration * decayDuration)); // Decay phase
+    if (currentTime <= sustainEndTime) return sustainLevel; // Sustain phase
+    return sustainLevel * (1 - (currentTime - sustainEndTime) / (duration * releaseDuration)); // Release phase
+  }
+
   public float linear() {
     return linear(1, 0);
   }
-  /**
-   	   * Overload function for linear(float durationInBeats, float delayInBeats). Sets the delayInBeats to 0.
-   	   *
-   	   * @param durationInBeats the duration in amount of beats
-   	   * @return float
-   	   *
-   	   */
+
   public float linear(float durationInBeats) {
     return linear(durationInBeats, 0);
   }
-  /**
-   	   * returns a normalized 'linear' progress value for the durationInBeats amount of beats
-   	   * with a delay of the delayInBeats amount of beats
-   	   * range from 0 to 1
-   	   *
-   	   * @param durationInBeats the duration in amount of beats
-   	   * @param delayInBeats the delay in amount of beats
-   	   * @return float
-   	   *
-   	   */
-  public float linear(float durationInBeats, float delayInBeats) {
-    float duration = this.beatDuration*durationInBeats;
-    float delay = this.beatDuration * delayInBeats;
 
-    if (this.millis_runtime < delay) return 0;
-    return (this.millis_runtime-delay)%duration/duration;
-  }
-
-  /**
-   	   * Overload function for linearBounce(float durationInBeats, float delayInBeats). Sets the durationInBeats to 1 and delayInBeats to 0.
-   	   *
-   	   * @return float
-   	   *
-   	   */
   public float linearBounce() {
     return linearBounce(1, 0);
   }
-  /**
-   	   * Overload function for linearBounce(float durationInBeats, float delayInBeats). Sets the delayInBeats to 0.
-   	   *
-   	   * @param durationInBeats the duration in amount of beats
-   	   * @return float
-   	   *
-   	   */
+
   public float linearBounce(float durationInBeats) {
     return linearBounce(durationInBeats, 0);
   }
-  /**
-   	   * returns a normalized 'linear' progress value for the durationInBeats amount of beats
-   	   * with a delay of the delayInBeats amount of beats
-   	   * in a 'bounced' way: range from 0 to 1 to 0
-   	   *
-   	   * @param durationInBeats the duration in amount of beats
-   	   * @param delayInBeats the delay in amount of beats
-   	   * @return float
-   	   *
-   	   */
-  public float linearBounce(float durationInBeats, float delayInBeats) {
-    float progress = linear(durationInBeats, delayInBeats);
-    if (progress < 0.5) return PApplet.map(progress, 0, 0.5f, 0, 1);
-    return PApplet.map(progress, 0.5f, 1, 1, 0);
+
+  public float linear(float durationInBeats, float delayInBeats) {
+    return this.adsr(1, 0, 1, 0, durationInBeats, delayInBeats);
   }
 
-  /**
-   	   * Overload function for ease(float durationInBeats, float delayInBeats). Sets the durationInBeats to 1 and delayInBeats to 0.
-   	   *
-   	   * @return float
-   	   *
-   	   */
+  public float linearBounce(float durationInBeats, float delayInBeats) {
+    return this.adsr(0.5f, 0, 1, 0.5f, durationInBeats, delayInBeats);
+  }
+
   public float ease() {
     return ease(1, 0);
   }
-  /**
-   	   * Overload function for ease(float durationInBeats, float delayInBeats). Sets the delayInBeats to 0.
-   	   *
-   	   * @param durationInBeats the duration in amount of beats
-   	   * @return float
-   	   *
-   	   */
+
   public float ease(float durationInBeats) {
     return ease(durationInBeats, 0);
   }
-  /**
-   	   * returns a normalized 'eased' progress value for the durationInBeats amount of beats
-   	   * with a delay of the delayInBeats amount of beats
-   	   * range from 0 to 1
-   	   *
-   	   * @param durationInBeats the duration in amount of beats
-   	   * @param delayInBeats the delay in amount of beats
-   	   * @return float
-   	   *
-   	   */
+
   public float ease(float durationInBeats, float delayInBeats) {
-    return PApplet.sin(PApplet.lerp(0, (float) Math.PI/2, linear(durationInBeats, delayInBeats)));
+    return (float) easeInOutSine(linear(durationInBeats, delayInBeats));
   }
 
-  /**
-   	   * Overload function for easeBounce(float durationInBeats, float delayInBeats). Sets the durationInBeats to 1 and delayInBeats to 0.
-   	   *
-   	   * @return float
-   	   *
-   	   */
   public float easeBounce() {
     return easeBounce(1, 0);
   }
-  /**
-   	   * Overload function for easeBounce(float durationInBeats, float delayInBeats). Sets the delayInBeats to 0.
-   	   *
-   	   * @param durationInBeats the duration in amount of beats
-   	   * @return float
-   	   *
-   	   */
+
   public float easeBounce(float durationInBeats) {
     return easeBounce(durationInBeats, 0);
   }
-  /**
-   	   * returns a normalized 'eased' progress value for the durationInBeats amount of beats
-   	   * with a delay of the delayInBeats amount of beats
-   	   * in a 'bounced' way: range from 0 to 1 to 0
-   	   *
-   	   * @param durationInBeats the duration in amount of beats
-   	   * @param delayInBeats the delay in amount of beats
-   	   * @return float
-   	   *
-   	   */
+
   public float easeBounce(float durationInBeats, float delayInBeats) {
-    return PApplet.sin(PApplet.lerp(0, (float) Math.PI, linear(durationInBeats, delayInBeats)));
+    return (float) easeInOutSineMirror(linear(durationInBeats, delayInBeats));
   }
+
+  private double easeInOutSine(float x) {
+    return -(Math.cos(Math.PI * x) - 1) / 2;
+  }
+
+  private double easeInOutSineMirror(float x) {
+    if (x <= 0.5) return easeInOutSine(x * 2);
+    return easeInOutSine((1 - x) * 2);
+  }
+
 
 
 
@@ -315,38 +264,45 @@ public class BeatsPerMinute {
   public void draw() {
 
     if (this.infoPanel.show) {
+      this.parent.pushMatrix();
+      this.parent.pushStyle();
+      this.parent.imageMode(PConstants.CORNER);
       PGraphics overlay = this.infoPanel.overlay;
       overlay.beginDraw();
+      overlay.pushMatrix();
       overlay.pushStyle();
       overlay.rectMode(PConstants.CORNER);
       overlay.textAlign(PConstants.LEFT, PConstants.CENTER);
+      overlay.stroke(0);
       overlay.fill(255, 100);
       overlay.rect(0, 0, 190, 440);
       overlay.fill(0);
       overlay.textSize(20);
       overlay.text("BPM: " + this.bpm, 10, 20);
       overlay.text("beatDuration: " + Math.floor(this.beatDuration), 10, 40);
-      overlay.text("beatCount: " + Math.floor(this.beatCount), 10, 60);
-      overlay.text("normalized: " + PApplet.nf(linear(), 0, 3), 10, 80);
-      overlay.text("frameRate: " + (int)(this.parent.frameRate), 10, 100);
+      overlay.text("beatCount: " + this.beatCount, 10, 60);
+      overlay.text("frameRate: " + (int)(this.parent.frameRate), 10, 80);
 
       overlay.textSize(12);
+      overlay.text("every 1 beat", 12, 108);
+      if (this.every_once[1]) overlay.fill(0);
+      else overlay.fill(255);
+      overlay.ellipse(90, 108, 10, 10);
       for (int i=2; i<this.every.length; i++) {
         overlay.fill(0);
         overlay.text("every " + i + " beat", 12, 88 + i*20);
         if (this.every[i]) overlay.fill(0);
         else overlay.fill(255);
-        overlay.ellipse(90, 90 + i*20, 10, 10);
+        overlay.ellipse(90, 88 + i*20, 10, 10);
       }
       overlay.popStyle();
+      overlay.popMatrix();
       overlay.endDraw();
       this.parent.image(overlay, this.infoPanel.x, this.infoPanel.y, this.infoPanel.w, this.infoPanel.h); // Draw the overlay onto the main canvas
+      this.parent.popStyle();
+      this.parent.popMatrix();
     }
   }
-
-
-
-
 
 
 
@@ -356,29 +312,33 @@ public class BeatsPerMinute {
   public void post() {
     // https://github.com/benfry/processing4/wiki/Library-Basics
     // you cant draw in post()
+  }
+
+
+
+  public void pre() {
     this.millis_runtime = this.parent.millis()-this.millis_start;
     // Assuming beatDuration is updated elsewhere when bpm changes
-    this.beatCount = this.millis_runtime/this.beatDuration;
-
+    this.beatCount = (int) Math.floor(this.millis_runtime/this.beatDuration);
     checkBeatPeriods();
   }
 
   private void checkBeatPeriods() {
     //skip i=0
-    for (int i=1; i<this.every.length; i++) this.every[i] = (int) this.beatCount % i==0;
+    for (int i=1; i<this.every.length; i++) this.every[i] = this.beatCount % i==0;
+
+    //reset the mechanism after one beat
+    if (this.lastBeatCount != this.beatCount) this.doOnce = false;
 
     //set the corresponding 'once' boolean to true for a 1 frame period
     if (this.doOnce == false) {
       this.doOnce = true;
-      this.lastBeatCount = (int) this.beatCount;
+      this.lastBeatCount = this.beatCount;
       this.lastFrameCount = this.parent.frameCount;
       for (int i=1; i<this.every_once.length; i++) this.every_once[i] = this.every[i];
     }
 
     //flip the 'once' booleans immediately after one frame
     if (this.parent.frameCount != this.lastFrameCount) for (int i=1; i<this.every_once.length; i++) this.every_once[i] = false;
-
-    //reset the mechanism after one beat
-    if ((int) this.lastBeatCount != (int) this.beatCount) this.doOnce = false;
   }
 }
