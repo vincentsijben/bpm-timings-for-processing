@@ -50,16 +50,16 @@ The FrequencyAnalyzer class provides the following main functions:
   * `getAvgRawRight(1)` same as getAvgRaw(1) but specific for the right channel.
 
 todo:
-~~
-* `getBand(1)` returns the amplitude for frequency band 1. Used for a very specific and narrow frequency range. The index ranges from 0 to specSize().
-  * `getBandLeft(1)` same as getBand(1) but specific for the left channel.
-  * `getBandRight(1)` same as getBand(1) but specific for the right channel.
-* `specSize()` returns the total amount of bands used. Typically 1025 
-* `avgSize()` returns the total amount of bands used in the logAverages function. Typically 30
-* `getAudioBuffer()` returns the mixed (mono) audio buffer.
-  * `getLeftChannelBuffer()` returns the left audio buffer.
-  * `getRightChannelBuffer()` returns the right audio buffer.
-~~
+
+* ~~`getBand(1)` returns the amplitude for frequency band 1. Used for a very specific and narrow frequency range. The index ranges from 0 to specSize().~~
+  * ~~`getBandLeft(1)` same as getBand(1) but specific for the left channel.~~
+  * ~~`getBandRight(1)` same as getBand(1) but specific for the right channel.~~
+* ~~`specSize()` returns the total amount of bands used. Typically 1025 ~~
+* ~~`avgSize()` returns the total amount of bands used in the logAverages function. Typically 30~~
+* ~~`getAudioBuffer()` returns the mixed (mono) audio buffer.~~
+  * ~~`getLeftChannelBuffer()` returns the left audio buffer.~~
+  * ~~`getRightChannelBuffer()` returns the right audio buffer.~~
+
 
 You can tweak the behaviour of this library with the following functions (you can also chain them when initializing your frequencyanalyzer object for clarity):
 * `.addMinim(minim)` mandatory to add the global minim object to the class.
