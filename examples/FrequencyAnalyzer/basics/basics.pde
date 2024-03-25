@@ -28,8 +28,8 @@ void draw() {
   noFill();
 
   // Example visualization: Draw waveforms for left and right channels
-  drawWaveform(fa.getLeftChannelBuffer(), 0, height / 4, width, height / 2, color(255, 0, 0)); // Red for left channel
-  drawWaveform(fa.getRightChannelBuffer(), 0, 3 * height / 4, width, height / 2, color(0, 0, 255)); // Blue for right channel
+  //drawWaveform(fa.getLeftChannelBuffer(), 0, height / 4, width, height / 2, color(255, 0, 0)); // Red for left channel
+  //drawWaveform(fa.getRightChannelBuffer(), 0, 3 * height / 4, width, height / 2, color(0, 0, 255)); // Blue for right channel
 
 
   // Example visualization: Draw the frequency spectrum using FFT analysis

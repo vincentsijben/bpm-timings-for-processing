@@ -35,12 +35,10 @@ void setup() {
     .addArduino(arduino)
     .addLED(9)
     .addPotentiometer(0, 'q')
-    //.showInfoPanel()
     .setInfoPanelY(100)
     ;
   bpm = new BeatsPerMinute(this)
     .setBPM(110)
-    //.showInfoPanel()
     .setInfoPanelKey('o')
     ;
   fa = new FrequencyAnalyzer(this)
@@ -48,7 +46,6 @@ void setup() {
     .setFile("https://github.com/vincentsijben/bpm-timings-for-processing/raw/main/assets/infraction_music_-_ritmo.mp3")
     .setAudioInputMode(AudioInputMode.AUDIO_FILE)
     .setAudioOutputMode(AudioOutputMode.MONO)
-    //.showInfoPanel()
     .setInfoPanelKey('p')
     ;
 }
@@ -67,9 +64,9 @@ void draw() {
   stroke(91, 244, 233);
   strokeWeight(3);
   noFill();
-  circle(width/4*1, height/2, lerp(0, height, fa.getAvgRaw(0)));
-  circle(width/4*2, height/2, lerp(0, height, fa.getAvgRaw(10)));
-  circle(width/4*3, height/2, lerp(0, height, fa.getAvgRaw(20)));
+  circle(width/4*1, height/2, fa.getAvgRaw(0) * 10);
+  circle(width/4*2, height/2, fa.getAvgRaw(10)* 10);
+  circle(width/4*3, height/2, fa.getAvgRaw(20)* 10);
 
   // bpm: grow circle in 1 beat
   noStroke();

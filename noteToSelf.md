@@ -90,15 +90,6 @@ ln -s ../../../src/bpm/library/frequencyanalyzer/MicrophoneInputSource.java ./ex
 ln -s ../../../src/bpm/library/frequencyanalyzer/LineInInputSource.java ./examples/FrequencyAnalyzer/basics/LineInInputSource.java
 ln -s ../../../src/bpm/library/InfoPanel.java ./examples/FrequencyAnalyzer/basics/InfoPanel.java
 
-ln -s ../../../src/bpm/library/frequencyanalyzer/FrequencyAnalyzer.java ./examples/FrequencyAnalyzer/audio_file/FrequencyAnalyzer.java
-ln -s ../../../src/bpm/library/frequencyanalyzer/AudioFileInputSource.java ./examples/FrequencyAnalyzer/audio_file/AudioFileInputSource.java
-ln -s ../../../src/bpm/library/frequencyanalyzer/AudioInputMode.java ./examples/FrequencyAnalyzer/audio_file/AudioInputMode.java
-ln -s ../../../src/bpm/library/frequencyanalyzer/AudioOutputMode.java ./examples/FrequencyAnalyzer/audio_file/AudioOutputMode.java
-ln -s ../../../src/bpm/library/frequencyanalyzer/AudioInputSource.java ./examples/FrequencyAnalyzer/audio_file/AudioInputSource.java
-ln -s ../../../src/bpm/library/frequencyanalyzer/MicrophoneInputSource.java ./examples/FrequencyAnalyzer/audio_file/MicrophoneInputSource.java
-ln -s ../../../src/bpm/library/frequencyanalyzer/LineInInputSource.java ./examples/FrequencyAnalyzer/audio_file/LineInInputSource.java
-ln -s ../../../src/bpm/library/InfoPanel.java ./examples/FrequencyAnalyzer/audio_file/InfoPanel.java
-
 ln -s ../../../src/bpm/library/frequencyanalyzer/FrequencyAnalyzer.java ./examples/FrequencyAnalyzer/mono/FrequencyAnalyzer.java
 ln -s ../../../src/bpm/library/frequencyanalyzer/AudioFileInputSource.java ./examples/FrequencyAnalyzer/mono/AudioFileInputSource.java
 ln -s ../../../src/bpm/library/frequencyanalyzer/AudioInputMode.java ./examples/FrequencyAnalyzer/mono/AudioInputMode.java
