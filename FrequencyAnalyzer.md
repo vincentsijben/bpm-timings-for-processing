@@ -3,7 +3,7 @@ This FrequencyAnalyzer class is used at the Maastricht Institute of Arts exposit
 Students create sketches that react in realtime to audio input (line-in, audio file or microphone).
 
  This library adds functionality like:
- - easily switch between input modes (line-in, audio file, microphone)
+ - easily switch between input modes (audio file, microphone, line-in)
  - return raw or normalized values of specific frequency bands
  - toggle mute (audio file playing) or monitoring (microphone or line-in)
  - reset the max value that is used for mapping normalized values of frequency amplitudes. Can be set to an interval.
