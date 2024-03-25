@@ -13,8 +13,7 @@ void setup() {
 
   println(Arduino.list());
   arduino = new Arduino(this, Arduino.list()[2], 57600);
-  arduino.pinMode(13, Arduino.OUTPUT);
-
+  
   ac = new ArduinoControls(this)
     .addArduino(arduino)
     .addLED(13)
