@@ -98,6 +98,24 @@ ln -s ../../../src/bpm/library/frequencyanalyzer/AudioInputSource.java ./example
 ln -s ../../../src/bpm/library/frequencyanalyzer/MicrophoneInputSource.java ./examples/FrequencyAnalyzer/audio_file/MicrophoneInputSource.java
 ln -s ../../../src/bpm/library/frequencyanalyzer/LineInInputSource.java ./examples/FrequencyAnalyzer/audio_file/LineInInputSource.java
 ln -s ../../../src/bpm/library/InfoPanel.java ./examples/FrequencyAnalyzer/audio_file/InfoPanel.java
+
+ln -s ../../../src/bpm/library/frequencyanalyzer/FrequencyAnalyzer.java ./examples/FrequencyAnalyzer/mono/FrequencyAnalyzer.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/AudioFileInputSource.java ./examples/FrequencyAnalyzer/mono/AudioFileInputSource.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/AudioInputMode.java ./examples/FrequencyAnalyzer/mono/AudioInputMode.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/AudioOutputMode.java ./examples/FrequencyAnalyzer/mono/AudioOutputMode.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/AudioInputSource.java ./examples/FrequencyAnalyzer/mono/AudioInputSource.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/MicrophoneInputSource.java ./examples/FrequencyAnalyzer/mono/MicrophoneInputSource.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/LineInInputSource.java ./examples/FrequencyAnalyzer/mono/LineInInputSource.java
+ln -s ../../../src/bpm/library/InfoPanel.java ./examples/FrequencyAnalyzer/mono/InfoPanel.java
+
+ln -s ../../../src/bpm/library/frequencyanalyzer/FrequencyAnalyzer.java ./examples/FrequencyAnalyzer/stereo/FrequencyAnalyzer.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/AudioFileInputSource.java ./examples/FrequencyAnalyzer/stereo/AudioFileInputSource.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/AudioInputMode.java ./examples/FrequencyAnalyzer/stereo/AudioInputMode.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/AudioOutputMode.java ./examples/FrequencyAnalyzer/stereo/AudioOutputMode.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/AudioInputSource.java ./examples/FrequencyAnalyzer/stereo/AudioInputSource.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/MicrophoneInputSource.java ./examples/FrequencyAnalyzer/stereo/MicrophoneInputSource.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/LineInInputSource.java ./examples/FrequencyAnalyzer/stereo/LineInInputSource.java
+ln -s ../../../src/bpm/library/InfoPanel.java ./examples/FrequencyAnalyzer/stereo/InfoPanel.java
 ```
 BPM_Timing examples:
 ```

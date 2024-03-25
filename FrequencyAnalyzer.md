@@ -4,8 +4,10 @@ Students create sketches that react in realtime to audio input (line-in, audio f
 
  This library adds functionality like:
  - easily switch between input modes (audio file, microphone, line-in)
- - return raw or normalized values of specific frequency bands
  - toggle mute (audio file playing) or monitoring (microphone or line-in)
+ 
+ todo:
+ - return raw or normalized values of specific frequency bands
  - reset the max value that is used for mapping normalized values of frequency amplitudes. Can be set to an interval.
  
 ## Usage
@@ -29,31 +31,35 @@ void setup() {
     .addMinim(minim)
     .setFile("https://github.com/vincentsijben/bpm-timings-for-processing/raw/main/assets/infraction_music_-_ritmo.mp3")
     .setAudioInputMode(AudioInputMode.AUDIO_FILE)
-    .setAudioOutputMode(AudioOutputMode.MONO) //default
     ;
 }
 
 void draw() {
   background(50);
 
-  circle(width/4*1, height/2, lerp(0, height, fa.getAvgRaw(0)));
-  circle(width/4*2, height/2, lerp(0, height, fa.getAvgRaw(10)));
-  circle(width/4*3, height/2, lerp(0, height, fa.getAvgRaw(20)));
+  circle(width/4*1, height/2, fa.getAvgRaw(0));
+  circle(width/4*2, height/2, fa.getAvgRaw(10));
+  circle(width/4*3, height/2, fa.getAvgRaw(20));
 }
 ```
 
 The FrequencyAnalyzer class provides the following main functions:
+
+* `getAvgRaw(1)` returns non-normalized "raw" averaged amplitude for frequency band 1. The index ranges from 0 to logAverages(22, 3) which is 30 by default.
+  * `getAvgRawLeft(1)` same as getAvgRaw(1) but specific for the left channel.
+  * `getAvgRawRight(1)` same as getAvgRaw(1) but specific for the right channel.
+
+todo:
+~~
 * `getBand(1)` returns the amplitude for frequency band 1. Used for a very specific and narrow frequency range. The index ranges from 0 to specSize().
   * `getBandLeft(1)` same as getBand(1) but specific for the left channel.
   * `getBandRight(1)` same as getBand(1) but specific for the right channel.
 * `specSize()` returns the total amount of bands used. Typically 1025 
-* `getAvgRaw(1)` returns non-normalized "raw" averaged amplitude for frequency band 1. The index ranges from 0 to logAverages(22, 3) which is 30 by default.
-  * `getAvgRawLeft(1)` same as getAvgRaw(1) but specific for the left channel.
-  * `getAvgRawRight(1)` same as getAvgRaw(1) but specific for the right channel.
 * `avgSize()` returns the total amount of bands used in the logAverages function. Typically 30
 * `getAudioBuffer()` returns the mixed (mono) audio buffer.
   * `getLeftChannelBuffer()` returns the left audio buffer.
   * `getRightChannelBuffer()` returns the right audio buffer.
+~~
 
 You can tweak the behaviour of this library with the following functions (you can also chain them when initializing your frequencyanalyzer object for clarity):
 * `.addMinim(minim)` mandatory to add the global minim object to the class.
