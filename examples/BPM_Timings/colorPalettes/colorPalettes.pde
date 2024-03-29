@@ -62,7 +62,7 @@ void draw() {
   }
   fill(0);
   textSize(30);
-  text("Beat: " + int(bpm.beatCount), 20, 260);
+  text("Beat: " + int(bpm.getBeatCount()), 20, 260);
   text("Palette: " + (paletteIndex + 1), 20, 300);
   text("Color: " + (colorIndex + 1), 20, 340);
 

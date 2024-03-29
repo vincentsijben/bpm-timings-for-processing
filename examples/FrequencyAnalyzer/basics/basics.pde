@@ -15,7 +15,6 @@ void setup() {
   fa = new FrequencyAnalyzer(this)
     .addMinim(minim)
     .setFile("https://github.com/vincentsijben/bpm-timings-for-processing/raw/main/assets/infraction_music_-_ritmo.mp3")
-    .setFile("example-stereo.mp3")
     .setAudioInputMode(AudioInputMode.AUDIO_FILE)
     //.setAudioInputMode(AudioInputMode.LINE_IN)
     .setAudioOutputMode(AudioOutputMode.MONO)

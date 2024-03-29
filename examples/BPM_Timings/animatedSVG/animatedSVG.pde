@@ -60,7 +60,7 @@ void draw() {
   popMatrix();
 
   pushMatrix();
-  if (int(bpm.beatCount)%4==3) { // start one beat before every fourth
+  if (int(bpm.getBeatCount())%4==3) { // start one beat before every fourth
     float t = lerp(0, -15, bpm.easeBounce());
     translate(60, 225+t);
   } else {

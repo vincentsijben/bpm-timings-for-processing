@@ -103,7 +103,7 @@ public class BeatsPerMinute {
   public String getSurfaceTitle() {
     return "BPM: " + this.bpm + " // beatCount: " + PApplet.nf(this.beatCount, 3) + " // frameRate: " + PApplet.nf((int) this.parent.frameRate, 2);
   }
-  
+
   public float adsr(float attackDuration) {
     return this.adsr(attackDuration, 0, 1, 0, 1, 0);
   }
@@ -262,10 +262,15 @@ public class BeatsPerMinute {
   }
 
   public void draw() {
-
+    // make sure everything in the main sketch is wrapped inside pushMatrix and popMatrix, so the infopanel is always shown top left, even in 3D mode
+    // pushMatrix in registermethod pre()
+    // popMatrix in registermethod draw()
+    this.parent.popMatrix();
+    this.parent.hint(PConstants.DISABLE_DEPTH_TEST);
     if (this.infoPanel.show) {
       this.parent.pushMatrix();
       this.parent.pushStyle();
+      // this.parent.translate(0,0);
       this.parent.imageMode(PConstants.CORNER);
       PGraphics overlay = this.infoPanel.overlay;
       overlay.beginDraw();
@@ -302,6 +307,7 @@ public class BeatsPerMinute {
       this.parent.popStyle();
       this.parent.popMatrix();
     }
+    this.parent.hint(PConstants.ENABLE_DEPTH_TEST);
   }
 
 
@@ -321,6 +327,10 @@ public class BeatsPerMinute {
     // Assuming beatDuration is updated elsewhere when bpm changes
     this.beatCount = (int) Math.floor(this.millis_runtime/this.beatDuration);
     checkBeatPeriods();
+    // make sure everything in the main sketch is wrapped inside pushMatrix and popMatrix, so the infopanel is always shown top left, even in 3D mode
+    // pushMatrix in registermethod pre()
+    // popMatrix in registermethod draw()
+    this.parent.pushMatrix();
   }
 
   private void checkBeatPeriods() {
