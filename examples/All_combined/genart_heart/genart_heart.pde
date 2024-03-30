@@ -51,7 +51,7 @@ public void setup() {
   arduino = new Arduino(this, Arduino.list()[2], 57600);
   arduino.pinMode(8, Arduino.INPUT_PULLUP);
   ac = new ArduinoControls(this)
-    //.addArduino(arduino)
+    .addArduino(arduino)
     .addLED(11, LEDMode.PWM)
     .addPushButton(8, '1', Arduino.LOW)
     ;
@@ -64,7 +64,7 @@ public void draw() {
   background(#4A423C);
   lights();
 
-  //light up LED to size of the heart
+  //light up LED to scale of the heart
   ac.setLED(0, int(lerp(0, 255, bpm.adsr(0.2, 0.2, 0.6, 0.2))));
 
   pushMatrix();
@@ -94,7 +94,7 @@ public void draw() {
     ry -= rotationSpeed;
   }
 
-  //if frequency band 15 exceeds a raw value of 25, change the color of the wired heart
+  //if frequency band 15 exceeds a raw amplitude value of 25, change the color of the wired heart
   float freqBand15 = fa.getAvgRaw(15);
   if (freqBand15 > 25) {
     heart_gold.setFill(color(random(200), random(200), 0));
