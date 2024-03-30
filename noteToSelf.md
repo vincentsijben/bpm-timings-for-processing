@@ -146,4 +146,19 @@ ln -s ../../../src/bpm/library/frequencyanalyzer/AudioInputSource.java ./example
 ln -s ../../../src/bpm/library/frequencyanalyzer/MicrophoneInputSource.java ./examples/All_combined/startercode/MicrophoneInputSource.java
 ln -s ../../../src/bpm/library/frequencyanalyzer/LineInInputSource.java ./examples/All_combined/startercode/LineInInputSource.java
 ln -s ../../../src/bpm/library/beatsperminute/BeatsPerMinute.java ./examples/All_combined/startercode/BeatsPerMinute.java
+
+ln -s ../../../src/bpm/library/arduinocontrols/ArduinoControls.java ./examples/All_combined/genart_heart/ArduinoControls.java
+ln -s ../../../src/bpm/library/arduinocontrols/LED.java ./examples/All_combined/genart_heart/LED.java
+ln -s ../../../src/bpm/library/arduinocontrols/LEDMode.java ./examples/All_combined/genart_heart/LEDMode.java
+ln -s ../../../src/bpm/library/arduinocontrols/Potentiometer.java ./examples/All_combined/genart_heart/Potentiometer.java
+ln -s ../../../src/bpm/library/arduinocontrols/PushButton.java ./examples/All_combined/genart_heart/PushButton.java
+ln -s ../../../src/bpm/library/InfoPanel.java ./examples/All_combined/genart_heart/InfoPanel.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/FrequencyAnalyzer.java ./examples/All_combined/genart_heart/FrequencyAnalyzer.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/AudioFileInputSource.java ./examples/All_combined/genart_heart/AudioFileInputSource.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/AudioInputMode.java ./examples/All_combined/genart_heart/AudioInputMode.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/AudioOutputMode.java ./examples/All_combined/genart_heart/AudioOutputMode.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/AudioInputSource.java ./examples/All_combined/genart_heart/AudioInputSource.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/MicrophoneInputSource.java ./examples/All_combined/genart_heart/MicrophoneInputSource.java
+ln -s ../../../src/bpm/library/frequencyanalyzer/LineInInputSource.java ./examples/All_combined/genart_heart/LineInInputSource.java
+ln -s ../../../src/bpm/library/beatsperminute/BeatsPerMinute.java ./examples/All_combined/genart_heart/BeatsPerMinute.java
 ```

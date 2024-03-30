@@ -6,11 +6,11 @@
  * a pushbutton at digital pin 8
  * a LED at digital port 11
  *
- * This is a replica of the created instagram video for the 
- * Communication & Multimedia Design Generative Art Expo 2024 
+ * This is a replica of the created instagram video for the
+ * Communication & Multimedia Design Generative Art Expo 2024
  * by https://www.instagram.com/raoulboers/
  */
- 
+
 import ddf.minim.*;
 import bpm.library.*;
 import bpm.library.arduinocontrols.*;
@@ -51,7 +51,7 @@ public void setup() {
   arduino = new Arduino(this, Arduino.list()[2], 57600);
   arduino.pinMode(8, Arduino.INPUT_PULLUP);
   ac = new ArduinoControls(this)
-    .addArduino(arduino)
+    //.addArduino(arduino)
     .addLED(11, LEDMode.PWM)
     .addPushButton(8, '1', Arduino.LOW)
     ;
@@ -89,13 +89,14 @@ public void draw() {
     rotationSpeed = lerp(0.01, 0.1, bpm.easeBounce(1));
     if (bpm.every[2]) ry -= rotationSpeed;
     else ry += rotationSpeed;
-
-    // color the wired heart every other beat
-    if (bpm.every_once[2]) {
-      heart_gold.setFill(color(random(200), random(200), 0));
-    }
   } else {
     rotationSpeed = -0.01;
     ry -= rotationSpeed;
+  }
+
+  //if frequency band 15 exceeds a raw value of 25, change the color of the wired heart
+  float freqBand15 = fa.getAvgRaw(15);
+  if (freqBand15 > 25) {
+    heart_gold.setFill(color(random(200), random(200), 0));
   }
 }
