@@ -25,7 +25,7 @@ public void setup() {
   minim = new Minim(this);
   fa = new FrequencyAnalyzer(this)
     .addMinim(minim)
-    .setFile("https://github.com/vincentsijben/bpm-timings-for-processing/raw/main/assets/Ananya - Mornings in Love.mp3")
+    .setFile("https://github.com/vincentsijben/bpm-timings-for-processing/raw/main/assets/Ananya_-_Mornings_in_Love.mp3")
     .setAudioInputMode(AudioInputMode.AUDIO_FILE)
     .setAudioOutputMode(AudioOutputMode.MONO)
     .setInfoPanelKey('o')
