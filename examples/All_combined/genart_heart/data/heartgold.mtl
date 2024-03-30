@@ -1,0 +1,12 @@
+# Blender 4.0.2 MTL File: 'heartgold.blend'
+# www.blender.org
+
+newmtl Material
+Ns 589.388672
+Ka 0.645669 0.645669 0.645669
+Kd 0.301888 0.196485 0.060891
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3

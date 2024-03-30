@@ -266,6 +266,7 @@ public class BeatsPerMinute {
     // pushMatrix in registermethod pre()
     // popMatrix in registermethod draw()
     this.parent.popMatrix();
+    this.parent.popStyle();
     this.parent.hint(PConstants.DISABLE_DEPTH_TEST);
     if (this.infoPanel.show) {
       this.parent.pushMatrix();
@@ -331,6 +332,7 @@ public class BeatsPerMinute {
     // pushMatrix in registermethod pre()
     // popMatrix in registermethod draw()
     this.parent.pushMatrix();
+    this.parent.pushStyle();
   }
 
   private void checkBeatPeriods() {
