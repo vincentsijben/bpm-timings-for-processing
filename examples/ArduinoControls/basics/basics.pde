@@ -1,7 +1,14 @@
-// Import the library to your sketch
+/**
+ * basics
+ * a demo sketch for using the ArduinoControls class. It uses the onboard LED (digital port 13).
+ * https://github.com/vincentsijben/bpm-timings-for-processing
+ *
+ * This example requires a connected Arduino board with:
+ * 1 LED at digital ports 13
+ *
+ */
+ 
 import bpm.library.arduinocontrols.*;
-
-// Import the arduino and serial libraries
 import processing.serial.*;
 import cc.arduino.*;
 

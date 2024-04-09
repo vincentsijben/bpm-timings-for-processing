@@ -1,9 +1,10 @@
 /**
- * controls
+ * smoothing
+ * a demo sketch showing how to use smoothed values for potentiometers. Also includes a pushbutton and an LED.
  * https://github.com/vincentsijben/bpm-timings-for-processing
  *
  * This example requires a connected Arduino board with:
- * a pushbutton at digital pin 7
+ * a pushbutton at digital port 7
  * a potentiometer at A0
  * a LED at digital port 9
  *

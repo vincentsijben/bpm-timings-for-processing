@@ -9,6 +9,8 @@
  * This is a replica of the created instagram video for the
  * Communication & Multimedia Design Generative Art Expo 2024
  * by https://www.instagram.com/raoulboers/
+ *
+ * Music by Ananya Samyt
  */
 
 import ddf.minim.*;
@@ -54,6 +56,7 @@ public void setup() {
     .addArduino(arduino)
     .addLED(11, LEDMode.PWM)
     .addPushButton(8, '1', Arduino.LOW)
+     .setInfoPanelKey('p')
     ;
 
   heart_textured = loadShape("heart_textured.obj");
