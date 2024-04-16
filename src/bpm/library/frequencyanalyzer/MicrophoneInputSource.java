@@ -7,6 +7,7 @@ class MicrophoneInputSource implements AudioInputSource {
   Minim minim;
   AudioInput mic;
   FFT fftLeft, fftRight, fftMixed;
+  int bufferSize = 1024; //Default setting
 
   public AudioOutputMode channelOutput = AudioOutputMode.MONO; // Default setting
 
@@ -14,18 +15,19 @@ class MicrophoneInputSource implements AudioInputSource {
     this.channelOutput = mode;
   }
 
-  public MicrophoneInputSource(Minim minim) {
+  public MicrophoneInputSource(Minim minim, int size) {
     this.minim = minim;
+    this.bufferSize = size;
   }
 
   @Override
     public void init() {
     // Initialize the microphone input. Assuming mono input.
-    this.mic = minim.getLineIn(Minim.MONO);
+    this.mic = minim.getLineIn(Minim.MONO, this.bufferSize);
     this.fftLeft = new FFT(this.mic.bufferSize(), this.mic.sampleRate());
     this.fftRight = new FFT(this.mic.bufferSize(), this.mic.sampleRate());
     this.fftMixed = new FFT(this.mic.bufferSize(), this.mic.sampleRate());
-        this.fftLeft.logAverages(22, 3);
+    this.fftLeft.logAverages(22, 3);
     this.fftRight.logAverages(22, 3);
     this.fftMixed.logAverages(22, 3);
   }

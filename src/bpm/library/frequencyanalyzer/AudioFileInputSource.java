@@ -8,6 +8,7 @@ class AudioFileInputSource implements AudioInputSource {
   FFT fftLeft, fftRight, fftMixed;
   AudioPlayer player;
   String filePath;
+  int bufferSize = 1024; // Default setting
 
   public AudioOutputMode channelOutput = AudioOutputMode.MONO; // Default setting
 
@@ -15,14 +16,15 @@ class AudioFileInputSource implements AudioInputSource {
     this.channelOutput = mode;
   }
 
-  public AudioFileInputSource(Minim minim, String filePath) {
+  public AudioFileInputSource(Minim minim, int size, String filePath) {
     this.minim = minim;
     this.filePath = filePath;
+    this.bufferSize = size;
   }
 
   @Override
     public void init() {
-    this.player = minim.loadFile(filePath, 2048); // Load the file with a buffer size of 2048
+    this.player = minim.loadFile(filePath, this.bufferSize); // Load the file with a buffer size of 2048
     this.fftLeft = new FFT(this.player.bufferSize(), this.player.sampleRate());
     this.fftRight = new FFT(this.player.bufferSize(), this.player.sampleRate());
     this.fftMixed = new FFT(this.player.bufferSize(), this.player.sampleRate());

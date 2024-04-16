@@ -7,6 +7,7 @@ class LineInInputSource implements AudioInputSource {
   Minim minim;
   AudioInput lineIn;
   FFT fftLeft, fftRight, fftMixed;
+  int bufferSize = 1024; //Default setting
   
   private AudioOutputMode channelOutput = AudioOutputMode.MONO; // Default setting
 
@@ -14,15 +15,15 @@ class LineInInputSource implements AudioInputSource {
     this.channelOutput = mode;
   }
 
-  public LineInInputSource(Minim minim) {
+  public LineInInputSource(Minim minim, int size) {
     this.minim = minim;
+    this.bufferSize = size;
   }
 
   @Override
     public void init() {
     // Assuming a stereo input for line-in
-    this.lineIn = this.minim.getLineIn(Minim.MONO);
-    
+    this.lineIn = this.minim.getLineIn(Minim.MONO, this.bufferSize);
     this.fftLeft = new FFT(this.lineIn.bufferSize(), this.lineIn.sampleRate());
     this.fftRight = new FFT(this.lineIn.bufferSize(), this.lineIn.sampleRate());
     this.fftMixed = new FFT(this.lineIn.bufferSize(), this.lineIn.sampleRate());
@@ -34,7 +35,7 @@ class LineInInputSource implements AudioInputSource {
   @Override
     public void start() {
     // Line-in starts automatically with getLineIn, but you might want to add logic here if needed
-    this.lineIn.enableMonitoring();
+    //this.lineIn.enableMonitoring();
   }
 
   @Override

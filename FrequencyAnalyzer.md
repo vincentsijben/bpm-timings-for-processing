@@ -65,6 +65,7 @@ You can tweak the behaviour of this library with the following functions (you ca
 * `.addMinim(minim)` mandatory to add the global minim object to the class.
 * `.setFile("example.mp3")` to set the file for the audioplayer.
 * `.setAudioInputMode(AudioInputMode.AUDIO_FILE)` to set the input mode to AudioInputMode.AUDIO_FILE. You can also set it to AudioInputMode.LINE_IN or AudioInputMode.MICROPHONE. Defaults to AudioInputMode.MICROPHONE. 
+* `.setAudioInputMode(AudioInputMode.AUDIO_FILE, n)` same as previous one, but you can also set the bufferSize. Needs to be a power of 2. A lower amount results in less audio resolution and decreases delay 
 * `.setAudioOutputMode(AudioOutputMode.STEREO)` to set the output mode to AudioOutputMode.STEREO. Defaults to AudioOutputMode.MONO. Use it to get access to both left and right channel analysis.
 * `.showInfoPanel()` to show the infopanel.
 * `.setInfoPanelY(n)` to offset the starting y-position of the infopanel by n pixels. Useful for when you have multiple infopanels to get them all lined up.

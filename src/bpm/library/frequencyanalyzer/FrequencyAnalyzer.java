@@ -26,19 +26,22 @@ public class FrequencyAnalyzer {
   private float durationResetMaxValue;
   private int startTime;
   private float maxVal;
+  private int bufferSize;
 
   public FrequencyAnalyzer(PApplet parent) {
     this.parent = parent;
     this.infoPanel = new InfoPanel(parent);
-    
+
 
     this.enableKeyPress = true;
     this.keyPressedActionTaken = false;
     this.durationResetMaxValue = 0.0f;
     this.startTime = 0;
     this.maxVal = 0.1f; //avoid NaN when using maxVal in map() in the first frame.
+    this.bufferSize = 1024;
 
     parent.registerMethod("draw", this);
+    parent.registerMethod("pre", this);
     parent.registerMethod("post", this);
     parent.registerMethod("keyEvent", this);
     parent.registerMethod("dispose", this);
@@ -47,8 +50,8 @@ public class FrequencyAnalyzer {
   public FrequencyAnalyzer addMinim(Minim minim) {
     this.minim = minim;
     this.setAudioInputMode(AudioInputMode.MICROPHONE);
-    
-    
+
+
     return this;
   }
 
@@ -79,7 +82,7 @@ public class FrequencyAnalyzer {
     return this;
   }
 
-  public FrequencyAnalyzer setAudioInputMode(AudioInputMode newMode) {
+  public FrequencyAnalyzer setAudioInputMode(AudioInputMode newMode, int size) {
     if (newMode == this.currentInputMode) return this;
     if (currentInputSource != null) {
       currentInputSource.close();
@@ -89,18 +92,18 @@ public class FrequencyAnalyzer {
     // Initialize the new input source based on the selected mode
     switch (newMode) {
     case MICROPHONE:
-      currentInputSource = new MicrophoneInputSource(minim); // Assuming a MicrophoneSource class exists
+      currentInputSource = new MicrophoneInputSource(minim, size); // Assuming a MicrophoneSource class exists
       break;
     case LINE_IN:
-      currentInputSource = new LineInInputSource(minim);
+      currentInputSource = new LineInInputSource(minim, size);
       break;
     case AUDIO_FILE:
-    if (this.file == null) System.out.println("no audio file was set");
-    
+      if (this.file == null) System.out.println("no audio file was set");
+
       //currentInputSource = new AudioFileInputSource(minim, "https://github.com/vincentsijben/bpm-timings-for-processing/raw/main/assets/infraction_music_-_ritmo.mp3"); // Assuming an AudioFileSource class exists
-      currentInputSource = new AudioFileInputSource(minim, this.file); // Assuming an AudioFileSource class exists
+      currentInputSource = new AudioFileInputSource(minim, size, this.file); // Assuming an AudioFileSource class exists
       //"stereotest.mp3"
-    
+
       break;
     }
 
@@ -113,6 +116,10 @@ public class FrequencyAnalyzer {
     // Update the current mode
     currentInputMode = newMode;
     return this;
+  }
+
+  public FrequencyAnalyzer setAudioInputMode(AudioInputMode newMode) {
+    return  setAudioInputMode(newMode, 1024);
   }
 
 
@@ -212,9 +219,8 @@ public class FrequencyAnalyzer {
   private void toggleMuteOrMonitoring() {
     if (currentInputSource.isMonitoring()) currentInputSource.disableMonitoring();
     else currentInputSource.enableMonitoring();
-    
+
     //todo: add muted toggle?
-    
   }
 
   public void keyEvent(KeyEvent event) {
@@ -288,6 +294,14 @@ public class FrequencyAnalyzer {
   }
 
   public void draw() {
+    // make sure everything in the main sketch is wrapped inside pushMatrix and popMatrix, so the infopanel is always shown top left, even in 3D mode
+    // pushMatrix in registermethod pre()
+    // popMatrix in registermethod draw()
+    this.parent.popMatrix();
+    this.parent.popStyle();
+    this.parent.hint(PConstants.DISABLE_DEPTH_TEST);
+
+
     if (this.infoPanel.show) {
       PGraphics overlay = this.infoPanel.overlay;
       overlay.beginDraw();
@@ -337,6 +351,7 @@ public class FrequencyAnalyzer {
       overlay.endDraw();
       this.parent.image(overlay, this.infoPanel.x, this.infoPanel.y, this.infoPanel.w, this.infoPanel.h); // Draw the overlay onto the main canvas
     }
+    this.parent.hint(PConstants.ENABLE_DEPTH_TEST);
   }
 
 
@@ -351,6 +366,9 @@ public class FrequencyAnalyzer {
   public void post() {
     // https://github.com/benfry/processing4/wiki/Library-Basics
     // you cant draw in post() but its perfect for the fft analysis:
+  }
+
+  public void pre() {
     if (this.minim != null) {
       this.performFFT();
 
@@ -363,6 +381,11 @@ public class FrequencyAnalyzer {
       //  }
       //}
     }
+    // make sure everything in the main sketch is wrapped inside pushMatrix and popMatrix, so the infopanel is always shown top left, even in 3D mode
+    // pushMatrix in registermethod pre()
+    // popMatrix in registermethod draw()
+    this.parent.pushMatrix();
+    this.parent.pushStyle();
   }
 
   public void dispose() {
