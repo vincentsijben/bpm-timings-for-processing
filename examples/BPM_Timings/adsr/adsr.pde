@@ -31,9 +31,10 @@ PImage img;
 void setup() {
   size(500, 500);
   bpm = new BeatsPerMinute(this);
+  bpm.showInfoPanel();
   img = loadImage("adsr.png");
   imageMode(CENTER);
-  textAlign(CENTER,CENTER);
+  textAlign(CENTER, CENTER);
   textSize(40);
   stroke(50);
   fill(0);
@@ -46,7 +47,7 @@ void draw() {
   text("1", width/5, height/2 - 100);
   s = lerp(0, 100, bpm.linear());
   circle(width/5, height/2, s);
-  
+
   // fast attack, no decay, no release
   // so very fast progression (in 20% of the time of 1 beat) from 0 to 1, and keep it at 1 for the remainder of the time
   text("2", width/5 * 2, height/2 - 100);
@@ -58,7 +59,7 @@ void draw() {
   s = lerp(0, 100, bpm.adsr(attackDuration, decayDuration, sustainLevel, releaseDuration, durationInBeats));
   // s = lerp(0, 100, bpm.adsr(0.2)); // this has the same effect because all other values are default values
   circle(width/5 * 2, height/2, s);
-  
+
   // slow attack, fast release
   // slowly progress (in 80% of the time of 1 beat) from 0 to 1, and quickly progress from 1 to 0
   text("3", width/5 * 3, height/2 - 100);

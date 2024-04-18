@@ -78,6 +78,20 @@ ln -s ../../../src/bpm/library/arduinocontrols/LEDMode.java ./examples/ArduinoCo
 ln -s ../../../src/bpm/library/arduinocontrols/Potentiometer.java ./examples/ArduinoControls/basics/Potentiometer.java
 ln -s ../../../src/bpm/library/arduinocontrols/PushButton.java ./examples/ArduinoControls/basics/PushButton.java
 ln -s ../../../src/bpm/library/InfoPanel.java ./examples/ArduinoControls/basics/InfoPanel.java
+
+ln -s ../../../src/bpm/library/arduinocontrols/ArduinoControls.java ./examples/ArduinoControls/all_controls/ArduinoControls.java
+ln -s ../../../src/bpm/library/arduinocontrols/LED.java ./examples/ArduinoControls/all_controls/LED.java
+ln -s ../../../src/bpm/library/arduinocontrols/LEDMode.java ./examples/ArduinoControls/all_controls/LEDMode.java
+ln -s ../../../src/bpm/library/arduinocontrols/Potentiometer.java ./examples/ArduinoControls/all_controls/Potentiometer.java
+ln -s ../../../src/bpm/library/arduinocontrols/PushButton.java ./examples/ArduinoControls/all_controls/PushButton.java
+ln -s ../../../src/bpm/library/InfoPanel.java ./examples/ArduinoControls/all_controls/InfoPanel.java
+
+ln -s ../../../src/bpm/library/arduinocontrols/ArduinoControls.java ./examples/ArduinoControls/smoothing/ArduinoControls.java
+ln -s ../../../src/bpm/library/arduinocontrols/LED.java ./examples/ArduinoControls/smoothing/LED.java
+ln -s ../../../src/bpm/library/arduinocontrols/LEDMode.java ./examples/ArduinoControls/smoothing/LEDMode.java
+ln -s ../../../src/bpm/library/arduinocontrols/Potentiometer.java ./examples/ArduinoControls/smoothing/Potentiometer.java
+ln -s ../../../src/bpm/library/arduinocontrols/PushButton.java ./examples/ArduinoControls/smoothing/PushButton.java
+ln -s ../../../src/bpm/library/InfoPanel.java ./examples/ArduinoControls/smoothing/InfoPanel.java
 ```
 FrequencyAnalyzer examples:
 ```
@@ -110,8 +124,14 @@ ln -s ../../../src/bpm/library/InfoPanel.java ./examples/FrequencyAnalyzer/stere
 ```
 BPM_Timing examples:
 ```
+ln -s ../../../src/bpm/library/beatsperminute/BeatsPerMinute.java ./examples/BPM_Timings/adsr/BeatsPerMinute.java
+ln -s ../../../src/bpm/library/InfoPanel.java ./examples/BPM_Timings/adsr/InfoPanel.java
+ln -s ../../../src/bpm/library/beatsperminute/BeatsPerMinute.java ./examples/BPM_Timings/adsrSquares/BeatsPerMinute.java
+ln -s ../../../src/bpm/library/InfoPanel.java ./examples/BPM_Timings/adsrSquares/InfoPanel.java
 ln -s ../../../src/bpm/library/beatsperminute/BeatsPerMinute.java ./examples/BPM_Timings/animatedSVG/BeatsPerMinute.java
 ln -s ../../../src/bpm/library/InfoPanel.java ./examples/BPM_Timings/animatedSVG/InfoPanel.java
+ln -s ../../../src/bpm/library/beatsperminute/BeatsPerMinute.java ./examples/BPM_Timings/basic/BeatsPerMinute.java
+ln -s ../../../src/bpm/library/InfoPanel.java ./examples/BPM_Timings/basic/InfoPanel.java
 ln -s ../../../src/bpm/library/beatsperminute/BeatsPerMinute.java ./examples/BPM_Timings/beatcount/BeatsPerMinute.java
 ln -s ../../../src/bpm/library/InfoPanel.java ./examples/BPM_Timings/beatcount/InfoPanel.java
 ln -s ../../../src/bpm/library/beatsperminute/BeatsPerMinute.java ./examples/BPM_Timings/colorPalettes/BeatsPerMinute.java

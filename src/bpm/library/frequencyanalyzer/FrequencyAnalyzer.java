@@ -299,27 +299,40 @@ public class FrequencyAnalyzer {
     // popMatrix in registermethod draw()
     this.parent.popMatrix();
     this.parent.popStyle();
-    this.parent.hint(PConstants.DISABLE_DEPTH_TEST);
+
 
 
     if (this.infoPanel.show) {
+      this.parent.hint(PConstants.DISABLE_DEPTH_TEST);
+
+      // put the parents imageMode temporarily to CORNER
+      this.parent.pushStyle();
+      this.parent.imageMode(PConstants.CORNER);
+      //
+
       PGraphics overlay = this.infoPanel.overlay;
       overlay.beginDraw();
-      overlay.fill(200, 127);
+      overlay.background(0, 170);
       overlay.noStroke();
-      overlay.rect(0, 0, overlay.width, overlay.height);
+
       for (int i = 0; i < this.avgSize(); i++) {
         float xR = (i * overlay.width) / this.avgSize();
-        float yR = 100;
-
-
+        float yR = 150;
 
         overlay.fill(255);
+        this.maxVal = 100;
+
         if (this.currentOutputMode == AudioOutputMode.STEREO) {
-          overlay.rect(xR, yR, overlay.width / this.avgSize()/2, PApplet.lerp(0, -100, this.getAvgRawLeft(i)));
-          overlay.rect(xR + overlay.width / this.avgSize()/2, yR, overlay.width / this.avgSize()/2, PApplet.lerp(0, -100, this.getAvgRawRight(i)));
+          float h = PApplet.lerp(0, -100, this.getAvgRawLeft(i));
+          h = PApplet.constrain(h, -100, 0);
+          overlay.rect(xR, yR, overlay.width / this.avgSize()/2, h);
+          h = PApplet.lerp(0, -100, this.getAvgRawRight(i));
+          h = PApplet.constrain(h, -100, 0);
+          overlay.rect(xR + overlay.width / this.avgSize()/2, yR, overlay.width / this.avgSize()/2, h);
         } else {
-          overlay.rect(xR, yR, overlay.width / this.avgSize(), PApplet.lerp(0, -100, this.getAvgRaw(i)));
+          float h = PApplet.lerp(0, -100, this.getAvgRaw(i));
+          h = PApplet.constrain(h, -100, 0);
+          overlay.rect(xR, yR, overlay.width / this.avgSize(), h);
         }
 
         overlay.fill(255, 0, 0);
@@ -336,22 +349,23 @@ public class FrequencyAnalyzer {
         overlay.text(i, xR + (overlay.width / this.avgSize() / 2), yR-6);
       }
       overlay.fill(255);
-      overlay.textSize(25);
+      overlay.textSize(16);
       overlay.textAlign(PApplet.LEFT);
-      overlay.text(PApplet.round(this.parent.frameRate), 20, 30);
-      overlay.textAlign(PApplet.CENTER);
-      overlay.text("maxVal: " + PApplet.round(maxVal), this.parent.width/2, 30);
-      overlay.textAlign(PApplet.LEFT);
+
+      //overlay.textAlign(PApplet.CENTER);
+      //overlay.text("maxVal: " + PApplet.round(maxVal), this.parent.width/2, 30);
+      //overlay.textAlign(PApplet.LEFT);
       String s = "selected mode: " + this.currentInputMode;
-      float posX = overlay.width-overlay.textWidth(s)-10;
-      overlay.text(s, posX, 30);
-      if (this.currentInputMode == AudioInputMode.AUDIO_FILE && audioPlayer != null) overlay.text("muted: " + audioPlayer.isMuted(), posX, 60);
-      //else overlay.text("monitoring: " + (audioInput.isMonitoring() ? "on": "off"), posX, 60);
-      else overlay.text("monitoring: " + (currentInputSource.isMonitoring() ? "on": "off"), posX, 60);
+      overlay.text(s, 15, 30);
+      if (this.currentInputMode == AudioInputMode.AUDIO_FILE && audioPlayer != null) overlay.text("muted: " + audioPlayer.isMuted(), overlay.width-120, 30);
+      //else overlay.text("monitoring: " + (audioInput.isMonitoring() ? "on": "off"), overlay.width-120, 30);
+      else overlay.text("monitoring: " + (currentInputSource.isMonitoring() ? "on": "off"), overlay.width-120, 30);
       overlay.endDraw();
       this.parent.image(overlay, this.infoPanel.x, this.infoPanel.y, this.infoPanel.w, this.infoPanel.h); // Draw the overlay onto the main canvas
+
+      this.parent.popStyle();
+      this.parent.hint(PConstants.ENABLE_DEPTH_TEST);
     }
-    this.parent.hint(PConstants.ENABLE_DEPTH_TEST);
   }
 
 

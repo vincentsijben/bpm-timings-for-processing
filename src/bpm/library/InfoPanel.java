@@ -15,12 +15,13 @@ public class InfoPanel {
   private boolean keyPressedActionTaken;
   public boolean enableKeyPress;
 
+
   public InfoPanel(PApplet parent) {
     this.parent = parent;
     this.x = 0;
     this.y = 0;
     this.w = parent.width;
-    this.h = 100;
+    this.h = 150;
     this.keyboardKey = 'i';
     this.show = Boolean.FALSE;
     this.keyPressedActionTaken = false;

@@ -12,6 +12,7 @@ void setup() {
   size(500, 500);
   bpm = new BeatsPerMinute(this);
   bpm.setBPM(30);
+
 }
 
 void draw() {

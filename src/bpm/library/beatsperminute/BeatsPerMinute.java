@@ -1,8 +1,3 @@
-/*
- todo: //processing doesn't like transparancy in 3D for the overlay
- //see https://www.reddit.com/r/processing/comments/59r0le/problems_with_transparency_in_3d/
- */
-
 package bpm.library.beatsperminute;
 
 import bpm.library.InfoPanel;
@@ -70,8 +65,7 @@ public class BeatsPerMinute {
     this.setBPM(60);
     this.millis_start = parent.millis();
     this.infoPanel = new InfoPanel(parent);
-    this.infoPanel.h = parent.height;
-    this.infoPanel.overlay = parent.createGraphics(parent.width, parent.height);
+    this.infoPanel.overlay = parent.createGraphics(190, 440);
     this.enableKeyPress = true;
     this.keyPressedActionTaken = false;
 
@@ -267,23 +261,21 @@ public class BeatsPerMinute {
     // popMatrix in registermethod draw()
     this.parent.popMatrix();
     this.parent.popStyle();
-    this.parent.hint(PConstants.DISABLE_DEPTH_TEST);
+
     if (this.infoPanel.show) {
-      this.parent.pushMatrix();
+      this.parent.hint(PConstants.DISABLE_DEPTH_TEST);
+
+      // put the parents imageMode temporarily to CORNER
       this.parent.pushStyle();
-      // this.parent.translate(0,0);
       this.parent.imageMode(PConstants.CORNER);
+      //
+
       PGraphics overlay = this.infoPanel.overlay;
       overlay.beginDraw();
-      overlay.pushMatrix();
-      overlay.pushStyle();
-      overlay.rectMode(PConstants.CORNER);
-      overlay.textAlign(PConstants.LEFT, PConstants.CENTER);
-      overlay.stroke(0);
-      overlay.fill(255, 100);
-      overlay.rect(0, 0, 190, 440);
-      overlay.fill(0);
-      overlay.textSize(20);
+      overlay.background(0, 170);
+      overlay.noStroke();
+      overlay.fill(255);
+      overlay.textSize(18);
       overlay.text("BPM: " + this.bpm, 10, 20);
       overlay.text("beatDuration: " + Math.floor(this.beatDuration), 10, 40);
       overlay.text("beatCount: " + this.beatCount, 10, 60);
@@ -291,24 +283,22 @@ public class BeatsPerMinute {
 
       overlay.textSize(12);
       overlay.text("every 1 beat", 12, 108);
-      if (this.every_once[1]) overlay.fill(0);
-      else overlay.fill(255);
-      overlay.ellipse(90, 108, 10, 10);
+      overlay.stroke(255);
+      if (this.every_once[1]) overlay.fill(255);
+      else overlay.noFill();
+      overlay.ellipse(90, 105, 10, 10);
       for (int i=2; i<this.every.length; i++) {
-        overlay.fill(0);
+        overlay.fill(255);
         overlay.text("every " + i + " beat", 12, 88 + i*20);
-        if (this.every[i]) overlay.fill(0);
-        else overlay.fill(255);
-        overlay.ellipse(90, 88 + i*20, 10, 10);
+        if (this.every[i]) overlay.fill(255);
+        else overlay.noFill();
+        overlay.ellipse(90, 84 + i*20, 10, 10);
       }
-      overlay.popStyle();
-      overlay.popMatrix();
       overlay.endDraw();
-      this.parent.image(overlay, this.infoPanel.x, this.infoPanel.y, this.infoPanel.w, this.infoPanel.h); // Draw the overlay onto the main canvas
+      this.parent.image(overlay, this.infoPanel.x, this.infoPanel.y); // Draw the overlay onto the main canvas
       this.parent.popStyle();
-      this.parent.popMatrix();
+      this.parent.hint(PConstants.ENABLE_DEPTH_TEST);
     }
-    this.parent.hint(PConstants.ENABLE_DEPTH_TEST);
   }
 
 

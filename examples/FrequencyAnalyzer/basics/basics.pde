@@ -19,6 +19,7 @@ void setup() {
     //.setAudioInputMode(AudioInputMode.AUDIO_FILE, 128) // also set bufferSize, needs to be power of 2. Lower amount means less audio resolution and decreasing delay
     //.setAudioInputMode(AudioInputMode.LINE_IN)
     .setAudioOutputMode(AudioOutputMode.MONO)
+    .showInfoPanel()
     ;
 }
 

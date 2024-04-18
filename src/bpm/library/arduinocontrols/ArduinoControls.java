@@ -292,28 +292,31 @@ public class ArduinoControls {
     // popMatrix in registermethod draw()
     this.parent.popMatrix();
     this.parent.popStyle();
-    this.parent.hint(PConstants.DISABLE_DEPTH_TEST);
-    if (this.infoPanel.show) {
-      //System.out.println(""+this.infoPanel.x + this.infoPanel.y + this.infoPanel.w + this.infoPanel.h);
-      boolean portrait = false; //this.infoPanelLocation[2] < this.infoPanelLocation[3];
 
+    if (this.infoPanel.show) {
+      this.parent.hint(PConstants.DISABLE_DEPTH_TEST);
+      
+      // put the parents imageMode temporarily to CORNER
+      this.parent.pushStyle(); 
+      this.parent.imageMode(PConstants.CORNER);
+      //
+      
       PGraphics overlay = this.infoPanel.overlay;
       overlay.beginDraw();
-      overlay.background(0, 200);
+      overlay.background(0, 170);
       overlay.noStroke();
       overlay.fill(255);
-      if (portrait) {
-        for (int i=0; i<this.pushbuttons.size(); i++) overlay.text("getPushButton("+i+ "): " + this.getPushButton(i), 5, 15+i*20);
-        for (int i=0; i<this.potentiometers.size(); i++) overlay.text("getPotentiometer("+i+ "): " + PApplet.nf(this.getPotentiometer(i), 0, 2) + " raw: " + this.potentiometers.get(i).value, 5, 115+i*20);
-      } else {
-        for (int i=0; i<this.pushbuttons.size(); i++) overlay.text("getPushButton("+i+ "): " + this.getPushButton(i), 5, 15+i*20);
-        for (int i=0; i<this.potentiometers.size(); i++) overlay.text("getPotentiometer("+i+ "): " + PApplet.nf(this.getPotentiometer(i), 0, 2) + " raw: " + this.potentiometers.get(i).value, 185, 15+i*20);
-      }
+      overlay.textSize(18);
+      for (int i=0; i<this.pushbuttons.size(); i++) overlay.text("getPushButton("+i+ "): " + this.getPushButton(i), 10, 25+i*20);
+      for (int i=0; i<this.pushbuttons.size(); i++) overlay.text("getPushButtonOnce("+i+ "): " + this.getPushButtonOnce(i), 10, 85+i*20);
+      for (int i=0; i<this.potentiometers.size(); i++) overlay.text("getPotentiometer("+i+ "): " + PApplet.nf(this.getPotentiometer(i), 0, 2) + " raw: " + this.potentiometers.get(i).value, 245, 25+i*20);
+      for (int i=0; i<this.potentiometers.size(); i++) overlay.text("getPotentiometer("+i+ ", 0.02): " + PApplet.nf(this.getPotentiometer(i, 0.02f), 0, 2) + " raw: " + this.potentiometers.get(i).value, 245, 85+i*20);
       overlay.endDraw();
 
-      this.parent.image(overlay, this.infoPanel.x, this.infoPanel.y, this.infoPanel.w, this.infoPanel.h); // Draw the overlay onto the main canvas
+      this.parent.image(overlay, this.infoPanel.x, this.infoPanel.y); // Draw the overlay onto the main canvas
+      this.parent.popStyle();
+      this.parent.hint(PConstants.ENABLE_DEPTH_TEST);
     }
-    this.parent.hint(PConstants.ENABLE_DEPTH_TEST);
   }
 
 
@@ -327,19 +330,16 @@ public class ArduinoControls {
 
   public void post() {
     // https://github.com/benfry/processing4/wiki/Library-Basics
-    // you cant draw in post() but its perfect for resetting the inputButtonsOnce array:
-    
+    // you cant draw in post() but its perfect for resetting the inputButtonsOnce array which needs to be done at the end of the draw cycle:
+    if (this.parent.frameCount != this.lastFrameCount) for (PushButton button : pushbuttons) button.pressedOnce = false;
   }
 
   public void pre() {
 
-  if (this.parent.frameCount != this.lastFrameCount) for (PushButton button : pushbuttons) button.pressedOnce = false;
-
-  // make sure everything in the main sketch is wrapped inside pushMatrix and popMatrix, so the infopanel is always shown top left, even in 3D mode
-  // pushMatrix in registermethod pre()
-  // popMatrix in registermethod draw()
-  this.parent.pushMatrix();
-  this.parent.pushStyle();
+    // make sure everything in the main sketch is wrapped inside pushMatrix and popMatrix, so the infopanel is always shown top left, even in 3D mode
+    // pushMatrix in registermethod pre()
+    // popMatrix in registermethod draw()
+    this.parent.pushMatrix();
+    this.parent.pushStyle();
+  }
 }
-}
-

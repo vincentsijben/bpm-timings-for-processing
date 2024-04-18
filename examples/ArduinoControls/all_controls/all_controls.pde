@@ -56,7 +56,7 @@ void draw() {
 
   noFill();
   if (ac.getPushButton(0)) fill(255, 0, 0);
-  if (ac.getPushButton(1)) fill(0, 255, 0);
+  if (ac.getPushButtonOnce(1)) fill(0, 255, 0); //only green for 1 frame
   if (ac.getPushButton(2)) fill(0, 0, 255);
 
   //show ellipse at relative smoothed potentiometer value (prevents jumping around)
