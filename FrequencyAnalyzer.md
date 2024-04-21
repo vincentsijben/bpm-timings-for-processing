@@ -63,7 +63,7 @@ todo:
 
 You can tweak the behaviour of this library with the following functions (you can also chain them when initializing your frequencyanalyzer object for clarity):
 * `.addMinim(minim)` mandatory to add the global minim object to the class.
-* `.setFile("example.mp3")` to set the file for the audioplayer.
+* `.setFile("example.mp3")` to set the file for the audioplayer. Defaults to "https://github.com/vincentsijben/bpm-timings-for-processing/raw/main/assets/infraction_music_-_ritmo.mp3"
 * `.setAudioInputMode(AudioInputMode.AUDIO_FILE)` to set the input mode to AudioInputMode.AUDIO_FILE. You can also set it to AudioInputMode.LINE_IN or AudioInputMode.MICROPHONE. Defaults to AudioInputMode.MICROPHONE. 
 * `.setAudioInputMode(AudioInputMode.AUDIO_FILE, n)` same as previous one, but you can also set the bufferSize. Needs to be a power of 2. A lower amount results in less audio resolution and decreases delay . Defaults to 1024.
 * `.setAudioOutputMode(AudioOutputMode.STEREO)` to set the output mode to AudioOutputMode.STEREO. Defaults to AudioOutputMode.MONO. Use it to get access to both left and right channel analysis.

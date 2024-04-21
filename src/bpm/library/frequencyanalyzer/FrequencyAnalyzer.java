@@ -39,6 +39,7 @@ public class FrequencyAnalyzer {
     this.startTime = 0;
     this.maxVal = 0.1f; //avoid NaN when using maxVal in map() in the first frame.
     this.bufferSize = 1024;
+    this.file = "https://github.com/vincentsijben/bpm-timings-for-processing/raw/main/assets/infraction_music_-_ritmo.mp3"; // default
 
     parent.registerMethod("draw", this);
     parent.registerMethod("pre", this);
@@ -50,8 +51,6 @@ public class FrequencyAnalyzer {
   public FrequencyAnalyzer addMinim(Minim minim) {
     this.minim = minim;
     this.setAudioInputMode(AudioInputMode.MICROPHONE);
-
-
     return this;
   }
 

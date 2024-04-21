@@ -50,8 +50,6 @@ void draw() {
   circle(width/4*1, height/2, fa.getAvgRawRight(0)*30);
   circle(width/4*2, height/2, fa.getAvgRaw(10)*30);
   circle(width/4*3, height/2, fa.getAvgRaw(20)*30);
-
-  
 }
 
 void drawWaveform(float[] buffer, float x, float y, float w, float h, int strokeColor) {
