@@ -16,7 +16,6 @@ void setup() {
     .addMinim(minim)
     .setFile("https://github.com/vincentsijben/bpm-timings-for-processing/raw/main/assets/infraction_music_-_ritmo.mp3")
     .setAudioInputMode(AudioInputMode.AUDIO_FILE)
-    .setAudioOutputMode(AudioOutputMode.MONO)
     ;
 }
 

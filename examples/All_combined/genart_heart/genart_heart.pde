@@ -46,7 +46,6 @@ public void setup() {
     .addMinim(minim)
     .setFile("https://github.com/vincentsijben/bpm-timings-for-processing/raw/main/assets/Ananya_-_Mornings_in_Love.mp3")
     .setAudioInputMode(AudioInputMode.AUDIO_FILE)
-    .setAudioOutputMode(AudioOutputMode.MONO)
     .setInfoPanelKey('o')
     ;
 
@@ -56,7 +55,7 @@ public void setup() {
     .addArduino(arduino)
     .addLED(11, LEDMode.PWM)
     .addPushButton(8, '1', Arduino.LOW)
-     .setInfoPanelKey('p')
+    .setInfoPanelKey('p')
     ;
 
   heart_textured = loadShape("heart_textured.obj");
