@@ -25,6 +25,10 @@ void setup() {
     .addArduino(arduino)
     .addLED(13)
     ;
+
+  // delay the start of the draw loop so the Arduino is in the ready state
+  // because the first few frames, digitalRead returned incorrect values
+  delay(2000);
 }
 
 void draw() {

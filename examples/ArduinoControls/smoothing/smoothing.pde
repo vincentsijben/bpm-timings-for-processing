@@ -39,7 +39,7 @@ void setup() {
     ;
 
   // delay the start of the draw loop so the Arduino is in the ready state
-  // (the first few frames, digitalRead returned incorrect values)
+  // because the first few frames, digitalRead returned incorrect values
   delay(2000);
 }
 
