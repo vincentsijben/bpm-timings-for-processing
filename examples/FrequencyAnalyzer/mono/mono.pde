@@ -1,5 +1,5 @@
 // Import the library to your sketch
-import bpm.library.frequencyanalyzer.*;
+import nl.genart.bpm.frequencyanalyzer.*;
 
 // Import the minim library
 import ddf.minim.*;

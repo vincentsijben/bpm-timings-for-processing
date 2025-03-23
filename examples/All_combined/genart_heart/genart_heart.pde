@@ -14,10 +14,10 @@
  */
 
 import ddf.minim.*;
-import bpm.library.*;
-import bpm.library.arduinocontrols.*;
-import bpm.library.beatsperminute.*;
-import bpm.library.frequencyanalyzer.*;
+import nl.genart.bpm.*;
+import nl.genart.bpm.arduinocontrols.*;
+import nl.genart.bpm.beatsperminute.*;
+import nl.genart.bpm.frequencyanalyzer.*;
 import processing.serial.*;
 import cc.arduino.*;
 

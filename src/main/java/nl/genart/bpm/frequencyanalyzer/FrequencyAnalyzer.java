@@ -1,12 +1,12 @@
-
-package bpm.library.frequencyanalyzer;
+package nl.genart.bpm.frequencyanalyzer;
 
 //https://github.com/benfry/processing4/wiki/Library-Basics
-import bpm.library.InfoPanel;
-import processing.core.*;
-import processing.event.KeyEvent;
+// import bpm.library.InfoPanel;
 import ddf.minim.*;
 import ddf.minim.analysis.*;
+import nl.genart.bpm.InfoPanel;
+import processing.core.*;
+import processing.event.KeyEvent;
 
 public class FrequencyAnalyzer {
 
@@ -26,7 +26,7 @@ public class FrequencyAnalyzer {
   private float durationResetMaxValue;
   private int startTime;
   private float maxVal;
-  private int bufferSize;
+  private int bufferSize; 
 
   public FrequencyAnalyzer(PApplet parent) {
     this.parent = parent;

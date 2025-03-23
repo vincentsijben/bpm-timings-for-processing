@@ -15,9 +15,9 @@
  * and search for "Arduino" and "Minim"
  **/
  
-import bpm.library.beatsperminute.*;
-import bpm.library.frequencyanalyzer.*;
-import bpm.library.arduinocontrols.*;
+import nl.genart.bpm.beatsperminute.*;
+import nl.genart.bpm.frequencyanalyzer.*;
+import nl.genart.bpm.arduinocontrols.*;
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import processing.serial.*;

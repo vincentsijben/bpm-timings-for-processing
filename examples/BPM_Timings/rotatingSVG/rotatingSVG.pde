@@ -9,7 +9,7 @@
  * The sketch alternates every 4 beats between the SVG and rectangle shapes.
  * Credits to https://github.com/Mick-Willemsen for creating this example.
  */
-import bpm.library.beatsperminute.*;
+import nl.genart.bpm.beatsperminute.*;
 
 BeatsPerMinute bpm;
 PShape star;

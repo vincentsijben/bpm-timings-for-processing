@@ -1,4 +1,4 @@
-package bpm.library.frequencyanalyzer;
+package nl.genart.bpm.frequencyanalyzer;
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -11,6 +11,7 @@ class MicrophoneInputSource implements AudioInputSource {
 
   public AudioOutputMode channelOutput = AudioOutputMode.MONO; // Default setting
 
+  @Override
   public void setAudioOutputMode(AudioOutputMode mode) {
     this.channelOutput = mode;
   }

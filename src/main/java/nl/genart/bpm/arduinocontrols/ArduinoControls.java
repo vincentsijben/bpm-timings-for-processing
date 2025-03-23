@@ -10,13 +10,14 @@
  - Only write LED once, not continuously, preventing flickering
  */
 
-package bpm.library.arduinocontrols;
+package nl.genart.bpm.arduinocontrols;
 
-import bpm.library.InfoPanel;
+// import bpm.library.InfoPanel;
+import cc.arduino.*;
 import java.util.ArrayList;
+import nl.genart.bpm.InfoPanel;
 import processing.core.*;
 import processing.event.KeyEvent;
-import cc.arduino.*;
 
 public class ArduinoControls {
 

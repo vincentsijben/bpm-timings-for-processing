@@ -1,4 +1,4 @@
-package bpm.library.arduinocontrols;
+package nl.genart.bpm.arduinocontrols;
 
 public class LED {
   // dont use private, because this class is not an inner class, so code inside ArduinoControls won't be able to access these properties

@@ -16,7 +16,7 @@
  * the image shows the timeline of 1 beat, but you can use any amount for the durationInBeats value
  */
 
-import bpm.library.beatsperminute.*;
+import nl.genart.bpm.beatsperminute.*;
 
 BeatsPerMinute bpm;
 float attackDuration;

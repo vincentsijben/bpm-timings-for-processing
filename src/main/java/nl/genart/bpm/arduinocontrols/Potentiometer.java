@@ -1,4 +1,4 @@
-package bpm.library.arduinocontrols;
+package nl.genart.bpm.arduinocontrols;
 
 public class Potentiometer {
   float value;

@@ -15,7 +15,7 @@
  *
  */
 
-import bpm.library.arduinocontrols.*;
+import nl.genart.bpm.arduinocontrols.*;
 import processing.serial.*;
 import cc.arduino.*;
 

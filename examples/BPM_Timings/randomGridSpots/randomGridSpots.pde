@@ -9,7 +9,7 @@
  * Uses the boolean every[4] to use a red fill color every 4 beats for the duration of 1 beat.
  */
  
-import bpm.library.beatsperminute.*;
+import nl.genart.bpm.beatsperminute.*;
 BeatsPerMinute bpm;
 
 color[] colors = {#2c69f3, #fefdfa, #231e10};

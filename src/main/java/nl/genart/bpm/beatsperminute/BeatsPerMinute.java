@@ -1,6 +1,8 @@
-package bpm.library.beatsperminute;
+// package bpm.library.beatsperminute;
+package nl.genart.bpm.beatsperminute;
 
-import bpm.library.InfoPanel;
+// import bpm.library.InfoPanel;
+import nl.genart.bpm.InfoPanel;
 import processing.core.*;
 import processing.event.KeyEvent;
 

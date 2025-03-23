@@ -6,7 +6,7 @@
  * You can see how you could use the setSurfaceTitle() function as well.
  */
 
-import bpm.library.beatsperminute.*;
+import nl.genart.bpm.beatsperminute.*;
 BeatsPerMinute bpm;
 
 void setup() {

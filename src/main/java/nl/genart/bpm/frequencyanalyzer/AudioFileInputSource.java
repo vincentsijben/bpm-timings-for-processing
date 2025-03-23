@@ -1,4 +1,4 @@
-package bpm.library.frequencyanalyzer;
+package nl.genart.bpm.frequencyanalyzer;
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;

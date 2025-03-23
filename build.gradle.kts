@@ -96,12 +96,13 @@ dependencies {
     // insert your external dependencies
     // For example uncomment the following line to declare commons-math3 as a dependency.
     // implementation(group = "org.apache.commons", name = "commons-math3", version = "3.6.1")
-     compileOnly(fileTree("$sketchbookLocation/libraries/minim/library"))
-     compileOnly(fileTree("$sketchbookLocation/libraries/arduino/library"))
+    implementation(fileTree("src/main/java/libraries"))
 
     // To add a dependency on a Processing library that is installed locally,
     // uncomment the line below, and replace <library folder> with the location of that library
     // compileOnly(fileTree("$sketchbookLocation/libraries/<library folder>/library"))
+    // compileOnly(fileTree("$sketchbookLocation/libraries/minim/library"))
+    // compileOnly(fileTree("$sketchbookLocation/libraries/arduino/library"))
 
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")

@@ -5,7 +5,7 @@
  * Animate a circle on each beat.
  */
 
-import bpm.library.beatsperminute.*;
+import nl.genart.bpm.beatsperminute.*;
 BeatsPerMinute bpm;
 
 void setup() {

@@ -1,4 +1,5 @@
-package bpm.library;
+// package bpm.library;
+package nl.genart.bpm;
 
 import processing.core.*;
 import processing.event.KeyEvent;

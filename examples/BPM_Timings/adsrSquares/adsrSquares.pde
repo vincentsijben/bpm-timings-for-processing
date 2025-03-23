@@ -1,5 +1,5 @@
 /* tried to recreate https://www.instagram.com/reel/C2dEMGFsg8E/ */
-import bpm.library.beatsperminute.*;
+import nl.genart.bpm.beatsperminute.*;
 
 ArrayList<Rectangles> rectangles = new ArrayList<Rectangles>();
 BeatsPerMinute bpm;
