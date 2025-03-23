@@ -58,6 +58,7 @@ bin/
 
 # Package Files #
 *.jar
+!src/main/java/libraries/*.jar
 *.war
 *.nar
 *.ear
