@@ -1,5 +1,0 @@
-bin
-tmp
-distribution
-.DS_Store
-examples/**/*.java
