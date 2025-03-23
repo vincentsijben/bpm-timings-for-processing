@@ -1,0 +1,29 @@
+site_name: BPM timings library for Processing
+site_url: "https://vincentsijben.github.io/bpm-timings-for-processing/"
+
+theme:
+  name: material
+  features:
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.select
+    - content.code.highlight
+    - content.code.annotate
+    - navigation.top
+    - navigation.footer
+
+
+copyright: MIT Licence.
+
+plugins:
+  - search
+  - offline
+
+nav:
+  - Home: index.md
+  - Get Started: getting-started.md
+  - Develop: develop.md
+  - Release: release.md
+  - Troubleshooting: troubleshooting.md
