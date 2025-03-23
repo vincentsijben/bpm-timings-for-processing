@@ -51,8 +51,8 @@ public class BeatsPerMinute {
    		 * sketch to initialize and start the library.
    		 * Set the second argument to be your starting bpm amount.
    		 *
-   		 * @param theParent Your sketch's PApplet object
-   		 * @param bpmTemp the initial beat per minute amount (integer)
+   		 * @param parent Your sketch's PApplet object
+   		 * //@param bpmTemp the initial beat per minute amount (integer)
    		 */
   public BeatsPerMinute(PApplet parent) {
     this.welcome();
@@ -62,21 +62,21 @@ public class BeatsPerMinute {
     this.beatCount = 0;
     this.lastBeatCount = 0;
     this.lastFrameCount = -1;
-    this.setBPM(60);
+    this.setBPM(60); 
     this.millis_start = parent.millis();
     this.infoPanel = new InfoPanel(parent);
     this.infoPanel.overlay = parent.createGraphics(190, 440);
     this.enableKeyPress = true;
     this.keyPressedActionTaken = false;
 
-    parent.registerMethod("draw", this);
+    parent.registerMethod("draw", this); 
     parent.registerMethod("pre", this);
     parent.registerMethod("post", this);
     parent.registerMethod("keyEvent", this);
   }
 
   private void welcome() {
-    System.out.println("##library.name## ##library.prettyVersion## by ##author.url##");
+    System.out.println("##library.name## ##library.prettyVersion## by ##author.url##"); 
   }
 
   public BeatsPerMinute setBPM(int bpm) {
