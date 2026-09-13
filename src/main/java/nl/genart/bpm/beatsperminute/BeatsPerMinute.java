@@ -3,14 +3,13 @@ package nl.genart.bpm.beatsperminute;
 
 // import bpm.library.InfoPanel;
 import nl.genart.bpm.InfoPanel;
-import processing.core.*;
 import processing.event.KeyEvent;
 
 /**
  * BPM timings for Processing..
  *
  */
-public class BeatsPerMinute {
+public class BeatsPerMinute { 
 
   // myParent is a reference to the parent sketch
   private PApplet parent;
